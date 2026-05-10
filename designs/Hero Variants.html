@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Embassy of Burgers — Hero Variants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css" />
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    html, body, #root { height: 100%; }
+    body { background: #0A0908; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel" src="hero-variants.jsx"></script>
+
+  <script type="text/babel">
+    function Frame({ width, height, children }) {
+      return (
+        <div style={{
+          width, height, overflow: "hidden", background: "var(--bg)",
+          color: "var(--silver)", fontFamily: "var(--sans)", position: "relative", isolation: "isolate",
+        }}>
+          {children}
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <DesignCanvas
+          title="Hero Variants · Embassy of Burgers"
+          subtitle="4 ta hero stilini desktop va mobil hajmda taqqoslang. Har biri haqiqiy responsive — bir xil kompozitsiya, ikki kenglikda."
+          background="#0A0908"
+        >
+          <DCSection id="v1" title="01 · Video Circle" subtitle="Hozirgi variant. Video doiraviy panel ichida, gold rim · stamp · ikki halqa. Mobilda halqa kichrayadi, matn yuqorida.">
+            <DCArtboard id="v1-d" label="Desktop · 1280 wide" width={1280} height={620}>
+              <Frame width={1280} height={620}><Hero_VideoCircle size="desktop" /></Frame>
+            </DCArtboard>
+            <DCArtboard id="v1-m" label="Mobile · 390 wide" width={390} height={700}>
+              <Frame width={390} height={700}><Hero_VideoCircle size="mobile" /></Frame>
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection id="v2" title="02 · Animated Mesh Gradient" subtitle="Oltin + qizil yumshoq oqimli gradient blobs (14–22s loop). O'ng tomonda 'Diplomatic Pass' tipografik kompozitsiya — videosiz, tezroq yuklanadi.">
+            <DCArtboard id="v2-d" label="Desktop · 1280 wide" width={1280} height={620}>
+              <Frame width={1280} height={620}><Hero_MeshGradient size="desktop" /></Frame>
+            </DCArtboard>
+            <DCArtboard id="v2-m" label="Mobile · 390 wide" width={390} height={700}>
+              <Frame width={390} height={700}><Hero_MeshGradient size="mobile" /></Frame>
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection id="v3" title="03 · Static Seal (original)" subtitle="Asl variant — burger silueti, qo'sh halqa, dashed orbit, gold glow. Eng yengil, eng oddiy, lekin animatsiyasiz.">
+            <DCArtboard id="v3-d" label="Desktop · 1280 wide" width={1280} height={620}>
+              <Frame width={1280} height={620}><Hero_StaticSeal size="desktop" /></Frame>
+            </DCArtboard>
+            <DCArtboard id="v3-m" label="Mobile · 390 wide" width={390} height={700}>
+              <Frame width={390} height={700}><Hero_StaticSeal size="mobile" /></Frame>
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection id="v4" title="04 · Full-Bleed Video" subtitle="Video butun hero foniga. Desktopda chap → o'ng qora gradient bilan matn o'qiladi. Mobilda — past → yuqori gradient, matn pastda. Eng kuchli ta'sir.">
+            <DCArtboard id="v4-d" label="Desktop · 1280 wide" width={1280} height={720}>
+              <Frame width={1280} height={720}><Hero_FullBleedVideo size="desktop" /></Frame>
+            </DCArtboard>
+            <DCArtboard id="v4-m" label="Mobile · 390 wide" width={390} height={700}>
+              <Frame width={390} height={700}><Hero_FullBleedVideo size="mobile" /></Frame>
+            </DCArtboard>
+          </DCSection>
+        </DesignCanvas>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

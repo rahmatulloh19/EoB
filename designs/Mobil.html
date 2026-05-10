@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Embassy of Burgers — Mobil ko'rinish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css" />
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    html, body { margin: 0; padding: 0; background: #050505; min-height: 100vh; }
+    body {
+      font-family: var(--sans);
+      color: var(--silver);
+      background:
+        radial-gradient(80% 60% at 50% 0%, rgba(212,175,55,0.06) 0%, transparent 60%),
+        #050505;
+    }
+
+    /* Page chrome: tab switcher (same as Bosh sahifa.html) */
+    .eob-page-nav {
+      position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%);
+      z-index: 100;
+      display: flex; align-items: center; gap: 4px;
+      background: rgba(13,13,13,0.92);
+      border: 1px solid var(--hairline);
+      backdrop-filter: blur(10px);
+      padding: 6px;
+      border-radius: 999px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .eob-page-nav a {
+      padding: 9px 18px;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--silver);
+      text-decoration: none;
+      border-radius: 999px;
+      transition: all 160ms ease;
+    }
+    .eob-page-nav a:hover { color: var(--gold); }
+    .eob-page-nav a.active { background: var(--gold); color: #1a1408; }
+    .eob-page-nav .sep { width: 1px; height: 14px; background: var(--hairline-soft); }
+
+    /* Device viewer: iPhone-style frame on desktop, full-bleed on mobile */
+    .mobile-stage {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 56px 24px 110px;
+    }
+    .mobile-frame {
+      position: relative;
+      width: 390px;
+      height: 844px;
+      flex-shrink: 0;
+      background: #0a0a0a;
+      border-radius: 56px;
+      padding: 14px;
+      box-shadow:
+        0 0 0 1px rgba(212,175,55,0.16),
+        0 0 0 8px #1a1814,
+        0 0 0 9px rgba(212,175,55,0.24),
+        0 40px 100px rgba(0,0,0,0.7),
+        0 0 80px rgba(212,175,55,0.08);
+    }
+    .mobile-frame::before {
+      /* Dynamic Island */
+      content: "";
+      position: absolute;
+      top: 24px; left: 50%; transform: translateX(-50%);
+      width: 118px; height: 34px;
+      background: #000;
+      border-radius: 999px;
+      z-index: 5;
+    }
+    .mobile-screen {
+      width: 100%; height: 100%;
+      border-radius: 44px;
+      overflow: hidden;
+      background: var(--bg);
+      position: relative;
+    }
+    .mobile-screen-scroll {
+      width: 100%; height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--hairline) transparent;
+    }
+    .mobile-screen-scroll::-webkit-scrollbar { width: 4px; }
+    .mobile-screen-scroll::-webkit-scrollbar-thumb { background: var(--hairline); border-radius: 999px; }
+
+    /* Side label */
+    .device-meta {
+      position: fixed;
+      top: 50%; left: 32px; transform: translateY(-50%) rotate(-90deg);
+      transform-origin: left center;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* Mobile devices: hide frame, go full-bleed */
+    @media (max-width: 640px) {
+      .mobile-stage { padding: 0 0 80px; }
+      .mobile-frame {
+        width: 100vw; height: 100dvh;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      .mobile-frame::before { display: none; }
+      .mobile-screen { border-radius: 0; }
+      .device-meta { display: none; }
+      body { background: var(--bg); }
+    }
+
+    /* Mobile sub-page switcher (which mobile screen to view) */
+    .mobile-switcher {
+      position: fixed;
+      top: 22px; right: 22px;
+      z-index: 100;
+      display: flex;
+      gap: 4px;
+      background: rgba(13,13,13,0.9);
+      border: 1px solid var(--hairline);
+      backdrop-filter: blur(10px);
+      padding: 5px;
+      border-radius: 999px;
+    }
+    .mobile-switcher button {
+      background: transparent; border: none; cursor: pointer;
+      padding: 8px 14px;
+      font-family: var(--sans); font-size: 10px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 500; color: var(--silver);
+      border-radius: 999px;
+      transition: all 160ms ease;
+    }
+    .mobile-switcher button.active { background: var(--gold); color: #1a1408; }
+    @media (max-width: 640px) { .mobile-switcher { top: 12px; right: 12px; padding: 4px; } }
+  </style>
+</head>
+<body>
+  <div class="device-meta">Embassy of Burgers · iPhone 14 · 390 × 844</div>
+
+  <div id="root"></div>
+
+  <nav class="eob-page-nav">
+    <a href="Bosh sahifa.html">Bosh sahifa</a>
+    <span class="sep"></span>
+    <a href="Menyu.html">Menyu</a>
+    <span class="sep"></span>
+    <a href="Mobil.html" class="active">Mobil</a>
+    <span class="sep"></span>
+    <a href="Embassy of Burgers.html">Canvas</a>
+  </nav>
+
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel" src="landing-mobile.jsx"></script>
+  <script type="text/babel" src="menu-mobile.jsx"></script>
+  <script type="text/babel">
+    const { useState } = React;
+
+    function MobileApp() {
+      const [view, setView] = useState("landing");
+      return (
+        <React.Fragment>
+          <div className="mobile-switcher">
+            <button className={view === "landing" ? "active" : ""} onClick={() => setView("landing")}>Bosh</button>
+            <button className={view === "menu" ? "active" : ""} onClick={() => setView("menu")}>Menyu</button>
+          </div>
+          <div className="mobile-stage">
+            <div className="mobile-frame">
+              <div className="mobile-screen">
+                <div className="mobile-screen-scroll">
+                  {view === "landing" ? <LandingMobile /> : <MenuMobile />}
+                </div>
+              </div>
+            </div>
+          </div>
+        </React.Fragment>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<MobileApp />);
+  </script>
+</body>
+</html>

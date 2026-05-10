@@ -1,0 +1,142 @@
+/* Embassy of Burgers — design tokens */
+:root {
+  --bg: #0D0D0D;
+  --card: #1A1814;
+  --surface: #252118;
+  --gold: #D4AF37;
+  --gold-light: #E8CB6A;
+  --red: #C8102E;
+  --red-hover: #E0152F;
+  --white: #FFFFFF;
+  --silver: #D1D5DB;
+  --muted: #7A7670;
+  --hairline: rgba(212, 175, 55, 0.18);
+  --hairline-soft: rgba(212, 175, 55, 0.10);
+
+  --serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: var(--sans); color: var(--silver); background: var(--bg); -webkit-font-smoothing: antialiased; }
+
+/* Reusable bits used across artboards */
+.eob-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+.eob-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--hairline) 50%, transparent 100%);
+}
+.eob-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 160ms ease;
+  white-space: nowrap;
+}
+.eob-btn--gold {
+  background: var(--gold);
+  color: #1a1408;
+}
+.eob-btn--gold:hover { background: var(--gold-light); }
+.eob-btn--red {
+  background: var(--red);
+  color: var(--white);
+}
+.eob-btn--outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.eob-btn--outline-light {
+  background: transparent;
+  color: var(--silver);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* Image placeholder — dark with subtle burger silhouette */
+.eob-img {
+  position: relative;
+  width: 100%;
+  background:
+    radial-gradient(120% 80% at 50% 30%, rgba(212,175,55,0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #1f1c16 0%, #14110c 100%);
+  overflow: hidden;
+  border: 1px solid var(--hairline-soft);
+}
+.eob-img::before {
+  /* subtle diagonal hatching */
+  content: "";
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(212,175,55,0.025) 0 1px,
+    transparent 1px 14px
+  );
+}
+.eob-img__icon {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.35;
+}
+.eob-img__caption {
+  position: absolute;
+  bottom: 10px; left: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(212,175,55,0.45);
+  text-transform: uppercase;
+}
+
+/* Country flag chip */
+.eob-flag-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(13,13,13,0.78);
+  border: 1px solid var(--hairline);
+  padding: 5px 10px;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  backdrop-filter: blur(6px);
+}
+
+/* Headline gold accent word */
+.eob-gold-word {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* Stat number with thin gold left border */
+.eob-stat {
+  border-left: 2px solid var(--gold);
+  padding-left: 18px;
+}
+
+/* Card */
+.eob-card {
+  background: var(--card);
+  border: 1px solid var(--hairline-soft);
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+.eob-card:hover {
+  border-color: var(--hairline);
+}

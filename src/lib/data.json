@@ -1,0 +1,1399 @@
+[
+    {
+        "id": "9216b4ba-5fbc-4925-b975-75367d9cc6c7",
+        "name": "Акции",
+        "products": [
+            {
+                "id": "19668aa7-5248-40a9-ab0a-b705e371b266",
+                "categoryId": "9216b4ba-5fbc-4925-b975-75367d9cc6c7",
+                "name": "4 за 44 000 EMB",
+                "description": "",
+                "price": "44000.00",
+                "image": "/images/f35f2651c34d765f565d64f5a282da2f.JPEG",
+                "modifierGroups": [
+                    {
+                        "id": "cb906579-5820-4a3b-aac4-6cb5335b6a62",
+                        "name": "EB Добавки с сету",
+                        "modifiers": [
+                            {
+                                "id": "048c4c83-62cc-47c8-8bc5-4faaa3c9ef1e",
+                                "name": "Чай зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "1efba67d-f2c3-4925-b16a-f44e4d9a9303",
+                                "name": "Сок маленький 200 мл",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "3e338a9e-7b7d-45f3-a001-5c180a0d7a23",
+                                "name": "Чай чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "45882e3b-44c6-4968-ab32-f3375112d0df",
+                                "name": "Фанта 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "4670f2d8-0fde-4d30-8dee-88edf8826efc",
+                                "name": "SPRITE Aspartame Post Mix",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "83bb4a58-a650-4560-836a-5770196e7417",
+                                "name": "Спрайт 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "9f19a7ec-e29d-477d-8327-3fc804c72cdb",
+                                "name": "COCA-COLA POST MIX",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "a6dc6655-8f1f-46e5-9f51-4477ecd53330",
+                                "name": "Чай с лимоном зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c6b586a3-e7d7-4996-9571-e9a6801844b1",
+                                "name": "Кола 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c80d5c0f-f834-4466-ae33-e746bde4a044",
+                                "name": "Чай с лимоном чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "dde285f6-7699-4448-8bd5-b378568d5797",
+                                "name": "FANTA Post Mix",
+                                "price": "0.00"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "6b513b9c-0c89-4d8a-8733-16f124ed8a8e",
+                "categoryId": "9216b4ba-5fbc-4925-b975-75367d9cc6c7",
+                "name": "KENTUCKY 2х SET EMB",
+                "description": "",
+                "price": "98000.00",
+                "image": "/images/6058837fddfae7f16370b6bebca24e49.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "9772434c-0931-471f-b086-9b15cd715365",
+                "categoryId": "9216b4ba-5fbc-4925-b975-75367d9cc6c7",
+                "name": "NEW YORK BURGER WITH COLA SET EMB",
+                "description": "",
+                "price": "50000.00",
+                "image": "/images/0e5e37ba683f955fca7f8b2c426a42f4.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "a382a6a8-a160-4dac-91b4-540ff3da650d",
+                "categoryId": "9216b4ba-5fbc-4925-b975-75367d9cc6c7",
+                "name": "KOREAN СЕТ EMB",
+                "description": "",
+                "price": "74000.00",
+                "image": "/images/b2eb822dc4e6bbf42ddcda1e967a5d6c.PNG",
+                "modifierGroups": [
+                    {
+                        "id": "cb906579-5820-4a3b-aac4-6cb5335b6a62",
+                        "name": "EB Добавки с сету",
+                        "modifiers": [
+                            {
+                                "id": "048c4c83-62cc-47c8-8bc5-4faaa3c9ef1e",
+                                "name": "Чай зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "1efba67d-f2c3-4925-b16a-f44e4d9a9303",
+                                "name": "Сок маленький 200 мл",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "3e338a9e-7b7d-45f3-a001-5c180a0d7a23",
+                                "name": "Чай чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "45882e3b-44c6-4968-ab32-f3375112d0df",
+                                "name": "Фанта 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "4670f2d8-0fde-4d30-8dee-88edf8826efc",
+                                "name": "SPRITE Aspartame Post Mix",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "83bb4a58-a650-4560-836a-5770196e7417",
+                                "name": "Спрайт 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "9f19a7ec-e29d-477d-8327-3fc804c72cdb",
+                                "name": "COCA-COLA POST MIX",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "a6dc6655-8f1f-46e5-9f51-4477ecd53330",
+                                "name": "Чай с лимоном зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c6b586a3-e7d7-4996-9571-e9a6801844b1",
+                                "name": "Кола 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c80d5c0f-f834-4466-ae33-e746bde4a044",
+                                "name": "Чай с лимоном чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "dde285f6-7699-4448-8bd5-b378568d5797",
+                                "name": "FANTA Post Mix",
+                                "price": "0.00"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "c252d3b1-8b4f-419d-8f18-0e03357f6d51",
+                "categoryId": "9216b4ba-5fbc-4925-b975-75367d9cc6c7",
+                "name": "CALIFORNIA 1х SET EMB",
+                "description": "",
+                "price": "56000.00",
+                "image": "/images/bf242894b85522ba1da5d8113c1bd880.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "f9d61087-30a3-4dcd-bc1a-93c2bf9d66f7",
+                "categoryId": "9216b4ba-5fbc-4925-b975-75367d9cc6c7",
+                "name": "SMASH СЕТ EMB",
+                "description": "",
+                "price": "89000.00",
+                "image": "/images/bf0d37fdc9a1aeb7c5186ef41ce28bfb.PNG",
+                "modifierGroups": [
+                    {
+                        "id": "cb906579-5820-4a3b-aac4-6cb5335b6a62",
+                        "name": "EB Добавки с сету",
+                        "modifiers": [
+                            {
+                                "id": "048c4c83-62cc-47c8-8bc5-4faaa3c9ef1e",
+                                "name": "Чай зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "1efba67d-f2c3-4925-b16a-f44e4d9a9303",
+                                "name": "Сок маленький 200 мл",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "3e338a9e-7b7d-45f3-a001-5c180a0d7a23",
+                                "name": "Чай чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "45882e3b-44c6-4968-ab32-f3375112d0df",
+                                "name": "Фанта 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "4670f2d8-0fde-4d30-8dee-88edf8826efc",
+                                "name": "SPRITE Aspartame Post Mix",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "83bb4a58-a650-4560-836a-5770196e7417",
+                                "name": "Спрайт 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "9f19a7ec-e29d-477d-8327-3fc804c72cdb",
+                                "name": "COCA-COLA POST MIX",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "a6dc6655-8f1f-46e5-9f51-4477ecd53330",
+                                "name": "Чай с лимоном зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c6b586a3-e7d7-4996-9571-e9a6801844b1",
+                                "name": "Кола 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c80d5c0f-f834-4466-ae33-e746bde4a044",
+                                "name": "Чай с лимоном чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "dde285f6-7699-4448-8bd5-b378568d5797",
+                                "name": "FANTA Post Mix",
+                                "price": "0.00"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "5e139f08-1789-4c05-9e82-ade2884f3d55",
+        "name": "Сеты",
+        "products": [
+            {
+                "id": "337caf75-260b-4b34-8e03-0d0e029d9ad1",
+                "categoryId": "5e139f08-1789-4c05-9e82-ade2884f3d55",
+                "name": "New York Set",
+                "description": "New York Burger, Картофель Фри, Соус Кетчуп, Coca Cola разлив",
+                "price": "81000.00",
+                "image": "/images/997fe2863ee83db7a7382e3657ef4801.PNG",
+                "modifierGroups": [
+                    {
+                        "id": "cb906579-5820-4a3b-aac4-6cb5335b6a62",
+                        "name": "EB Добавки с сету",
+                        "modifiers": [
+                            {
+                                "id": "048c4c83-62cc-47c8-8bc5-4faaa3c9ef1e",
+                                "name": "Чай зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "1efba67d-f2c3-4925-b16a-f44e4d9a9303",
+                                "name": "Сок маленький 200 мл",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "3e338a9e-7b7d-45f3-a001-5c180a0d7a23",
+                                "name": "Чай чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "45882e3b-44c6-4968-ab32-f3375112d0df",
+                                "name": "Фанта 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "4670f2d8-0fde-4d30-8dee-88edf8826efc",
+                                "name": "SPRITE Aspartame Post Mix",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "83bb4a58-a650-4560-836a-5770196e7417",
+                                "name": "Спрайт 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "9f19a7ec-e29d-477d-8327-3fc804c72cdb",
+                                "name": "COCA-COLA POST MIX",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "a6dc6655-8f1f-46e5-9f51-4477ecd53330",
+                                "name": "Чай с лимоном зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c6b586a3-e7d7-4996-9571-e9a6801844b1",
+                                "name": "Кола 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c80d5c0f-f834-4466-ae33-e746bde4a044",
+                                "name": "Чай с лимоном чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "dde285f6-7699-4448-8bd5-b378568d5797",
+                                "name": "FANTA Post Mix",
+                                "price": "0.00"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "3b099d88-f020-483f-936d-f85aa9a38ee8",
+                "categoryId": "5e139f08-1789-4c05-9e82-ade2884f3d55",
+                "name": "Turkish Set",
+                "description": "Turkish Burger, Картофель Фри, Соус Кетчуп, Coca Cola разлив",
+                "price": "83000.00",
+                "image": "/images/d1b2e77d635f5fac8ca6f364942110e4.PNG",
+                "modifierGroups": [
+                    {
+                        "id": "cb906579-5820-4a3b-aac4-6cb5335b6a62",
+                        "name": "EB Добавки с сету",
+                        "modifiers": [
+                            {
+                                "id": "048c4c83-62cc-47c8-8bc5-4faaa3c9ef1e",
+                                "name": "Чай зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "1efba67d-f2c3-4925-b16a-f44e4d9a9303",
+                                "name": "Сок маленький 200 мл",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "3e338a9e-7b7d-45f3-a001-5c180a0d7a23",
+                                "name": "Чай чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "45882e3b-44c6-4968-ab32-f3375112d0df",
+                                "name": "Фанта 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "4670f2d8-0fde-4d30-8dee-88edf8826efc",
+                                "name": "SPRITE Aspartame Post Mix",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "83bb4a58-a650-4560-836a-5770196e7417",
+                                "name": "Спрайт 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "9f19a7ec-e29d-477d-8327-3fc804c72cdb",
+                                "name": "COCA-COLA POST MIX",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "a6dc6655-8f1f-46e5-9f51-4477ecd53330",
+                                "name": "Чай с лимоном зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c6b586a3-e7d7-4996-9571-e9a6801844b1",
+                                "name": "Кола 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c80d5c0f-f834-4466-ae33-e746bde4a044",
+                                "name": "Чай с лимоном чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "dde285f6-7699-4448-8bd5-b378568d5797",
+                                "name": "FANTA Post Mix",
+                                "price": "0.00"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "91ad7a35-987d-47bc-a223-273f9e4fb363",
+                "categoryId": "5e139f08-1789-4c05-9e82-ade2884f3d55",
+                "name": "Chicken Set",
+                "description": "Canada Chicken Burger, Картофель Фри, Соус Кетчуп, Coca Cola разлив",
+                "price": "67000.00",
+                "image": "/images/ed0df9316edf8aae8c199a289cbf836c.PNG",
+                "modifierGroups": [
+                    {
+                        "id": "cb906579-5820-4a3b-aac4-6cb5335b6a62",
+                        "name": "EB Добавки с сету",
+                        "modifiers": [
+                            {
+                                "id": "048c4c83-62cc-47c8-8bc5-4faaa3c9ef1e",
+                                "name": "Чай зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "1efba67d-f2c3-4925-b16a-f44e4d9a9303",
+                                "name": "Сок маленький 200 мл",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "3e338a9e-7b7d-45f3-a001-5c180a0d7a23",
+                                "name": "Чай чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "45882e3b-44c6-4968-ab32-f3375112d0df",
+                                "name": "Фанта 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "4670f2d8-0fde-4d30-8dee-88edf8826efc",
+                                "name": "SPRITE Aspartame Post Mix",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "83bb4a58-a650-4560-836a-5770196e7417",
+                                "name": "Спрайт 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "9f19a7ec-e29d-477d-8327-3fc804c72cdb",
+                                "name": "COCA-COLA POST MIX",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "a6dc6655-8f1f-46e5-9f51-4477ecd53330",
+                                "name": "Чай с лимоном зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c6b586a3-e7d7-4996-9571-e9a6801844b1",
+                                "name": "Кола 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c80d5c0f-f834-4466-ae33-e746bde4a044",
+                                "name": "Чай с лимоном чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "dde285f6-7699-4448-8bd5-b378568d5797",
+                                "name": "FANTA Post Mix",
+                                "price": "0.00"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "cc955e2a-f8f3-4c36-bfed-bb878b3cadb9",
+                "categoryId": "5e139f08-1789-4c05-9e82-ade2884f3d55",
+                "name": "KIDS BOX SET (GIRL) SET EMB",
+                "description": "",
+                "price": "75000.00",
+                "image": "/images/3f47114585fb4dab91e6568d9481c007.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "f228f093-597b-414e-b021-8ce5953d0469",
+                "categoryId": "5e139f08-1789-4c05-9e82-ade2884f3d55",
+                "name": "KIDS BOX SET (BOY) SET EMB",
+                "description": "",
+                "price": "75000.00",
+                "image": "/images/b701a5bd53f6b0ad174f5ecfe2b8185b.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "f26235ec-a91b-4560-80d5-080242e25617",
+                "categoryId": "5e139f08-1789-4c05-9e82-ade2884f3d55",
+                "name": "Embassy Set",
+                "description": "Embassy  Burger, Картофель по деревенский, Соус Кетчуп, Coca Cola разлив",
+                "price": "83000.00",
+                "image": "/images/2d63713c50944ae2ca0bb543d2622244.PNG",
+                "modifierGroups": [
+                    {
+                        "id": "cb906579-5820-4a3b-aac4-6cb5335b6a62",
+                        "name": "EB Добавки с сету",
+                        "modifiers": [
+                            {
+                                "id": "048c4c83-62cc-47c8-8bc5-4faaa3c9ef1e",
+                                "name": "Чай зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "1efba67d-f2c3-4925-b16a-f44e4d9a9303",
+                                "name": "Сок маленький 200 мл",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "3e338a9e-7b7d-45f3-a001-5c180a0d7a23",
+                                "name": "Чай чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "45882e3b-44c6-4968-ab32-f3375112d0df",
+                                "name": "Фанта 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "4670f2d8-0fde-4d30-8dee-88edf8826efc",
+                                "name": "SPRITE Aspartame Post Mix",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "83bb4a58-a650-4560-836a-5770196e7417",
+                                "name": "Спрайт 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "9f19a7ec-e29d-477d-8327-3fc804c72cdb",
+                                "name": "COCA-COLA POST MIX",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "a6dc6655-8f1f-46e5-9f51-4477ecd53330",
+                                "name": "Чай с лимоном зелёный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c6b586a3-e7d7-4996-9571-e9a6801844b1",
+                                "name": "Кола 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "c80d5c0f-f834-4466-ae33-e746bde4a044",
+                                "name": "Чай с лимоном чёрный 0.5л",
+                                "price": "0.00"
+                            },
+                            {
+                                "id": "dde285f6-7699-4448-8bd5-b378568d5797",
+                                "name": "FANTA Post Mix",
+                                "price": "0.00"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+        "name": "Бургеры",
+        "products": [
+            {
+                "id": "00ec58e6-8473-4872-9cf8-4eb3c5c964e4",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Spain Jalapeno Burger",
+                "description": "Экстремально острый бургер с острым перцем Халапеньо, сочная говяжья котлета и хрустящая копчёная говядина, помидоры, маринованные огурцы, красный лук и салатный лист Айсберг под соусом «Сальса»",
+                "price": "56000.00",
+                "image": "/images/ff88f043c550149e231ea07c0336f952.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "1065714f-45a1-4bc9-a0a6-97af866b9236",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Double Burger (с двойной котлетой)",
+                "description": "Булочка с кунжутом, двойная говяжья котлета, лист салата Айсберг, маринованные огурцы, плавленый сыр и соус «Тартар»",
+                "price": "78000.00",
+                "image": "/images/d880b0ac626d60d43388692898211290.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "1088b423-bd3b-460a-ade1-81187e6a197d",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Burger Embassy",
+                "description": "Сдобная булочка с кунжутом и горячая говяжья котлета эксклюзивного приготовления гармонирует со свежайшими листьями салата Лолло Росса, спелыми помидорами, плавленным сыром и маринованными карнишонами. Заправка –фирменный соус на основе мягких сыров.",
+                "price": "56000.00",
+                "image": "/images/3d5e1945603872631c7747b99ad14380.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "208a631d-162d-4179-944c-793a9c709f50",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Junior Chicken Burger (детский чикенбургер)",
+                "description": "Булочка, куриная котлета, лист салата Айсберг, помидоры, огурцы и соус «Цезарь». Порция – JUNIOR",
+                "price": "25000.00",
+                "image": "/images/d87f696d74aa705faa85665914fdcc86.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "2ed3bdb1-64b6-4e6d-b6d6-e1eb2745c283",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "African Burger",
+                "description": "Черная булочка с говяжьей вырезкой, котлетой, копченой говядиной, сыром, луком, листьями салата Айсберг и соусом 1000 островов",
+                "price": "65000.00",
+                "image": "/images/7d668d102bbce2772f9e75d966e15824.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "2eff7dae-3a0a-4540-ad92-45bb278f42fa",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Smash Double Burger",
+                "description": "Булочка, лук жаренный, луковый чипс, сливочное масло, котлета смеш 90грамм, сыр хохланд, соус биг мак",
+                "price": "63000.00",
+                "image": "/images/53755bf2c8da8b23dc89adec63b6c4d7.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "32fb8b84-9a15-4566-9b44-98e7bf764b39",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Kentucky Chicken Burger",
+                "description": "Куриное филе в панировке, салатные листья Айсберг, помидоры и фирменный соус \"Цезарь\"",
+                "price": "49000.00",
+                "image": "/images/beff514fe2289ca7e75c3db347818401.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "67bb4b08-1bf6-4655-be95-9fd5687919b9",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "UZBEKISTAN BURGER EMB",
+                "description": "Сочная томленая баранина, пикантный соус и свежие овощи — вкус с характером. Цельное мясо, маринованные огурцы и фиолетовый лук создают насыщенный, знакомый и любимый баланс.",
+                "price": "95000.00",
+                "image": "/images/0a8cb693cd6b5163eeb6d7b1a33577c3.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "a1a2851f-4f38-4045-91e4-19465eb649d8",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "TEXAS BBQ BURGER EMB",
+                "description": "Говядина асадо, насыщенный барбекю соус и коул слоу — классика с техасским настроением. Маринованные огурцы, томаты и жареный лук добавляют глубину и сочность.",
+                "price": "95000.00",
+                "image": "/images/e3883ae988b508707d97e06981505fef.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "a4d23762-26da-43d7-9b4d-51b35d31d8e1",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Italian Cheese Burger",
+                "description": "Булочка с кунжутом, говяжья котлета, лист салата Айсберг, помидоры, яйцо, сыр Моцарелла и соус «Цезарь»",
+                "price": "56000.00",
+                "image": "/images/538ce9dc0ad3e8ee118c354dcc0f3bd7.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "ab7853a5-f0a1-45ab-a59a-41e9e0bca410",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Brazilian Burger",
+                "description": "Обжаренное куриное бедро со свежими помидорами, хрустящими огурцами. В сочетании с обжаренным болгарским перцем и соусом \"Нори\"",
+                "price": "49000.00",
+                "image": "/images/6d9721932a25b6470735f387404c7106.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "b6dff761-8a85-4b51-a124-4963c892258f",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Little Cheese Burger (детский чизбургер)",
+                "description": "Булочка, говяжья котлета, плавленый сыр, лист салата Айсберг, помидоры, огурцы, кетчуп и майонез. Порция – JUNIOR",
+                "price": "31000.00",
+                "image": "/images/b48b6b9f031b03245305fe5df3e81887.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "c15fdb30-4188-4447-be91-763eb46c2517",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "NEW! French Truffle Cheeseburger",
+                "description": "двойная говяжья котлета, жаренные грибы, помидоры, лист айсберг, сыр моцарелла, трюфельный соус, сливочное масло",
+                "price": "80000.00",
+                "image": "/images/7aa3a31a46dec1fce1967ee30f8640e1.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "c31780f1-f77f-4951-acf4-1dafd2923222",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "American Chef burger",
+                "description": "Фирменная котлета из рубленого мяса (230гр) от шеф-повара, сыр, копченная говядина, помидоры, репчатый лук и маринованные огурцы в неповторимой заправке вишневого соуса Барбекю",
+                "price": "75000.00",
+                "image": "/images/a35278a96944771c7370b1122489514f.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "c7a3790c-6491-4352-bded-a572166399dd",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Canadian Chicken Burger",
+                "description": "Сдобная булочка с кунжутом и горячая куриная котлета оригинального приготовления, со свежайшим листом салата Айсберг, маринованными корнишонами, со свежим огурцом. Заправляется Фирменным соусом \"Цезарь\"",
+                "price": "39000.00",
+                "image": "/images/fe054d30e9938cfc132acce903a19b09.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "c96052e4-a196-4bd2-aaae-d2c75a8c7736",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Korean Chicken Burger",
+                "description": "Булочка, Айсберг, кимчи, помидор, соус Korea, соус Thailand, слив масла Бурёнка, марин огурцы Korea, куриное бедро Korean",
+                "price": "49000.00",
+                "image": "/images/e5ac91c7070776c3dd7553e4d1ace296.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "d7d77b11-99c7-4a5b-af52-71dd280eb038",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "Turkish Durum Burger",
+                "description": "Булочка с экстра-говяжьей котлетой, листьями салата, маринованным огурцами, сыром и луком. Дрессинг – сметано-чесночный соус по эксклюзивному рецепту",
+                "price": "56000.00",
+                "image": "/images/fda212a7121d921f8b4ddd6073870e39.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "d9dac4e0-38be-4dc2-8db5-a0a0e9cbe04e",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "CALIFORNIA DOUBLE CANADA",
+                "description": "Двойная куриная котлета с фирменным соусом, свежими томатами и хрустящим айсбергом.\r\nЛуковые чипсы добавляет текстуру и тот самый вау-хруст в каждом укусе.",
+                "price": "56000.00",
+                "image": "/images/3ea45096e28bd85bdc9e9c0be464624a.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "ffeba460-fa64-4420-b4ea-5c410815d286",
+                "categoryId": "6c88c58a-6d8f-4776-937c-a035d7a5fe0c",
+                "name": "New York Burger",
+                "description": "Булочка с кунжутом, говяжья котлета, лист салата, помидоры, кольца лука, маринованные огурцы, кетчуп и майонез с добавлением трюфельного масла",
+                "price": "52000.00",
+                "image": "/images/7743b37e251e8db6945240a29794f8ad.WEBP",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "780fe5f6-8781-4253-a1ba-d557bddbc8f0",
+        "name": "Хот-доги",
+        "products": [
+            {
+                "id": "737113ba-1927-441c-b95a-45687152d791",
+                "categoryId": "780fe5f6-8781-4253-a1ba-d557bddbc8f0",
+                "name": "ХОТ ДОГ ФРАНКФУРД EMB",
+                "description": "Сочная говяжья сосиска, свежие помидоры и огурцы, фирменный соус, сырный соус чеддер, жареный лук в свежей мягкой булочке.",
+                "price": "30000.00",
+                "image": "/images/dbc2caa4788332bb10c9e3df559e1263.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "9ac94efe-3264-4593-bfce-cd1c5682bbb3",
+                "categoryId": "780fe5f6-8781-4253-a1ba-d557bddbc8f0",
+                "name": "ХОТ ДОГ КЛАССИЧЕСКИЙ EMB",
+                "description": "Канадская сосиска, свежие помидоры и огурцы, чипсы, украинский соус и кетчуп в свежей мягкой булочке.",
+                "price": "28000.00",
+                "image": "/images/67cceb7b6eb0a58072eb01b7070a57da.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "e7ede0c7-7a07-4a77-bde0-b2a6947fdeba",
+                "categoryId": "780fe5f6-8781-4253-a1ba-d557bddbc8f0",
+                "name": "ХОТ ДОГ СЕУЛ EMB",
+                "description": "Сочная куриная сосиска, свежие помидоры и огурцы, смесь бразильского и украинского соусов, жареный лук в свежей мягкой булочке.",
+                "price": "30000.00",
+                "image": "/images/f0674dec648a949d057aa45cb3ddc469.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "46b148d8-5f95-4dd0-85b0-fb792fa8645a",
+        "name": "Салаты",
+        "products": [
+            {
+                "id": "83679054-0d0f-4d3d-97cd-3b93f937baa4",
+                "categoryId": "46b148d8-5f95-4dd0-85b0-fb792fa8645a",
+                "name": "САЛАТ ГРЕЧЕСКИЙ NEW EMB",
+                "description": "Микс салатов, томаты черри, свежий огурец, болгарский перец, оливки, маслины, фетакса, орегано и фирменная греческая заправка.",
+                "price": "27000.00",
+                "image": "/images/d3b8379692903f47e5f2469e9076856e.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "8f8312f6-1cb2-45ec-a8fd-be8a70f921b1",
+                "categoryId": "46b148d8-5f95-4dd0-85b0-fb792fa8645a",
+                "name": "САЛАТ С ГОВЯДИНОЙ EMB",
+                "description": "Микс салатов, эдамаме, кукуруза, корнишоны, ананас, томаты черри, говядина, тыквенные семечки и ореховый соус.",
+                "price": "36000.00",
+                "image": "/images/852098b1f7d133469ccb5f9d1a5fcd79.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "e48fac3d-4b66-4a78-8861-e4cc6b9325f6",
+                "categoryId": "46b148d8-5f95-4dd0-85b0-fb792fa8645a",
+                "name": "САЛАТ ЦЕЗАРЬ NEW EMB",
+                "description": "Свежий айсберг, перепелиные яйца, томаты черри, куриное филе, сухарики, каперсы, пармезан и соус «Цезарь»",
+                "price": "31000.00",
+                "image": "/images/1a2c30a4011ad6a5a80584558f271633.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "fec25440-eba4-4015-809d-9f9c8f1b6422",
+                "categoryId": "46b148d8-5f95-4dd0-85b0-fb792fa8645a",
+                "name": "САЛАТ КОУЛ СЛОУ EMB",
+                "description": "Хрустящая капустная смесь в фирменном майонезном соусе.",
+                "price": "12000.00",
+                "image": "/images/eea591be28bb4fa30f84a3c33411774e.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+        "name": "Гарниры",
+        "products": [
+            {
+                "id": "0234f1c5-35f1-41c6-975e-8038039b7337",
+                "categoryId": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+                "name": "Наггетсы острые (6 шт)",
+                "description": "Блюдо из филе куриной грудки в хрустящей панировке, обжаренной в масле, с соусом сальса 6 шт.",
+                "price": "31000.00",
+                "image": "/images/20204ddbb74c4554ef13d6cc4979f419.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "0765eaf4-6896-4b8d-9482-f29f22b91887",
+                "categoryId": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+                "name": "Наггетсы  классические (6 ШТ)",
+                "description": "Блюдо из филе куриной грудки в хрустящей панировке, обжаренной в масле со сметанно-чесночным соусом 6 шт.",
+                "price": "31000.00",
+                "image": "/images/20204ddbb74c4554ef13d6cc4979f419.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "1eeac503-b468-4a98-a440-097df3a6c673",
+                "categoryId": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+                "name": "Нагетсы с сыром (4шт)",
+                "description": "Курица, панировка, специи, соль",
+                "price": "22000.00",
+                "image": "/images/1c07b00e4418121ef6dada4e0270e147.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "5a28b1c8-2384-45a9-9ffe-9d263a6b2fae",
+                "categoryId": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+                "name": "Луковые кольца (6 шт).",
+                "description": "Обжаренные в панировке кольца репчатого лука",
+                "price": "25000.00",
+                "image": "/images/1dca25c2dc1c27f5c43d8bdccf709070.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "670f311a-0292-4e84-8d21-feaa01fd1c1f",
+                "categoryId": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+                "name": "Картофель фри с сырным соусом",
+                "description": "Хрустящий картофель фри в сырном соусе с добавлением тертого сыра и тимьяна",
+                "price": "33000.00",
+                "image": "/images/a0c222a6727b0d514c5e50691a300624.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "777b62b6-dc39-4708-a862-e54c5750867b",
+                "categoryId": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+                "name": "Картофель фри",
+                "description": "Картофель, обжаренный до золотистой корочки, хрустящий снаружи и мягкий внутри",
+                "price": "24000.00",
+                "image": "/images/20750089c653d9d79454e8d175545215.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "b33c3e1a-fd3f-41ea-9c06-b2580fa19eed",
+                "categoryId": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+                "name": "Сырные подушечки (6 шт)",
+                "description": "Твердый сыр, панировка, растительное масло, пшеничная мука",
+                "price": "29000.00",
+                "image": "/images/9c3912fd19216c8a15caf2cfd75fa541.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "d5cd8022-9aa9-4cb3-a0cd-f5a62c4e5565",
+                "categoryId": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+                "name": "Стрипсы (5 шт)",
+                "description": "Курица, панировка, специи, соль",
+                "price": "25000.00",
+                "image": "/images/473d5c0738f3065928c5660b5fe4baf0.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "e41aad87-36db-4c4d-8bf8-42eb610e275b",
+                "categoryId": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+                "name": "Ассорти снеков",
+                "description": "Наггетсы 3 шт., сырные подушки 3 шт., луковые кольца 3 шт., картофель фри и картофель по-деревенски",
+                "price": "59000.00",
+                "image": "/images/50679d456bc45f9177825ae91d9df31a.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "fbcb19b0-eec5-4512-b498-8033ccc2ce14",
+                "categoryId": "1cad3f7e-3ed9-4385-ba9d-38af646cce5a",
+                "name": "Картофель по-деревенски",
+                "description": "Картофель, обжаренный до золотистой корочки, обладает богатым и насыщенным вкусом. Отлично сочетается с соусами и специями",
+                "price": "25000.00",
+                "image": "/images/9043b87f761256725c62b16be62b8f7e.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "8876b1f6-0dde-4d28-947c-bf76dd1af661",
+        "name": "Напитки",
+        "products": [
+            {
+                "id": "06e40c15-5870-4866-b66d-629158a41c0e",
+                "categoryId": "8876b1f6-0dde-4d28-947c-bf76dd1af661",
+                "name": "FANTA 0.5 L PAST MIX EMB",
+                "description": "",
+                "price": "12000.00",
+                "image": "/images/e93b59f041c7d4bc7c0159d08622d886.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "0879e6da-48bf-4434-a315-bdea431780ac",
+                "categoryId": "8876b1f6-0dde-4d28-947c-bf76dd1af661",
+                "name": "SPRITE 0.5 L EMB",
+                "description": "",
+                "price": "12000.00",
+                "image": "/images/efc2bf4b065b9a858c97c050efbde012.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "17a2b309-c73f-4cde-9dc1-c8a9adee8f18",
+                "categoryId": "8876b1f6-0dde-4d28-947c-bf76dd1af661",
+                "name": "WATER 0.5 L WITH GAS EMB",
+                "description": "",
+                "price": "5000.00",
+                "image": "/images/ab9cbbb4d4e35b4eb85d5f1163c1d846.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "5119dc49-f36d-41c4-8a28-68e5f59a98d2",
+                "categoryId": "8876b1f6-0dde-4d28-947c-bf76dd1af661",
+                "name": "WATER 0.5 L EMB",
+                "description": "",
+                "price": "5000.00",
+                "image": "/images/20cfc482d9590b81bc3502031a9aa618.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "761aa9ef-4019-49c9-ba9b-544562d821f7",
+                "categoryId": "8876b1f6-0dde-4d28-947c-bf76dd1af661",
+                "name": "COLA 0.5 L EMB",
+                "description": "",
+                "price": "12000.00",
+                "image": "/images/396b2ee9fbdc12b343739cdfa22a44f6.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "a94c8e4d-8fbd-4fc5-b514-353f07542c8c",
+                "categoryId": "8876b1f6-0dde-4d28-947c-bf76dd1af661",
+                "name": "SPRITE 0.5 L PAST MIX EMB",
+                "description": "",
+                "price": "12000.00",
+                "image": "/images/e93b59f041c7d4bc7c0159d08622d886.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "d6d99a2b-23c4-46f6-b9c5-fc41665cbf0b",
+                "categoryId": "8876b1f6-0dde-4d28-947c-bf76dd1af661",
+                "name": "FANTA 0.5 L EMB",
+                "description": "",
+                "price": "12000.00",
+                "image": "/images/9cfe6e952683450a3c4bb1b01788497c.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "ea58e3f6-f9cc-4e27-9a96-acc7ada2a664",
+                "categoryId": "8876b1f6-0dde-4d28-947c-bf76dd1af661",
+                "name": "COLA ZERO EMB",
+                "description": "",
+                "price": "12000.00",
+                "image": "/images/40cd221737f4e94d807b09d6770da525.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "ffd49eb7-074a-4595-9cef-1b325b0bcdc8",
+                "categoryId": "8876b1f6-0dde-4d28-947c-bf76dd1af661",
+                "name": "COLA 0.5 L PAST MIX EMB",
+                "description": "",
+                "price": "12000.00",
+                "image": "/images/e93b59f041c7d4bc7c0159d08622d886.PNG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "68b8c4b9-3e19-48a2-8efc-346f546b08c3",
+        "name": "Соусы и добавки",
+        "products": [
+            {
+                "id": "008d05bf-7e1a-44aa-8edd-500af861287f",
+                "categoryId": "68b8c4b9-3e19-48a2-8efc-346f546b08c3",
+                "name": "СОУС УКРАИНСКИЙ EMB",
+                "description": "",
+                "price": "5000.00",
+                "image": "/images/a52a848ac6254b3a3c25a41fbcf6fa1e.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "27646c27-5aab-4709-b655-70df39800c0c",
+                "categoryId": "68b8c4b9-3e19-48a2-8efc-346f546b08c3",
+                "name": "СОУС БАРБЕКЮ EMB",
+                "description": "",
+                "price": "5000.00",
+                "image": "/images/51126d36628ed1884a8d670fd159c2f1.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "2d78a45c-daf5-47a8-8a8f-1a2d0d0155cd",
+                "categoryId": "68b8c4b9-3e19-48a2-8efc-346f546b08c3",
+                "name": "СОУС КЕТЧУП EMB",
+                "description": "",
+                "price": "5000.00",
+                "image": "/images/17ca057bb750b8485b5d0c181f9f5de0.WEBP",
+                "modifierGroups": []
+            },
+            {
+                "id": "2d835a60-8c4e-48f5-b7c0-f52a7da8df21",
+                "categoryId": "68b8c4b9-3e19-48a2-8efc-346f546b08c3",
+                "name": "СОУС СЫРНЫЙ EMB",
+                "description": "",
+                "price": "5000.00",
+                "image": "/images/5396c7ba5c1b4f8d022755f731f9f153.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "35ef5c6e-a9b3-4f30-9ad6-48c3bb6066f9",
+                "categoryId": "68b8c4b9-3e19-48a2-8efc-346f546b08c3",
+                "name": "ДОБАВКА ХАЛАПЕНЬО EMB",
+                "description": "",
+                "price": "5000.00",
+                "image": "/images/8caa8f9086d6264d9436963e0debe936.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "543dcb0b-5b93-454d-b23d-a4b156cc8dcf",
+                "categoryId": "68b8c4b9-3e19-48a2-8efc-346f546b08c3",
+                "name": "СОУС САЛЬСА EMB",
+                "description": "",
+                "price": "5000.00",
+                "image": "/images/572333d05e1da89ebbe39d223e56122e.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "ec1cdb94-a17f-464b-b584-04eba7b0574b",
+        "name": "Чаи",
+        "products": [
+            {
+                "id": "82ec6c5d-d5c4-4571-a095-e698334d0290",
+                "categoryId": "ec1cdb94-a17f-464b-b584-04eba7b0574b",
+                "name": "ЧАЙ ЗЕЛЁНЫЙ С ЛИМОНОМ EMB",
+                "description": "",
+                "price": "12000.00",
+                "image": "/images/fe17aec9ec828089096d95000b4395ce.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "966accbc-e5c6-472d-9ee8-583488ac901b",
+                "categoryId": "ec1cdb94-a17f-464b-b584-04eba7b0574b",
+                "name": "ЧАЙ ЧЁРНЫЙ EMB",
+                "description": "",
+                "price": "8000.00",
+                "image": "/images/c4d199a539dcd2af5d37241bd8228689.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "e1416c14-b433-4f57-96c5-cecadef4c3de",
+                "categoryId": "ec1cdb94-a17f-464b-b584-04eba7b0574b",
+                "name": "ЯГОДНЫЙ EMB",
+                "description": "",
+                "price": "23000.00",
+                "image": "/images/1766defb8ae440cb3f8737afa68cd9d7.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "e1c32631-41c0-4b7e-b903-980ad6461d22",
+                "categoryId": "ec1cdb94-a17f-464b-b584-04eba7b0574b",
+                "name": "ЗЕЛЁНЫЙ ЧАЙ EMB",
+                "description": "",
+                "price": "8000.00",
+                "image": "/images/d0910b0cd07477dee16bf0585096d488.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "f59467be-bc04-4858-aad5-a6e567f215dd",
+                "categoryId": "ec1cdb94-a17f-464b-b584-04eba7b0574b",
+                "name": "ЧАЙ ЧЁРНЫЙ С ЛИМОНОМ EMB",
+                "description": "",
+                "price": "12000.00",
+                "image": "/images/6b7a3826ae6630ccd7c9663339718969.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+        "name": "Лимонады",
+        "products": [
+            {
+                "id": "0c440ec6-c29e-4755-a777-aa8161b7b04c",
+                "categoryId": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+                "name": "ТАРХУН (0,5L) EMB",
+                "description": "Лимонад из газированной воды с добавлением сиропа Тархун, приготовленного по особому рецепту, сахарный сироп",
+                "price": "23000.00",
+                "image": "/images/0a28f33e8ee5168b8338da1f52e61dd9.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "28b7b473-379b-4c95-85c3-6c12d8e6dbdb",
+                "categoryId": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+                "name": "ХОЛОДНЫЙ ЖАСМИН EMB",
+                "description": "Лимонад из газированной воды. свежего лайма, лимона с добавлением мятного сиропа, и персиково-джасминового джема",
+                "price": "23000.00",
+                "image": "/images/aff1d163e5784aa20596348cad17ed6b.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "400df3c4-9f7d-4ad8-898c-1a74540ba5da",
+                "categoryId": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+                "name": "ГРАНАТОВЫЙ EMB",
+                "description": "Насыщенный гранатовый вкус с мятой и лёгкой цитрусовой свежестью. Яркий, освежающий и с приятной кислинкой.",
+                "price": "23000.00",
+                "image": "/images/8fe2cdaf62f30dd7eb45552d88c83f8f.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "4c1a2fdb-6a17-4da6-9e35-ece2ca0c255b",
+                "categoryId": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+                "name": "ЛИМОНАД МАНГО EMB",
+                "description": "Лимонад из газированной воды с джемом из манго, добавлением Мангового сиропа и свежим лимоном",
+                "price": "23000.00",
+                "image": "/images/f0ca198a9bcafb8455f70be88304bfa1.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "80104ff3-aab3-4cf7-a5b3-bf12fa44b135",
+                "categoryId": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+                "name": "АЙС-ТИ ЧЁРНЫЙ Г/П EMB",
+                "description": "Чайный лимонад, мята, сироп.",
+                "price": "23000.00",
+                "image": "/images/b7e062ec3d7749d9744a30d9cc41d44c.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "89f30ddb-951b-4549-b4a9-2f8babc3810f",
+                "categoryId": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+                "name": "ГРУША-ПЕРСИК EMB",
+                "description": "Мягкий дуэт груши и персика с добавлением свежей мяты. Лёгкий, освежающий и идеально сбалансированный вкус.",
+                "price": "23000.00",
+                "image": "/images/7b398127c9a36fd990eaefc83fff95da.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "9d201106-aaf1-4d6e-b490-b973ab8726dc",
+                "categoryId": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+                "name": "ЯГОДНЫЙ (0.5L) EMB",
+                "description": "Лимонад из газированной воды с добавлением лесных ягод и сахарного сиропа",
+                "price": "23000.00",
+                "image": "/images/c2361dc2938d5fb1e04c56f455770d66.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "a644c8b1-274d-4541-977c-154bd9779bc6",
+                "categoryId": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+                "name": "Ягодный Айс-ти",
+                "description": "Классика ягод — малина и клубника с лёгкой цитрусовой ноткой. Сладкий, сочный и максимально летний вкус.",
+                "price": "23000.00",
+                "image": "/images/f3fa4e8a63919c12b77f47997bb92512.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "dd279da1-b492-41f9-89ac-fd54b54a761d",
+                "categoryId": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+                "name": "АЙС-ТИ ЗЕЛЕНЫЙ Г/П EMB",
+                "description": "Чайный лимонад, мята, сироп.",
+                "price": "23000.00",
+                "image": "/images/6675d935a685166732d8be977a92b5a3.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "efcecfe0-2169-4915-80a6-3888266ec752",
+                "categoryId": "fb8b5913-abff-4846-9771-45f1ee51e7d9",
+                "name": "АЙС-ТИ ФРУКТОВЫЙ Г/П EMB",
+                "description": "Чайный лимонад, мята, сироп.",
+                "price": "23000.00",
+                "image": "/images/df70a02c6f820f2939b7b6046d600edc.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "eabb0283-8a75-48d1-a396-e3080229ce47",
+        "name": "Коктейли",
+        "products": [
+            {
+                "id": "63b3d265-772e-4ca4-9fdc-8a10c1a0c287",
+                "categoryId": "eabb0283-8a75-48d1-a396-e3080229ce47",
+                "name": "BERRY MIX EMB",
+                "description": "Персиковый сок, ягодный микс, лимон и ягодный сироп",
+                "price": "27000.00",
+                "image": "/images/70de362d24f0f52c47b6d60bce301be6.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "8331d45e-74a1-4b9e-85c0-d45e613e5c11",
+                "categoryId": "eabb0283-8a75-48d1-a396-e3080229ce47",
+                "name": "MOJITO EMB",
+                "description": "Газированная вода, душистая мята, сочный лимон, сахар, лед",
+                "price": "29000.00",
+                "image": "/images/7ca69c2c411ae943dfc8346e89566835.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "751798b7-379b-4d4a-b06f-703dcc7cb279",
+        "name": "Свежевыжатые соки",
+        "products": [
+            {
+                "id": "58196fe3-692e-4652-b35c-3e8160f9fb67",
+                "categoryId": "751798b7-379b-4d4a-b06f-703dcc7cb279",
+                "name": "Фреш яблочный",
+                "description": "Яблочный свежевыжатый сок",
+                "price": "25000.00",
+                "image": "/images/caa946e4f90b47d13c73fa54062197e5.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "d1bf54bc-1325-4883-92af-1ef2a4a38f00",
+                "categoryId": "751798b7-379b-4d4a-b06f-703dcc7cb279",
+                "name": "Фреш морковный",
+                "description": "Морковный свежевыжатый сок",
+                "price": "26000.00",
+                "image": "/images/ffe508048ec43797b66e2d1d1d8fd40b.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "ed44568d-7041-4c5e-8dcd-62186cb53e79",
+                "categoryId": "751798b7-379b-4d4a-b06f-703dcc7cb279",
+                "name": "Фреш яблочно-морковный",
+                "description": "Яблочно-морковный свежевыжатый сок",
+                "price": "24000.00",
+                "image": "/images/05e5a3d0e40a048df38c0b330ab3248b.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "6cc4ff28-fe01-4c00-aeb5-9164b95c542f",
+        "name": "Соки",
+        "products": [
+            {
+                "id": "1a6436db-8b77-4069-906f-8bdf75420cee",
+                "categoryId": "6cc4ff28-fe01-4c00-aeb5-9164b95c542f",
+                "name": "СОК МАЛЕНЬКИЙ EMB",
+                "description": "",
+                "price": "5000.00",
+                "image": "/images/03309746a4cec8ed3b67e588a297d8f5.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "3803b314-b85b-4435-bf5e-fd60c35007e8",
+                "categoryId": "6cc4ff28-fe01-4c00-aeb5-9164b95c542f",
+                "name": "СОК АПЕЛЬСИНОВЫЙ EMB",
+                "description": "",
+                "price": "20000.00",
+                "image": "/images/8155e98cc91735a6af87ac5bf5e5f0f5.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "3cb2d534-f846-460c-8ac1-3f05014970af",
+                "categoryId": "6cc4ff28-fe01-4c00-aeb5-9164b95c542f",
+                "name": "СОК ВИШНЕВЫЙ EMB",
+                "description": "",
+                "price": "20000.00",
+                "image": "/images/669d32a9cad652789f2e805d8efcb2b6.PNG",
+                "modifierGroups": []
+            },
+            {
+                "id": "7566a392-d11a-4371-a837-dd25b19776b0",
+                "categoryId": "6cc4ff28-fe01-4c00-aeb5-9164b95c542f",
+                "name": "СОК АБРИКОС EMB",
+                "description": "",
+                "price": "20000.00",
+                "image": "/images/6883a82f95a32a717b8089ca33045c02.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "8b17f163-71bd-4f38-aa8c-5f4460046b35",
+                "categoryId": "6cc4ff28-fe01-4c00-aeb5-9164b95c542f",
+                "name": "СОК ЛИМОННЫЙ EMB",
+                "description": "",
+                "price": "20000.00",
+                "image": "/images/d43a790294549d6a1cfa9db82e9d8a9f.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "9bc355b6-b9f0-493f-979b-6cdec8c1971f",
+                "categoryId": "6cc4ff28-fe01-4c00-aeb5-9164b95c542f",
+                "name": "СОК ЯБЛОЧНЫЙ EMB",
+                "description": "",
+                "price": "20000.00",
+                "image": "/images/f1cd7b302e81e4e5ce154c8490dcd90b.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "a7704268-cfe1-47e5-b883-5247597984e7",
+                "categoryId": "6cc4ff28-fe01-4c00-aeb5-9164b95c542f",
+                "name": "СОК ПЕРСИК EMB",
+                "description": "",
+                "price": "20000.00",
+                "image": "/images/b76101c391a327284c5e123e1f463172.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "d94b67ae-96d0-49b0-92bb-68bbb114ed6e",
+                "categoryId": "6cc4ff28-fe01-4c00-aeb5-9164b95c542f",
+                "name": "СОК АНАНАС EMB",
+                "description": "",
+                "price": "20000.00",
+                "image": "/images/ef42d1001c30de5f05399edcc14fd0dc.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "f56bb864-0850-43e1-9249-f96c4f554a58",
+                "categoryId": "6cc4ff28-fe01-4c00-aeb5-9164b95c542f",
+                "name": "СОК МУЛЬТИФРУКТ EMB",
+                "description": "",
+                "price": "20000.00",
+                "image": "/images/ac71f0606549388d0bb88ece4727f440.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "6612f408-f717-422d-bfa5-787e5283bac8",
+        "name": "Баночные напитки",
+        "products": [
+            {
+                "id": "4ef534d9-8a86-45c2-aabc-17fdf8486b8a",
+                "categoryId": "6612f408-f717-422d-bfa5-787e5283bac8",
+                "name": "RED BULL EMB",
+                "description": "",
+                "price": "25000.00",
+                "image": "/images/347ab71253fd7f47f2ae75c46b6f6d67.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "df105011-d743-44ae-bc76-c1686244f29c",
+                "categoryId": "6612f408-f717-422d-bfa5-787e5283bac8",
+                "name": "LIMON FRESH EMB",
+                "description": "",
+                "price": "19000.00",
+                "image": "/images/eaf2104bad5faf472d68b8dae2266b30.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    },
+    {
+        "id": "3ac12a3c-7b57-430f-a0c7-0089f171de1c",
+        "name": "Молочные коктейли",
+        "products": [
+            {
+                "id": "b6af1eb4-ae53-4f67-ad07-245736156c72",
+                "categoryId": "3ac12a3c-7b57-430f-a0c7-0089f171de1c",
+                "name": "МАЛИНОВЫЙ EMB",
+                "description": "Ягодный коктейль из взбитого молока, мороженого и свежей малины.",
+                "price": "38000.00",
+                "image": "/images/2fa68bba44e61fd7209ee4aaf66bc74d.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "b8ce6c66-4f8f-44ae-89b4-acf5dabd4bdf",
+                "categoryId": "3ac12a3c-7b57-430f-a0c7-0089f171de1c",
+                "name": "ШОКОЛАДНЫЙ EMB",
+                "description": "Воздушный коктейль из взбитого молока, мороженого и шо Coca-Colaдного топпинга",
+                "price": "38000.00",
+                "image": "/images/36f4eeedf740054bcbea2d2932e19fc2.JPEG",
+                "modifierGroups": []
+            },
+            {
+                "id": "ee7640bc-bdf8-4f0a-8154-363a58187358",
+                "categoryId": "3ac12a3c-7b57-430f-a0c7-0089f171de1c",
+                "name": "БАНАНОВЫЙ EMB",
+                "description": "Воздушный коктейль из взбитого молока, мороженого и молока",
+                "price": "38000.00",
+                "image": "/images/3b74ba56f69bcc8b08c1f5f5a71159d8.JPEG",
+                "modifierGroups": []
+            }
+        ]
+    }
+]

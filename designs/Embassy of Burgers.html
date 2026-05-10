@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Embassy of Burgers — Website Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css" />
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    html, body, #root { height: 100%; }
+    body { background: #0A0908; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel" src="landing-desktop.jsx"></script>
+  <script type="text/babel" src="landing-mobile.jsx"></script>
+  <script type="text/babel" src="menu-desktop.jsx"></script>
+  <script type="text/babel" src="menu-mobile.jsx"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "mode": "Dark",
+      "palette": "Embassy Gold (Default)",
+      "ctaColor": "Embassy Red",
+      "bgTone": "Midnight Black",
+      "cardTone": "Dark Card"
+    }/*EDITMODE-END*/;
+
+    const PALETTES = {
+      "Embassy Gold (Default)": { gold: "#D4AF37", goldLight: "#E8CB6A" },
+      "Champagne":              { gold: "#E2C792", goldLight: "#F0DAB0" },
+      "Brass":                  { gold: "#B8893A", goldLight: "#D6A85A" },
+      "Copper":                 { gold: "#C97D4A", goldLight: "#E0986B" },
+      "Platinum":               { gold: "#C9CBCE", goldLight: "#E2E4E7" },
+      "Emerald":                { gold: "#3F8F6E", goldLight: "#5FB18E" },
+    };
+    const CTA_COLORS = {
+      "Embassy Red":   { red: "#C8102E", hover: "#E0152F" },
+      "Crimson Wine":  { red: "#8E1F2B", hover: "#A8273A" },
+      "Burnt Orange":  { red: "#D2552A", hover: "#E66A3F" },
+      "Forest":        { red: "#2D6A4F", hover: "#40855F" },
+      "Royal Blue":    { red: "#1E4D8C", hover: "#2A63AC" },
+      "Charcoal":      { red: "#2A2620", hover: "#3A352D" },
+    };
+    const BG_TONES = {
+      "Midnight Black": { bg: "#0D0D0D", card: "#1A1814", surface: "#252118" },
+      "Espresso":       { bg: "#0F0A07", card: "#1C1410", surface: "#291E18" },
+      "Charcoal":       { bg: "#121212", card: "#1D1D1D", surface: "#272727" },
+      "Deep Forest":    { bg: "#0A100D", card: "#141C19", surface: "#1F2924" },
+      "Indigo Night":   { bg: "#0A0C14", card: "#13162A", surface: "#1B1F3A" },
+    };
+    const LIGHT_BG_TONES = {
+      "Midnight Black": { bg: "#FAF7F2", card: "#FFFFFF", surface: "#F1ECE3" },
+      "Espresso":       { bg: "#F6EFE6", card: "#FFFBF5", surface: "#EDE3D3" },
+      "Charcoal":       { bg: "#F4F4F4", card: "#FFFFFF", surface: "#EAEAEA" },
+      "Deep Forest":    { bg: "#F2F6F2", card: "#FFFFFF", surface: "#E4ECE5" },
+      "Indigo Night":   { bg: "#F2F3FA", card: "#FFFFFF", surface: "#E5E7F2" },
+    };
+
+    function TweakStyleApplier({ t }) {
+      useEffect(() => {
+        const r = document.documentElement;
+        const p = PALETTES[t.palette] || PALETTES["Embassy Gold (Default)"];
+        const c = CTA_COLORS[t.ctaColor] || CTA_COLORS["Embassy Red"];
+        const isLight = t.mode === "Light";
+        const b = isLight
+          ? (LIGHT_BG_TONES[t.bgTone] || LIGHT_BG_TONES["Midnight Black"])
+          : (BG_TONES[t.bgTone]       || BG_TONES["Midnight Black"]);
+        r.style.setProperty("--gold", p.gold);
+        r.style.setProperty("--gold-light", p.goldLight);
+        r.style.setProperty("--red", c.red);
+        r.style.setProperty("--red-hover", c.hover);
+        r.style.setProperty("--bg", b.bg);
+        r.style.setProperty("--card", b.card);
+        r.style.setProperty("--surface", b.surface);
+
+        // Text colors flip with mode. Gold stays gold, red stays red.
+        if (isLight) {
+          r.style.setProperty("--white",  "#1A1612");   // headings on light
+          r.style.setProperty("--silver", "#3D3933");   // body text
+          r.style.setProperty("--muted",  "#8A857D");   // metadata
+        } else {
+          r.style.setProperty("--white",  "#FFFFFF");
+          r.style.setProperty("--silver", "#D1D5DB");
+          r.style.setProperty("--muted",  "#7A7670");
+        }
+
+        // hairlines tied to gold, but stronger on light so they're visible
+        const hex2rgb = h => { const x = h.replace("#",""); return [0,2,4].map(i => parseInt(x.substr(i,2),16)).join(","); };
+        r.style.setProperty("--hairline",      `rgba(${hex2rgb(p.gold)}, ${isLight ? 0.35 : 0.18})`);
+        r.style.setProperty("--hairline-soft", `rgba(${hex2rgb(p.gold)}, ${isLight ? 0.20 : 0.10})`);
+      }, [t.mode, t.palette, t.ctaColor, t.bgTone]);
+      return null;
+    }
+
+    function ColorTweaks() {
+      const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+      return (
+        <React.Fragment>
+          <TweakStyleApplier t={t} />
+          <TweaksPanel title="Tweaks · Embassy of Burgers">
+            <TweakSection title="Mode" description="Switch the whole workplace between dark and light.">
+              <TweakRadio value={t.mode} onChange={v => setTweak("mode", v)} options={["Dark", "Light"]} />
+            </TweakSection>
+            <TweakSection title="Accent (Gold)" description="Used for logos, prices, hairlines, italic accent words.">
+              <TweakSelect value={t.palette} onChange={v => setTweak("palette", v)} options={Object.keys(PALETTES)} />
+              <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+                {Object.entries(PALETTES).map(([k,p]) => (
+                  <button key={k} onClick={() => setTweak("palette", k)} title={k}
+                    style={{ width: 28, height: 28, borderRadius: "50%", border: t.palette === k ? "2px solid #fff" : "1px solid rgba(255,255,255,0.2)", background: p.gold, cursor: "pointer", padding: 0 }} />
+                ))}
+              </div>
+            </TweakSection>
+            <TweakSection title="CTA Color" description="Reserved for primary order buttons and key highlights.">
+              <TweakSelect value={t.ctaColor} onChange={v => setTweak("ctaColor", v)} options={Object.keys(CTA_COLORS)} />
+              <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+                {Object.entries(CTA_COLORS).map(([k,c]) => (
+                  <button key={k} onClick={() => setTweak("ctaColor", k)} title={k}
+                    style={{ width: 28, height: 28, borderRadius: "50%", border: t.ctaColor === k ? "2px solid #fff" : "1px solid rgba(255,255,255,0.2)", background: c.red, cursor: "pointer", padding: 0 }} />
+                ))}
+              </div>
+            </TweakSection>
+            <TweakSection title="Background Tone" description="Page background and card surfaces.">
+              <TweakSelect value={t.bgTone} onChange={v => setTweak("bgTone", v)} options={Object.keys(BG_TONES)} />
+              <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
+                {Object.entries(BG_TONES).map(([k,b]) => (
+                  <button key={k} onClick={() => setTweak("bgTone", k)} title={k}
+                    style={{ width: 28, height: 28, borderRadius: 6, border: t.bgTone === k ? "2px solid #fff" : "1px solid rgba(255,255,255,0.2)",
+                      background: `linear-gradient(135deg, ${b.bg} 50%, ${b.surface} 50%)`, cursor: "pointer", padding: 0 }} />
+                ))}
+              </div>
+            </TweakSection>
+          </TweaksPanel>
+        </React.Fragment>
+      );
+    }
+
+    function ScreenFrame({ width, height, children, scrollable = true }) {
+      return (
+        <div style={{
+          width, height,
+          background: "var(--bg)",
+          overflow: scrollable ? "auto" : "hidden",
+          position: "relative",
+          fontFamily: "var(--sans)",
+          color: "var(--silver)",
+          isolation: "isolate",
+        }}>
+          {children}
+        </div>
+      );
+    }
+
+    function App() {
+      return (
+        <React.Fragment>
+        <ColorTweaks />
+        <DesignCanvas
+          title="Embassy of Burgers"
+          subtitle="Premium burger chain · Toshkent · 12 filial — desktop + mobile, landing + menu"
+          background="#0A0908"
+        >
+          <DCSection id="landing" title="Landing Page" subtitle="Single long-scroll homepage. Hero · stats · top burgers · why · branches · reviews · about · CTA · footer.">
+            <DCArtboard id="landing-desktop" label="Desktop · 1440 × scroll" width={1440} height={900}>
+              <ScreenFrame width={1440} height={900}>
+                <LandingDesktop />
+              </ScreenFrame>
+            </DCArtboard>
+            <DCArtboard id="landing-mobile" label="Mobile · 390 × scroll" width={390} height={844}>
+              <ScreenFrame width={390} height={844}>
+                <LandingMobile />
+              </ScreenFrame>
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection id="menu" title="Menu Page" subtitle="Sticky filter tabs, 4-column grid on desktop, single-column with persistent CTA on mobile.">
+            <DCArtboard id="menu-desktop" label="Desktop · 1440 × scroll" width={1440} height={900}>
+              <ScreenFrame width={1440} height={900}>
+                <MenuDesktop />
+              </ScreenFrame>
+            </DCArtboard>
+            <DCArtboard id="menu-mobile" label="Mobile · 390 × scroll" width={390} height={844}>
+              <ScreenFrame width={390} height={844} scrollable={false}>
+                <div style={{ height: "100%", overflow: "auto", paddingBottom: 90 }}>
+                  <MenuMobile />
+                </div>
+              </ScreenFrame>
+            </DCArtboard>
+          </DCSection>
+        </DesignCanvas>
+        </React.Fragment>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
