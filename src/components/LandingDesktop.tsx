@@ -306,17 +306,22 @@ const LandingDesktopBranches = () => {
     };
 
     if (!navigator.geolocation) {
-      // Geolokatsiya yo'q bo'lsa, demo lokatsiyani (Yunusobot markazi) beramiz
-      processLocation(41.3653, 69.2872);
+      setStatus("error");
+      setErrorMsg("Brauzeringiz geolokatsiyani qo'llab-quvvatlamaydi");
       return;
     }
 
     navigator.geolocation.getCurrentPosition(
       (pos) => processLocation(pos.coords.latitude, pos.coords.longitude),
       (err) => {
-        console.warn("Geolokatsiya xatosi, demo lokatsiya ishlatilmoqda:", err);
-        // Xatolik bersa ham, demo lokatsiyani (Yunusobot) ishlatamiz
-        processLocation(41.3653, 69.2872);
+        setStatus("error");
+        if (err.code === err.PERMISSION_DENIED) {
+          setErrorMsg("Joylashuvga ruxsat berilmadi");
+        } else if (err.code === err.TIMEOUT) {
+          setErrorMsg("Vaqt tugadi, qayta urining");
+        } else {
+          setErrorMsg("Joylashuv aniqlanmadi");
+        }
       },
       { enableHighAccuracy: true, timeout: 5000 }
     );
@@ -526,21 +531,6 @@ const LandingDesktopAbout = () =>
         <div style={{ height: 540, width: "100%", overflow: "hidden", position: "relative", border: "1px solid var(--hairline-soft)", background: "#111" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/3d5e1945603872631c7747b99ad14380.WEBP" alt="Embassy of Burgers" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
-        </div>
-        {/* stamp */}
-        <div style={{
-        position: "absolute", top: 30, right: 30,
-        width: 130, height: 130, borderRadius: "50%",
-        border: "1.5px solid var(--gold)", color: "var(--gold)",
-        background: "rgba(13,13,13,0.7)",
-        fontFamily: "var(--serif)", fontStyle: "italic", fontSize: 14,
-        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-        textAlign: "center", lineHeight: 1.2, transform: "rotate(-6deg)",
-        backdropFilter: "blur(4px)"
-      }}>
-          <div style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--silver)" }}>Established</div>
-          <div style={{ fontFamily: "var(--serif)", fontSize: 28, color: "var(--gold)", margin: "4px 0" }}>2019</div>
-          <div style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--silver)" }}>Toshkent · UZ</div>
         </div>
       </div>
     </div>
