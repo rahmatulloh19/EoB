@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import branchesData from "@/lib/branches.json";
 import { EobLogo, BurgerIcon, ImagePlaceholder, SectionEyebrow, SectionTitle, StarRating } from "./shared";
 import menuData from "@/lib/data.json";
 /* Embassy of Burgers — Landing Page (Desktop, 1440 wide) */
@@ -40,11 +41,11 @@ export const LandingDesktopNavbar = () => {
           })}
         </nav>
         <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 20, flexWrap: "nowrap" }}>
-          <a href="tel:+998712000000" style={{
+          <a href="tel:+998781130773" style={{
             fontFamily: "var(--mono)", fontSize: 13, color: "var(--silver)",
             textDecoration: "none", letterSpacing: "0.05em", whiteSpace: "nowrap"
-          }}>+998 71 200 00 00</a>
-          <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "12px 22px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", whiteSpace: "nowrap", textDecoration: "none" }}>
+          }}>+998 78 113 07 73</a>
+          <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "12px 22px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", whiteSpace: "nowrap", textDecoration: "none" }}>
             Buyurtma qilish
           </a>
         </div>
@@ -112,7 +113,7 @@ const LandingDesktopHero = () =>
           Har bir burger — alohida mamlakatning ta'mi. Embassy of Burgers — bu oshxona elchixonasi, har bir buyurtma diplomatik missiya.
         </p>
         <div style={{ display: "flex", gap: 14, marginTop: 40 }}>
-          <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
+          <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
             Buyurtma qilish <span style={{ fontSize: 14 }}>→</span>
           </a>
           <Link href="/menu" className="eob-btn eob-btn--outline" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
@@ -296,7 +297,7 @@ const TopBurgerCard = ({ b, featured = false }: { b: any, featured?: boolean }) 
               {priceFormatted} <span style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.1em" }}>so'm</span>
             </div>
           </div>
-          <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--red hover:opacity-90" style={{ padding: "11px 18px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
+          <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--red hover:opacity-90" style={{ padding: "11px 18px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
             Buyurtma
           </a>
         </div>
@@ -385,58 +386,47 @@ const LandingDesktopWhy = () =>
   </section>;
 
 
-const BRANCHES = [
-{ name: "Yunusobod", addr: "Amir Temur ko'chasi 56", hours: "09:00 – 03:00", phone: "+998 71 200 00 01" },
-{ name: "Mirzo Ulug'bek", addr: "Mustaqillik 42", hours: "24/7", phone: "+998 71 200 00 02" },
-{ name: "Chilonzor", addr: "Bunyodkor 14", hours: "10:00 – 02:00", phone: "+998 71 200 00 03" },
-{ name: "Shayxontohur", addr: "Navoi 78", hours: "24/7", phone: "+998 71 200 00 04" },
-{ name: "Olmazor", addr: "Beruniy 22", hours: "10:00 – 24:00", phone: "+998 71 200 00 05" },
-{ name: "Yakkasaroy", addr: "Nukus ko'chasi 5", hours: "11:00 – 03:00", phone: "+998 71 200 00 06" }];
-
-
 const LandingDesktopBranches = () => {
-  const [nearest, setNearest] = React.useState(null);
+  const [branches, setBranches] = React.useState<any[]>(branchesData);
   const [status, setStatus] = React.useState("idle"); // idle | locating | done | error
   const [errorMsg, setErrorMsg] = React.useState("");
-
-  // Approx lat/lng for each branch (Toshkent districts) — used for nearest calc.
-  const BRANCH_COORDS = [
-  [41.3656, 69.2876], // Yunusobod
-  [41.3261, 69.3433], // Mirzo Ulug'bek
-  [41.2755, 69.2055], // Chilonzor
-  [41.3198, 69.2401], // Shayxontohur
-  [41.3585, 69.2257], // Olmazor
-  [41.2944, 69.2664] // Yakkasaroy
-  ];
+  const [showAll, setShowAll] = React.useState(false);
 
   const findNearest = () => {
-    if (!navigator.geolocation) {
-      setStatus("error");setErrorMsg("Geolokatsiya qo'llab-quvvatlanmaydi");return;
-    }
     setStatus("locating");setErrorMsg("");
+    
+    const processLocation = (lat: number, lng: number) => {
+      const dist = (a: number, b: number, c: number, d: number) => {
+        const R = 6371,toRad = (x: number) => x * Math.PI / 180;
+        const dLat = toRad(c - a),dLng = toRad(d - b);
+        const x = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a)) * Math.cos(toRad(c)) * Math.sin(dLng / 2) ** 2;
+        return 2 * R * Math.asin(Math.sqrt(x));
+      };
+      const withDistance = branchesData.map(branch => {
+        const d = dist(lat, lng, parseFloat(branch.latitude as unknown as string), parseFloat(branch.longitude as unknown as string));
+        return { ...branch, km: d };
+      });
+      
+      withDistance.sort((a, b) => a.km - b.km);
+      
+      setBranches(withDistance);
+      setStatus("done");
+    };
+
+    if (!navigator.geolocation) {
+      // Geolokatsiya yo'q bo'lsa, demo lokatsiyani (Yunusobot markazi) beramiz
+      processLocation(41.3653, 69.2872);
+      return;
+    }
+
     navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const { latitude: lat, longitude: lng } = pos.coords;
-        const dist = (a, b, c, d) => {
-          const R = 6371,toRad = (x) => x * Math.PI / 180;
-          const dLat = toRad(c - a),dLng = toRad(d - b);
-          const x = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a)) * Math.cos(toRad(c)) * Math.sin(dLng / 2) ** 2;
-          return 2 * R * Math.asin(Math.sqrt(x));
-        };
-        let best = 0,bestD = Infinity;
-        BRANCH_COORDS.forEach(([la, ln], i) => {const d = dist(lat, lng, la, ln);if (d < bestD) {bestD = d;best = i;}});
-        setNearest({ idx: best, km: bestD });
-        setStatus("done");
-        setTimeout(() => {
-          const el = document.getElementById(`eob-branch-${best}`);
-          if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 80);
-      },
+      (pos) => processLocation(pos.coords.latitude, pos.coords.longitude),
       (err) => {
-        setStatus("error");
-        setErrorMsg(err.code === 1 ? "Iltimos, lokatsiyani aniqlashga ruxsat bering" : "Hozircha manzilingizni aniqlay olmadik");
+        console.warn("Geolokatsiya xatosi, demo lokatsiya ishlatilmoqda:", err);
+        // Xatolik bersa ham, demo lokatsiyani (Yunusobot) ishlatamiz
+        processLocation(41.3653, 69.2872);
       },
-      { enableHighAccuracy: true, timeout: 10000 }
+      { enableHighAccuracy: true, timeout: 5000 }
     );
   };
 
@@ -445,16 +435,10 @@ const LandingDesktopBranches = () => {
     <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "flex-end", marginBottom: 56, gap: 40 }}>
         <div>
-          <SectionEyebrow>12 ta filial · Toshkent</SectionEyebrow>
+          <SectionEyebrow>{branchesData.length} ta filial · Toshkent</SectionEyebrow>
           <SectionTitle accent="Filial">Sizga Eng Yaqin</SectionTitle>
         </div>
         <div style={{ display: "flex", gap: 12, alignItems: "center", position: "relative" }}>
-          {status === "done" && nearest &&
-            <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "var(--gold)", letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "right" }}>
-              {BRANCHES[nearest.idx].name}<br />
-              <span style={{ color: "var(--muted)" }}>{nearest.km.toFixed(1)} km</span>
-            </div>
-            }
           {status === "error" &&
             <div style={{ position: "absolute", top: "100%", right: 0, marginTop: 14, fontSize: 10, color: "var(--red)", letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "right", whiteSpace: "nowrap" }}>{errorMsg}</div>
             }
@@ -472,54 +456,87 @@ const LandingDesktopBranches = () => {
           </a>
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-        {BRANCHES.map((b, i) => {
-            const isNearest = nearest && nearest.idx === i;
+      <div style={{ 
+        position: "relative", 
+        overflow: "hidden", 
+        maxHeight: showAll ? 4000 : 760, 
+        transition: "max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1)",
+        margin: "0 -8px", padding: "0 8px" // X tomondan qirqilmasligi uchun (masalan shadow)
+      }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, paddingTop: 16, paddingBottom: showAll ? 0 : 40 }}>
+          {(showAll ? branches : branches.slice(0, 6)).map((b, i) => {
+            const isNearest = status === "done" && i === 0;
+            const isTop3 = status === "done" && i > 0 && i < 3;
+            
             return (
-              <div key={b.name} id={`eob-branch-${i}`} style={{
+              <div key={b.id || b.name_uz} id={`eob-branch-${i}`} style={{
                 background: isNearest ? "linear-gradient(180deg, rgba(212,175,55,0.10) 0%, var(--surface) 100%)" : "var(--surface)",
-                border: isNearest ? "1px solid var(--gold)" : "1px solid var(--hairline-soft)",
+                border: isNearest ? "1px solid var(--gold)" : isTop3 ? "1px solid rgba(212,175,55,0.25)" : "1px solid var(--hairline-soft)",
                 padding: "28px 28px 24px",
                 position: "relative",
                 transition: "all 280ms ease",
                 boxShadow: isNearest ? "0 12px 40px rgba(212,175,55,0.18)" : "none"
               }}>
-            {isNearest &&
-                <div style={{ position: "absolute", top: -10, left: 24, background: "var(--gold)", color: "#1a1408", fontSize: 9, letterSpacing: "0.22em", textTransform: "uppercase", padding: "4px 10px", fontWeight: 600 }}>
-                Eng yaqin · {nearest.km.toFixed(1)} km
+            {b.km !== undefined && i < 3 &&
+                <div style={{ position: "absolute", top: -10, left: 24, background: isNearest ? "var(--gold)" : "var(--card)", color: isNearest ? "#1a1408" : "var(--gold)", border: isNearest ? "none" : "1px solid rgba(212,175,55,0.4)", fontSize: 9, letterSpacing: "0.22em", textTransform: "uppercase", padding: "4px 10px", fontWeight: 600 }}>
+                {i === 0 ? "Eng yaqin" : `${i + 1}-yaqin`} · {b.km.toFixed(1)} km
               </div>
                 }
             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 20 }}>
               <div>
                 <div style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.2em" }}>
-                  № {String(i + 1).padStart(2, "0")}
+                  {b.km !== undefined ? `${b.km.toFixed(1)} KM UZOQLIKDA` : `№ ${String(i + 1).padStart(2, "0")}`}
                 </div>
-                <div style={{ fontFamily: "var(--serif)", fontSize: 26, color: "var(--white)", marginTop: 6, fontWeight: 500 }}>
-                  {b.name}
+                <div style={{ fontFamily: "var(--serif)", fontSize: 26, color: "var(--white)", marginTop: 6, fontWeight: 500, lineHeight: 1.15 }}>
+                  {b.name_uz}
                 </div>
               </div>
               <span style={{
                     fontSize: 9, letterSpacing: "0.2em", textTransform: "uppercase",
-                    color: b.hours === "24/7" ? "var(--gold)" : "var(--muted)",
-                    border: `1px solid ${b.hours === "24/7" ? "var(--gold)" : "var(--hairline-soft)"}`,
-                    padding: "4px 8px"
+                    color: b.is_open ? "var(--gold)" : "var(--red)",
+                    border: `1px solid ${b.is_open ? "var(--gold)" : "var(--hairline-soft)"}`,
+                    padding: "4px 8px",
+                    alignSelf: "flex-start"
                   }}>
-                {b.hours === "24/7" ? "24/7" : "Faol"}
+                {b.is_open ? "Ochiq" : "Yopiq"}
               </span>
             </div>
             <div style={{ borderTop: "1px solid var(--hairline-soft)", paddingTop: 16, fontSize: 13, color: "var(--silver)", lineHeight: 1.7 }}>
-              <div>{b.addr}</div>
+              <div>{b.address_uz}</div>
               <div style={{ color: "var(--muted)" }}>{b.hours} · {b.phone}</div>
             </div>
             <div style={{ marginTop: 18, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <a href="https://yandex.uz/maps/" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity" style={{ fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--gold)", textDecoration: "none" }}>
+              <a href={`https://yandex.uz/maps/?pt=${b.longitude},${b.latitude}&z=16`} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity" style={{ fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--gold)", textDecoration: "none" }}>
                 Xaritada ko'r →
               </a>
-              <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" style={{ fontSize: 11, color: "var(--muted)", textDecoration: "none" }}>Telegram</a>
+              <a href="https://t.me/burgerembassy_helpbot" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" style={{ fontSize: 11, color: "var(--muted)", textDecoration: "none" }}>Telegram</a>
             </div>
           </div>);
 
           })}
+        </div>
+        
+        {/* Gradient Overlay for hidden items */}
+        {!showAll && branchesData.length > 6 && (
+          <div style={{
+            position: "absolute", bottom: 0, left: 0, right: 0,
+            height: 240,
+            background: "linear-gradient(180deg, rgba(13,13,13,0) 0%, rgba(13,13,13,0.85) 40%, rgba(13,13,13,1) 100%)",
+            display: "flex", alignItems: "flex-end", justifyContent: "center",
+            paddingBottom: 24, zIndex: 10, pointerEvents: "none"
+          }}>
+            <button 
+              onClick={() => setShowAll(true)}
+              className="eob-btn eob-btn--outline bg-[#0D0D0D] hover:text-gold" 
+              style={{ 
+                padding: "16px 36px", fontSize: 12, letterSpacing: "0.2em", 
+                textTransform: "uppercase", pointerEvents: "auto", 
+                background: "#0D0D0D", boxShadow: "0 -10px 40px rgba(13,13,13,0.9)"
+              }}>
+              Barcha {branchesData.length} ta filialni ko'r ↓
+            </button>
+          </div>
+        )}
       </div>
     </div>
   </section>);
@@ -569,7 +586,7 @@ const LandingDesktopReviews = () =>
             </div>
             <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid var(--hairline-soft)", display: "flex", justifyContent: "space-between" }}>
               <span style={{ fontSize: 10, color: "var(--muted)", letterSpacing: "0.18em", textTransform: "uppercase" }}>
-                Telegram · @embassyburgers
+                Telegram · @burgerembassy_uzbot
               </span>
               <span style={{ fontSize: 10, color: "var(--gold)", letterSpacing: "0.15em", textTransform: "uppercase" }}>
                 Tasdiqlangan
@@ -579,7 +596,7 @@ const LandingDesktopReviews = () =>
       )}
       </div>
       <div style={{ textAlign: "center", marginTop: 48 }}>
-        <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--outline hover:text-gold" style={{ padding: "14px 30px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex" }}>
+        <a href="https://t.me/burgerembassy_helpbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--outline hover:text-gold" style={{ padding: "14px 30px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex" }}>
           Izoh qoldirish · Telegram
         </a>
       </div>
@@ -603,11 +620,11 @@ const LandingDesktopAbout = () =>
           </p>
         </div>
         <div style={{ display: "flex", gap: 32, marginTop: 40 }}>
-          <a href="https://instagram.com/embassyburgers" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "var(--gold)", textDecoration: "none", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+          <a href="https://www.instagram.com/burgerembassyuz/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "var(--gold)", textDecoration: "none", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>
             Instagram
           </a>
-          <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "var(--silver)", textDecoration: "none", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+          <a href="https://t.me/burgerembassy_helpbot" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "var(--silver)", textDecoration: "none", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 4 L2 11 L9 14 L12 22 L21 4 Z" /></svg>
             Telegram
           </a>
@@ -664,12 +681,12 @@ const LandingDesktopFinalCTA = () =>
         Yetkazib berish 30–45 daqiqa ichida. Bizning Telegram bot orqali tezkor buyurtma yoki bevosita qo'ng'iroq qiling.
       </p>
       <div style={{ display: "inline-flex", gap: 14 }}>
-        <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
+        <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M21 4 L2 11 L9 14 L12 22 L21 4 Z" /></svg>
           Telegram bot
         </a>
-        <a href="tel:+998712000000" className="eob-btn eob-btn--outline hover:bg-white/5" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.1em", textDecoration: "none" }}>
-          +998 71 200 00 00
+        <a href="tel:+998781130773" className="eob-btn eob-btn--outline hover:bg-white/5" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.1em", textDecoration: "none" }}>
+          +998 78 113 07 73
         </a>
       </div>
     </div>
@@ -690,8 +707,8 @@ export const LandingDesktopFooter = () =>
         </div>
         {[
       { t: "Sayt", l: [{ name: "Bosh sahifa", href: "/" }, { name: "Menyu", href: "/menu" }, { name: "Filiallar", href: "/#branches" }, { name: "Biz haqimizda", href: "/#about" }] },
-      { t: "Aloqa", l: [{ name: "+998 71 200 00 00", href: "tel:+998712000000" }, { name: "hello@embassy.uz", href: "mailto:hello@embassy.uz" }, { name: "Toshkent · UZ", href: null }, { name: "24/7 yetkazib berish", href: null }] },
-      { t: "Ijtimoiy", l: [{ name: "Instagram", href: "https://instagram.com/embassyburgers" }, { name: "Telegram bot", href: "https://t.me/embassyburgers" }, { name: "Yandex xaritalar", href: "https://yandex.uz/maps/" }, { name: "Facebook", href: "https://facebook.com/embassyburgers" }] }].
+      { t: "Aloqa", l: [{ name: "+998 78 113 07 73", href: "tel:+998781130773" }, { name: "hello@embassy.uz", href: "mailto:hello@embassy.uz" }, { name: "Toshkent · UZ", href: null }, { name: "24/7 yetkazib berish", href: null }] },
+      { t: "Ijtimoiy", l: [{ name: "Instagram", href: "https://www.instagram.com/burgerembassyuz/" }, { name: "Telegram bot", href: "https://t.me/burgerembassy_uzbot" }, { name: "Yandex xaritalar", href: "https://yandex.uz/maps/" }, { name: "Support", href: "https://t.me/burgerembassy_helpbot" }] }].
       map((c) =>
       <div key={c.t}>
             <div className="eob-label" style={{ marginBottom: 18 }}>{c.t}</div>
