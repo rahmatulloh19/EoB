@@ -302,7 +302,7 @@ const MenuItemCard = ({ b }: { b: any }) => {
           <div style={{ fontFamily: "var(--serif)", fontSize: 20, color: "var(--gold)" }}>
             {priceFormatted} <span style={{ fontSize: 10, color: "var(--muted)", letterSpacing: "0.1em" }}>so'm</span>
           </div>
-          <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--red hover:opacity-90" style={{ padding: "10px 16px", fontSize: 10.5, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
+          <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--red hover:opacity-90" style={{ padding: "10px 16px", fontSize: 10.5, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
             Buyurtma
           </a>
         </div>

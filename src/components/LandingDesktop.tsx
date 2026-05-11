@@ -30,7 +30,7 @@ export const LandingDesktopNavbar = () => {
             { name: "Filiallar", href: "/#branches" },
             { name: "Biz haqimizda", href: "/#about" }
           ].map((item, i) => {
-            const isActive = pathname === item.href || (pathname === '/' && item.href === '/#menu');
+            const isActive = pathname === item.href || (item.href.startsWith('/#') && pathname === '/');
             return (
               <Link key={item.name} href={item.href} style={{
                 fontFamily: "var(--sans)", fontSize: 12, letterSpacing: "0.22em",
@@ -63,7 +63,7 @@ const LandingDesktopHero = () =>
   display: "flex"
 }}>
     {/* full-bleed video */}
-    <video src="/assets/burger-hero.mp4" autoPlay loop muted playsInline
+    <video src="/assets/burger-hero.mp4" autoPlay loop muted playsInline poster="/images/3d5e1945603872631c7747b99ad14380.WEBP"
   style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
     {/* legibility gradient — strong on left, fading right */}
     <div style={{
@@ -130,115 +130,6 @@ const LandingDesktopHero = () =>
         </div>
       </div>
 
-    {/* legacy column wrapper kept for stable downstream layout but unused */}
-    <div style={{ display: "none" }}>
-      <div>
-        <div className="eob-label" style={{ marginBottom: 28, display: "flex", alignItems: "center", gap: 14 }}>
-          <span style={{ width: 32, height: 1, background: "var(--gold)" }} />
-          <span>EST. 2019 · Toshkent · 12 Filial</span>
-        </div>
-        <h1 style={{
-          fontFamily: "var(--serif)", fontWeight: 500,
-          fontSize: 108, lineHeight: 0.98, letterSpacing: "-0.02em",
-          color: "var(--white)", margin: 0
-        }}>
-          Dunyoni<br />
-          <span style={{ fontStyle: "italic", color: "var(--gold)" }}>Tatib</span> Ko'r
-        </h1>
-        <p style={{
-          fontFamily: "var(--sans)", fontSize: 18, lineHeight: 1.6,
-          color: "var(--silver)", marginTop: 32, maxWidth: 460
-        }}>
-          Har bir burger — alohida mamlakatning ta'mi. Embassy of Burgers — bu oshxona elchixonasi, bu yerda har bir buyurtma diplomatik missiya.
-        </p>
-        <div style={{ display: "flex", gap: 14, marginTop: 44 }}>
-          <button className="eob-btn eob-btn--gold" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-            Buyurtma qilish
-            <span style={{ fontSize: 14 }}>→</span>
-          </button>
-          <button className="eob-btn eob-btn--outline" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-            Menyuni ko'r
-          </button>
-        </div>
-        {/* meta row */}
-        <div style={{ display: "flex", gap: 36, marginTop: 56, paddingTop: 28, borderTop: "1px solid var(--hairline-soft)" }}>
-          {[
-          { k: "Yetkazib berish", v: "30–45 daqiqa" },
-          { k: "Ish vaqti", v: "24/7" },
-          { k: "Reyting", v: "4.7 / 5" }].
-          map((i) =>
-          <div key={i.k}>
-              <div style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--muted)" }}>{i.k}</div>
-              <div style={{ fontFamily: "var(--serif)", fontSize: 22, color: "var(--white)", marginTop: 6 }}>{i.v}</div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* hidden legacy visual (replaced by full-bleed video above) */}
-      <div style={{ display: "none" }}>
-        <div style={{
-          position: "absolute", width: 540, height: 540, borderRadius: "50%",
-          border: "1px solid var(--hairline)"
-        }} />
-        <div style={{
-          position: "absolute", width: 460, height: 460, borderRadius: "50%",
-          border: "1px dashed var(--hairline-soft)",
-          animation: "none"
-        }} />
-        <div style={{
-          width: 380, height: 380, borderRadius: "50%",
-          background: "#14110c",
-          border: "1px solid var(--hairline)",
-          overflow: "hidden",
-          boxShadow: "0 30px 80px rgba(0,0,0,0.6), inset 0 0 60px rgba(212,175,55,0.06)",
-          position: "relative"
-        }}>
-          <video
-            src="/assets/burger-hero.mp4"
-            autoPlay loop muted playsInline
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-          
-          {/* gold rim tint */}
-          <div style={{
-            position: "absolute", inset: 0, borderRadius: "50%",
-            boxShadow: "inset 0 0 60px rgba(212,175,55,0.18), inset 0 0 0 1px rgba(212,175,55,0.25)",
-            pointerEvents: "none"
-          }} />
-          {/* bottom vignette for caption */}
-          <div style={{
-            position: "absolute", left: 0, right: 0, bottom: 0, height: 90,
-            background: "linear-gradient(180deg, transparent 0%, rgba(13,13,13,0.85) 100%)",
-            pointerEvents: "none"
-          }} />
-          <div style={{
-            position: "absolute", bottom: 18, left: 0, right: 0, textAlign: "center",
-            fontFamily: "var(--mono)", fontSize: 9, letterSpacing: "0.3em",
-            color: "rgba(212,175,55,0.7)", textTransform: "uppercase"
-          }}>
-            № 001 · Live
-          </div>
-        </div>
-        {/* corner stamps */}
-        <div style={{
-          position: "absolute", top: 20, right: 20,
-          width: 90, height: 90, borderRadius: "50%",
-          border: "1px solid var(--gold)", color: "var(--gold)",
-          fontFamily: "var(--serif)", fontStyle: "italic", fontSize: 14,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          textAlign: "center", lineHeight: 1.1, transform: "rotate(8deg)"
-        }}>
-          Embassy<br />Seal
-        </div>
-        <div style={{
-          position: "absolute", bottom: 30, left: 0,
-          fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)",
-          letterSpacing: "0.2em", textTransform: "uppercase"
-        }}>
-          № 001 · Toshkent
-        </div>
-      </div>
-    </div>
     </div>
   </section>;
 
@@ -308,7 +199,8 @@ const TopBurgerCard = ({ b, featured = false }: { b: any, featured?: boolean }) 
 
 
 const LandingDesktopTopBurgers = () => {
-  const topItems = menuData.flatMap(cat => cat.products).slice(0, 4);
+  const burgersCategory = menuData.find(cat => cat.name === "Бургеры");
+  const topItems = burgersCategory ? burgersCategory.products.slice(0, 4) : menuData.flatMap(cat => cat.products).slice(0, 4);
   const totalItems = menuData.flatMap(cat => cat.products).length;
 
   return (
@@ -631,7 +523,10 @@ const LandingDesktopAbout = () =>
         </div>
       </div>
       <div style={{ position: "relative", height: 540 }}>
-        <ImagePlaceholder height={540} caption="EMBASSY ATMOSPHERE · 4:5" iconSize={120} />
+        <div style={{ height: 540, width: "100%", overflow: "hidden", position: "relative", border: "1px solid var(--hairline-soft)", background: "#111" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/3d5e1945603872631c7747b99ad14380.WEBP" alt="Embassy of Burgers" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+        </div>
         {/* stamp */}
         <div style={{
         position: "absolute", top: 30, right: 30,
