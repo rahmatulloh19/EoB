@@ -1,46 +1,56 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { EobLogo, BurgerIcon, ImagePlaceholder, SectionEyebrow, SectionTitle, StarRating, TOP_BURGERS } from "./shared";
 /* Embassy of Burgers — Landing Page (Desktop, 1440 wide) */
 
-const LandingDesktopNavbar = () =>
-<div style={{
-  position: "sticky", top: 0, zIndex: 10,
-  background: "rgba(13,13,13,0.85)",
-  backdropFilter: "blur(12px)",
-  borderBottom: "1px solid var(--hairline-soft)"
-}}>
+export const LandingDesktopNavbar = () => {
+  const pathname = usePathname();
+  return (
     <div style={{
-    maxWidth: 1280, margin: "0 auto",
-    padding: "20px 64px",
-    display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center", gap: 40
-  }}>
-      <EobLogo size={20} />
-      <nav style={{ display: "flex", gap: 36, justifyContent: "center", flexWrap: "nowrap", margin: "0px", padding: "0px 0px 0px 38px" }}>
-        {[
-          { name: "Menyu", href: "#menu" },
-          { name: "Filiallar", href: "#branches" },
-          { name: "Biz haqimizda", href: "#about" }
-        ].map((item, i) =>
-      <a key={item.name} href={item.href} style={{
-        fontFamily: "var(--sans)", fontSize: 12, letterSpacing: "0.22em",
-        textTransform: "uppercase", color: i === 0 ? "var(--gold)" : "var(--silver)",
-        textDecoration: "none", fontWeight: 500, whiteSpace: "nowrap"
-      }}>{item.name}</a>
-      )}
-      </nav>
-      <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 20, flexWrap: "nowrap" }}>
-        <a href="tel:+998712000000" style={{
-        fontFamily: "var(--mono)", fontSize: 13, color: "var(--silver)",
-        textDecoration: "none", letterSpacing: "0.05em", whiteSpace: "nowrap"
-      }}>+998 71 200 00 00</a>
-        <button className="eob-btn eob-btn--gold" style={{ padding: "12px 22px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-          Buyurtma qilish
-        </button>
+      position: "sticky", top: 0, zIndex: 10,
+      background: "rgba(13,13,13,0.85)",
+      backdropFilter: "blur(12px)",
+      borderBottom: "1px solid var(--hairline-soft)"
+    }}>
+      <div style={{
+        maxWidth: 1280, margin: "0 auto",
+        padding: "20px 64px",
+        display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center", gap: 40
+      }}>
+        <Link href="/" style={{ textDecoration: "none" }} className="hover:opacity-80 transition-opacity">
+          <EobLogo size={20} />
+        </Link>
+        <nav style={{ display: "flex", gap: 36, justifyContent: "center", flexWrap: "nowrap", margin: "0px", padding: "0px 0px 0px 38px" }}>
+          {[
+            { name: "Menyu", href: "/menu" },
+            { name: "Filiallar", href: "/#branches" },
+            { name: "Biz haqimizda", href: "/#about" }
+          ].map((item, i) => {
+            const isActive = pathname === item.href || (pathname === '/' && item.href === '/#menu');
+            return (
+              <Link key={item.name} href={item.href} style={{
+                fontFamily: "var(--sans)", fontSize: 12, letterSpacing: "0.22em",
+                textTransform: "uppercase", color: isActive ? "var(--gold)" : "var(--silver)",
+                textDecoration: "none", fontWeight: 500, whiteSpace: "nowrap"
+              }} className="hover:text-gold transition-colors">{item.name}</Link>
+            );
+          })}
+        </nav>
+        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 20, flexWrap: "nowrap" }}>
+          <a href="tel:+998712000000" style={{
+            fontFamily: "var(--mono)", fontSize: 13, color: "var(--silver)",
+            textDecoration: "none", letterSpacing: "0.05em", whiteSpace: "nowrap"
+          }}>+998 71 200 00 00</a>
+          <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "12px 22px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", whiteSpace: "nowrap", textDecoration: "none" }}>
+            Buyurtma qilish
+          </a>
+        </div>
       </div>
     </div>
-  </div>;
+  );
+};
 
 
 const LandingDesktopHero = () =>
@@ -101,12 +111,12 @@ const LandingDesktopHero = () =>
           Har bir burger — alohida mamlakatning ta'mi. Embassy of Burgers — bu oshxona elchixonasi, har bir buyurtma diplomatik missiya.
         </p>
         <div style={{ display: "flex", gap: 14, marginTop: 40 }}>
-          <button className="eob-btn eob-btn--gold" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+          <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
             Buyurtma qilish <span style={{ fontSize: 14 }}>→</span>
-          </button>
-          <button className="eob-btn eob-btn--outline" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+          </a>
+          <Link href="/menu" className="eob-btn eob-btn--outline" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
             Menyuni ko'r
-          </button>
+          </Link>
         </div>
         <div style={{ display: "flex", gap: 36, marginTop: 48, paddingTop: 28, borderTop: "1px solid var(--hairline-soft)" }}>
           {[{ k: "Yetkazib berish", v: "30–45 daqiqa" }, { k: "Ish vaqti", v: "24/7" }, { k: "Reyting", v: "4.7 / 5" }].map((i) =>
@@ -258,13 +268,13 @@ const LandingDesktopStats = () =>
 
 
 const TopBurgerCard = ({ b, featured = false }) =>
-<div className="eob-card" style={{ padding: 0, display: "flex", flexDirection: "column" }}>
+<div className="eob-card" style={{ padding: 0, display: "flex", flexDirection: "column", height: "100%" }}>
     <ImagePlaceholder height={240} caption={`${b.name.toUpperCase()} · 16:10`} flag={b.flag} country={b.country} iconSize={70} />
-    <div style={{ padding: "22px 24px 24px" }}>
+    <div style={{ padding: "22px 24px 24px", display: "flex", flexDirection: "column", flex: 1 }}>
       <div style={{ fontFamily: "var(--serif)", fontSize: 24, color: "var(--white)", fontWeight: 500, lineHeight: 1.1 }}>
         {b.name}
       </div>
-      <div style={{ marginTop: 10, fontSize: 13, lineHeight: 1.55, color: "var(--silver)", minHeight: 40 }}>
+      <div style={{ marginTop: 10, fontSize: 13, lineHeight: 1.55, color: "var(--silver)", minHeight: 40, flex: 1 }}>
         {b.desc}
       </div>
       <div style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -274,9 +284,9 @@ const TopBurgerCard = ({ b, featured = false }) =>
             {b.price} <span style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.1em" }}>so'm</span>
           </div>
         </div>
-        <button className="eob-btn eob-btn--red" style={{ padding: "11px 18px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+        <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--red hover:opacity-90" style={{ padding: "11px 18px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
           Buyurtma
-        </button>
+        </a>
       </div>
     </div>
   </div>;
@@ -437,9 +447,9 @@ const LandingDesktopBranches = () => {
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 22 C12 22 4 14 4 9 A8 8 0 0 1 20 9 C20 14 12 22 12 22 Z" /><circle cx="12" cy="9" r="2.5" /></svg>
             {status === "locating" ? "Aniqlanmoqda…" : "Eng yaqin filialni top"}
           </button>
-          <button className="eob-btn eob-btn--outline-light" style={{ padding: "13px 18px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+          <a href="https://yandex.uz/maps/" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--outline-light hover:opacity-80" style={{ padding: "13px 18px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex" }}>
             Xaritada
-          </button>
+          </a>
         </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
@@ -482,10 +492,10 @@ const LandingDesktopBranches = () => {
               <div style={{ color: "var(--muted)" }}>{b.hours} · {b.phone}</div>
             </div>
             <div style={{ marginTop: 18, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <a href="#" style={{ fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--gold)", textDecoration: "none" }}>
+              <a href="https://yandex.uz/maps/" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity" style={{ fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--gold)", textDecoration: "none" }}>
                 Xaritada ko'r →
               </a>
-              <a href="#" style={{ fontSize: 11, color: "var(--muted)", textDecoration: "none" }}>Telegram</a>
+              <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" style={{ fontSize: 11, color: "var(--muted)", textDecoration: "none" }}>Telegram</a>
             </div>
           </div>);
 
@@ -549,9 +559,9 @@ const LandingDesktopReviews = () =>
       )}
       </div>
       <div style={{ textAlign: "center", marginTop: 48 }}>
-        <button className="eob-btn eob-btn--outline" style={{ padding: "14px 30px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+        <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--outline hover:text-gold" style={{ padding: "14px 30px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex" }}>
           Izoh qoldirish · Telegram
-        </button>
+        </a>
       </div>
     </div>
   </section>;
@@ -573,11 +583,11 @@ const LandingDesktopAbout = () =>
           </p>
         </div>
         <div style={{ display: "flex", gap: 32, marginTop: 40 }}>
-          <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "var(--gold)", textDecoration: "none", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+          <a href="https://instagram.com/embassyburgers" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "var(--gold)", textDecoration: "none", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>
             Instagram
           </a>
-          <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "var(--silver)", textDecoration: "none", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+          <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "var(--silver)", textDecoration: "none", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 4 L2 11 L9 14 L12 22 L21 4 Z" /></svg>
             Telegram
           </a>
@@ -634,32 +644,34 @@ const LandingDesktopFinalCTA = () =>
         Yetkazib berish 30–45 daqiqa ichida. Bizning Telegram bot orqali tezkor buyurtma yoki bevosita qo'ng'iroq qiling.
       </p>
       <div style={{ display: "inline-flex", gap: 14 }}>
-        <button className="eob-btn eob-btn--gold" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.2em", textTransform: "uppercase" }}>
+        <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M21 4 L2 11 L9 14 L12 22 L21 4 Z" /></svg>
           Telegram bot
-        </button>
-        <button className="eob-btn eob-btn--outline" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.1em" }}>
+        </a>
+        <a href="tel:+998712000000" className="eob-btn eob-btn--outline hover:bg-white/5" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.1em", textDecoration: "none" }}>
           +998 71 200 00 00
-        </button>
+        </a>
       </div>
     </div>
   </section>;
 
 
-const LandingDesktopFooter = () =>
+export const LandingDesktopFooter = () =>
 <footer style={{ background: "#080604", padding: "64px 0 36px", borderTop: "1px solid var(--hairline-soft)" }}>
     <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr", gap: 48, marginBottom: 56 }}>
         <div>
-          <EobLogo size={20} />
+          <Link href="/" style={{ textDecoration: "none" }} className="hover:opacity-80 transition-opacity block w-fit">
+            <EobLogo size={20} />
+          </Link>
           <div style={{ marginTop: 22, fontSize: 13, color: "var(--muted)", lineHeight: 1.7, maxWidth: 280 }}>
             Embassy of Burgers — Toshkentdagi 12 filial bilan dunyoni tatib ko'rishingiz uchun oshxona elchixonasi.
           </div>
         </div>
         {[
-      { t: "Sayt", l: [{ name: "Bosh sahifa", href: "#" }, { name: "Menyu", href: "#menu" }, { name: "Filiallar", href: "#branches" }, { name: "Biz haqimizda", href: "#about" }] },
+      { t: "Sayt", l: [{ name: "Bosh sahifa", href: "/" }, { name: "Menyu", href: "/menu" }, { name: "Filiallar", href: "/#branches" }, { name: "Biz haqimizda", href: "/#about" }] },
       { t: "Aloqa", l: [{ name: "+998 71 200 00 00", href: "tel:+998712000000" }, { name: "hello@embassy.uz", href: "mailto:hello@embassy.uz" }, { name: "Toshkent · UZ", href: null }, { name: "24/7 yetkazib berish", href: null }] },
-      { t: "Ijtimoiy", l: [{ name: "Instagram", href: "#" }, { name: "Telegram bot", href: "#" }, { name: "Yandex xaritalar", href: "#" }, { name: "Facebook", href: "#" }] }].
+      { t: "Ijtimoiy", l: [{ name: "Instagram", href: "https://instagram.com/embassyburgers" }, { name: "Telegram bot", href: "https://t.me/embassyburgers" }, { name: "Yandex xaritalar", href: "https://yandex.uz/maps/" }, { name: "Facebook", href: "https://facebook.com/embassyburgers" }] }].
       map((c) =>
       <div key={c.t}>
             <div className="eob-label" style={{ marginBottom: 18 }}>{c.t}</div>
