@@ -2,7 +2,8 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { EobLogo, BurgerIcon, ImagePlaceholder, SectionEyebrow, SectionTitle, StarRating, TOP_BURGERS } from "./shared";
+import { EobLogo, BurgerIcon, ImagePlaceholder, SectionEyebrow, SectionTitle, StarRating } from "./shared";
+import menuData from "@/lib/data.json";
 /* Embassy of Burgers — Landing Page (Desktop, 1440 wide) */
 
 export const LandingDesktopNavbar = () => {
@@ -267,53 +268,72 @@ const LandingDesktopStats = () =>
   </section>;
 
 
-const TopBurgerCard = ({ b, featured = false }) =>
-<div className="eob-card" style={{ padding: 0, display: "flex", flexDirection: "column", height: "100%" }}>
-    <ImagePlaceholder height={240} caption={`${b.name.toUpperCase()} · 16:10`} flag={b.flag} country={b.country} iconSize={70} />
-    <div style={{ padding: "22px 24px 24px", display: "flex", flexDirection: "column", flex: 1 }}>
-      <div style={{ fontFamily: "var(--serif)", fontSize: 24, color: "var(--white)", fontWeight: 500, lineHeight: 1.1 }}>
-        {b.name}
+const TopBurgerCard = ({ b, featured = false }: { b: any, featured?: boolean }) => {
+  const priceFormatted = new Intl.NumberFormat("ru-RU").format(parseFloat(b.price || "0")).replace(",", " ");
+  const [imgError, setImgError] = React.useState(false);
+  
+  return (
+    <div className="eob-card" style={{ padding: 0, display: "flex", flexDirection: "column", height: "100%" }}>
+      {b.image && !imgError ? (
+        <div style={{ height: 240, width: "100%", background: "#111", overflow: "hidden", position: "relative" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={b.image} alt={b.name} onError={() => setImgError(true)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </div>
+      ) : (
+        <ImagePlaceholder height={240} caption={`${b.name.toUpperCase()}`} iconSize={70} />
+      )}
+      <div style={{ padding: "22px 24px 24px", display: "flex", flexDirection: "column", flex: 1 }}>
+        <div style={{ fontFamily: "var(--serif)", fontSize: 24, color: "var(--white)", fontWeight: 500, lineHeight: 1.1 }}>
+          {b.name}
+        </div>
+        <div style={{ marginTop: 10, fontSize: 13, lineHeight: 1.55, color: "var(--silver)", minHeight: 40, flex: 1 }}>
+          {b.description || b.desc}
+        </div>
+        <div style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div>
+            <div style={{ fontSize: 9, letterSpacing: "0.2em", color: "var(--muted)", textTransform: "uppercase" }}>Narxi</div>
+            <div style={{ fontFamily: "var(--serif)", fontSize: 22, color: "var(--gold)", marginTop: 2 }}>
+              {priceFormatted} <span style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.1em" }}>so'm</span>
+            </div>
+          </div>
+          <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--red hover:opacity-90" style={{ padding: "11px 18px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
+            Buyurtma
+          </a>
+        </div>
       </div>
-      <div style={{ marginTop: 10, fontSize: 13, lineHeight: 1.55, color: "var(--silver)", minHeight: 40, flex: 1 }}>
-        {b.desc}
-      </div>
-      <div style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div>
-          <div style={{ fontSize: 9, letterSpacing: "0.2em", color: "var(--muted)", textTransform: "uppercase" }}>Narxi</div>
-          <div style={{ fontFamily: "var(--serif)", fontSize: 22, color: "var(--gold)", marginTop: 2 }}>
-            {b.price} <span style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.1em" }}>so'm</span>
+    </div>
+  );
+};
+
+
+const LandingDesktopTopBurgers = () => {
+  const topItems = menuData.flatMap(cat => cat.products).slice(0, 4);
+  const totalItems = menuData.flatMap(cat => cat.products).length;
+
+  return (
+    <section id="menu" style={{ background: "var(--bg)", padding: "120px 0" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
+          <div>
+            <SectionEyebrow>Selection · 2026</SectionEyebrow>
+            <SectionTitle accent="Burgerlar">Eng Sevimli</SectionTitle>
+          </div>
+          <div style={{ maxWidth: 360, fontSize: 14, color: "var(--silver)", lineHeight: 1.6 }}>
+            Elchixona menyusidan eng mashhur takliflar. Mijozlarimiz tomonidan eng ko'p tanlanadiganlar.
           </div>
         </div>
-        <a href="https://t.me/embassyburgers" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--red hover:opacity-90" style={{ padding: "11px 18px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
-          Buyurtma
-        </a>
-      </div>
-    </div>
-  </div>;
-
-
-const LandingDesktopTopBurgers = () =>
-<section id="menu" style={{ background: "var(--bg)", padding: "120px 0" }}>
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
-      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
-        <div>
-          <SectionEyebrow>Selection · 2026</SectionEyebrow>
-          <SectionTitle accent="Burgerlar">Eng Sevimli</SectionTitle>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+          {topItems.map((b) => <TopBurgerCard key={b.id || b.name} b={b} />)}
         </div>
-        <div style={{ maxWidth: 360, fontSize: 14, color: "var(--silver)", lineHeight: 1.6 }}>
-          To'rt davlatdan to'rt klassik. Har biri o'z mamlakatining oshxona qadriyatlarini hurmat qiladi.
+        <div style={{ marginTop: 56, textAlign: "center" }}>
+          <Link href="/menu" className="eob-btn eob-btn--outline" style={{ padding: "16px 36px", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
+            Barchasini ko'r · {totalItems} ta mahsulot →
+          </Link>
         </div>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
-        {TOP_BURGERS.map((b) => <TopBurgerCard key={b.name} b={b} />)}
-      </div>
-      <div style={{ marginTop: 56, textAlign: "center" }}>
-        <Link href="/menu" className="eob-btn eob-btn--outline" style={{ padding: "16px 36px", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
-          Barchasini ko'r · 24 ta mahsulot →
-        </Link>
-      </div>
-    </div>
-  </section>;
+    </section>
+  );
+};
 
 
 const FeatureBlock = ({ num, title, desc, icon }) =>
