@@ -9,48 +9,70 @@ import menuData from "@/lib/data.json";
 
 export const LandingDesktopNavbar = () => {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const NAV_ITEMS = [
+    { name: "Menyu", href: "/menu" },
+    { name: "Filiallar", href: "/#branches" },
+    { name: "Biz haqimizda", href: "/#about" },
+  ];
   return (
-    <div style={{
-      position: "sticky", top: 0, zIndex: 10,
-      background: "rgba(13,13,13,0.85)",
-      backdropFilter: "blur(12px)",
-      borderBottom: "1px solid var(--hairline-soft)"
-    }}>
-      <div style={{
-        maxWidth: 1280, margin: "0 auto",
-        padding: "20px 64px",
-        display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center", gap: 40
-      }}>
-        <Link href="/" style={{ textDecoration: "none" }} className="hover:opacity-80 transition-opacity">
-          <EobLogo size={20} />
-        </Link>
-        <nav style={{ display: "flex", gap: 36, justifyContent: "center", flexWrap: "nowrap", margin: "0px", padding: "0px 0px 0px 38px" }}>
-          {[
-            { name: "Menyu", href: "/menu" },
-            { name: "Filiallar", href: "/#branches" },
-            { name: "Biz haqimizda", href: "/#about" }
-          ].map((item, i) => {
-            const isActive = pathname === item.href || (item.href.startsWith('/#') && pathname === '/');
-            return (
-              <Link key={item.name} href={item.href} style={{
-                fontFamily: "var(--sans)", fontSize: 12, letterSpacing: "0.22em",
-                textTransform: "uppercase", color: isActive ? "var(--gold)" : "var(--silver)",
-                textDecoration: "none", fontWeight: 500, whiteSpace: "nowrap"
-              }} className="hover:text-gold transition-colors">{item.name}</Link>
-            );
-          })}
-        </nav>
-        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 20, flexWrap: "nowrap" }}>
-          <a href="tel:+998781130773" style={{
-            fontFamily: "var(--mono)", fontSize: 13, color: "var(--silver)",
-            textDecoration: "none", letterSpacing: "0.05em", whiteSpace: "nowrap"
-          }}>+998 78 113 07 73</a>
-          <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "12px 22px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", whiteSpace: "nowrap", textDecoration: "none" }}>
-            Buyurtma qilish
-          </a>
+    <>
+      <div style={{ position: "sticky", top: 0, zIndex: 10, background: "rgba(13,13,13,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid var(--hairline-soft)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "20px 64px", display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center", gap: 40 }}>
+          <Link href="/" style={{ textDecoration: "none" }} className="hover:opacity-80 transition-opacity">
+            <EobLogo size={20} />
+          </Link>
+          {/* Desktop nav */}
+          <nav className="hidden md:flex" style={{ gap: 36, justifyContent: "center", flexWrap: "nowrap", margin: "0px", padding: "0px 0px 0px 38px" }}>
+            {NAV_ITEMS.map((item) => {
+              const isActive = pathname === item.href || (item.href.startsWith("/#") && pathname === "/");
+              return (
+                <Link key={item.name} href={item.href} style={{ fontFamily: "var(--sans)", fontSize: 12, letterSpacing: "0.22em", textTransform: "uppercase", color: isActive ? "var(--gold)" : "var(--silver)", textDecoration: "none", fontWeight: 500, whiteSpace: "nowrap" }} className="hover:text-gold transition-colors">
+                  {item.name}
+                </Link>
+              );
+            })}
+          </nav>
+          {/* Mobile nav placeholder (keeps grid balanced) */}
+          <div className="block md:hidden" />
+          {/* Desktop right side */}
+          <div className="hidden md:flex" style={{ justifyContent: "flex-end", alignItems: "center", gap: 20, flexWrap: "nowrap" }}>
+            <a href="tel:+998781130773" style={{ fontFamily: "var(--mono)", fontSize: 13, color: "var(--silver)", textDecoration: "none", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>+998 78 113 07 73</a>
+            <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "12px 22px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", whiteSpace: "nowrap", textDecoration: "none" }}>
+              Buyurtma qilish
+            </a>
+          </div>
+          {/* Mobile right side */}
+          <div className="flex md:hidden" style={{ alignItems: "center", gap: 10, justifyContent: "flex-end" }}>
+            <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold" style={{ padding: "9px 14px", fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", textDecoration: "none" }}>
+              Buyurtma
+            </a>
+            <button onClick={() => setMenuOpen(true)} style={{ background: "transparent", border: "1px solid var(--hairline)", width: 36, height: 36, color: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 6 H21 M3 12 H21 M3 18 H21" /></svg>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Mobile drawer overlay */}
+      <div onClick={() => setMenuOpen(false)} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", backdropFilter: "blur(8px)", zIndex: 100, opacity: menuOpen ? 1 : 0, pointerEvents: menuOpen ? "auto" : "none", transition: "opacity 0.3s ease" }} />
+      <div style={{ position: "fixed", top: 0, left: 0, bottom: 0, width: 280, background: "#080604", borderRight: "1px solid var(--hairline-soft)", zIndex: 101, transform: menuOpen ? "translateX(0)" : "translateX(-100%)", transition: "transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1)", display: "flex", flexDirection: "column", padding: "20px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 36 }}>
+          <EobLogo size={14} />
+          <button onClick={() => setMenuOpen(false)} style={{ background: "transparent", border: "none", color: "var(--silver)", cursor: "pointer", fontSize: 26, lineHeight: 1, padding: 0 }}>×</button>
+        </div>
+        <nav style={{ display: "flex", flexDirection: "column" }}>
+          {NAV_ITEMS.map(item => (
+            <Link key={item.name} href={item.href} onClick={() => setMenuOpen(false)} style={{ fontFamily: "var(--sans)", fontSize: 12, letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--silver)", textDecoration: "none", padding: "18px 0", borderBottom: "1px solid var(--hairline-soft)", display: "block" }}>
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+        <div style={{ marginTop: "auto", paddingTop: 24 }}>
+          <a href="tel:+998781130773" style={{ fontFamily: "var(--mono)", fontSize: 13, color: "var(--silver)", textDecoration: "none", letterSpacing: "0.05em" }}>+998 78 113 07 73</a>
+        </div>
+      </div>
+    </>
   );
 };
 

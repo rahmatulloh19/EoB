@@ -134,3 +134,18 @@ a:hover {
 a:active {
   opacity: 0.6;
 }
+
+/* Menu page responsive */
+@layer utilities {
+  @media (max-width: 768px) {
+    .eob-menu-grid         { grid-template-columns: 1fr 1fr !important; }
+    .eob-menu-section      { padding: 36px 20px 80px !important; }
+    .eob-menu-header-grid  { grid-template-columns: 1fr !important; }
+    .eob-menu-header-pad   { padding: 40px 20px 32px !important; }
+    .eob-filter-pad        { padding: 0 20px !important; max-width: 100% !important; }
+    .eob-max-w             { padding-left: 20px !important; padding-right: 20px !important; }
+  }
+  @media (max-width: 480px) {
+    .eob-menu-grid { grid-template-columns: 1fr !important; }
+  }
+}

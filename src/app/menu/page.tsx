@@ -17,9 +17,9 @@ const MenuDesktopHeader = () => {
   };
 
   return (
-    <section style={{ position: "relative", overflow: "hidden", padding: "80px 64px 60px", borderBottom: "1px solid var(--hairline-soft)" }}>
+    <section className="eob-menu-header-pad" style={{ position: "relative", overflow: "hidden", padding: "80px 64px 60px", borderBottom: "1px solid var(--hairline-soft)" }}>
       <div style={{ position: "absolute", top: "-30%", right: "-15%", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 65%)", pointerEvents: "none" }} />
-      <div style={{ position: "relative", maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 60, alignItems: "flex-end" }}>
+      <div className="eob-menu-header-grid" style={{ position: "relative", maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 60, alignItems: "flex-end" }}>
         <div>
           <div className="eob-label" style={{ marginBottom: 18, display: "flex", alignItems: "center", gap: 14 }}>
             <span style={{ width: 32, height: 1, background: "var(--gold)" }} />
@@ -228,7 +228,7 @@ const MenuDesktopFilters = ({ activeCategory, onSelect, categories, sortBy, setS
 
   return (
     <div style={{ position: "sticky", top: 73, zIndex: 9, background: "rgba(13,13,13,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid var(--hairline-soft)" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div className="eob-filter-pad" style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         
         <div style={{ flex: 1, position: "relative", overflow: "hidden", marginRight: 40 }}>
           {/* Custom Webkit scrollbar hidden via style, but scrollable */}
@@ -395,8 +395,8 @@ const MenuContent = () => {
   return (
     <>
       <MenuDesktopFilters activeCategory={activeCategory} onSelect={scrollToCategory} categories={sortedCategories} sortBy={sortBy} setSortBy={setSortBy} onOpenFilter={() => setIsFilterOpen(true)} />
-      <section style={{ padding: "60px 64px 100px" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", flexDirection: "column", gap: 80 }}>
+      <section className="eob-menu-section" style={{ padding: "60px 64px 100px" }}>
+        <div className="eob-max-w" style={{ maxWidth: 1280, margin: "0 auto", display: "flex", flexDirection: "column", gap: 80 }}>
           {sortedCategories.map((cat, index) => (
             <div key={cat.id} id={`category-${cat.id}`} style={{ scrollMarginTop: "140px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 32 }}>
@@ -407,7 +407,7 @@ const MenuContent = () => {
                   </h3>
                 </div>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
+              <div className="eob-menu-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
                 {cat.products.map(b => <MenuItemCard key={b.id} b={b} />)}
               </div>
             </div>
