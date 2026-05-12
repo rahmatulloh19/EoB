@@ -3,13 +3,15 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-inter",
+  variable: "--eob-sans",
   subsets: ["latin", "cyrillic"],
 });
 
 const playfair = Playfair_Display({
-  variable: "--font-playfair",
+  variable: "--eob-serif",
   subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {

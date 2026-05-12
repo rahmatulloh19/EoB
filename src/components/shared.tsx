@@ -9,9 +9,9 @@ export const EobLogo = ({ size = 18, color = "var(--color-gold)" }: { size?: num
             stroke={color} strokeWidth="1.2" />
       <path d="M14 14 C18 14 18 21 14 21" stroke={color} strokeWidth="1.2" fill="none" />
     </svg>
-    <div style={{ fontFamily: "var(--font-serif)", fontSize: size, letterSpacing: "0.02em", lineHeight: 1, color }}>
+    <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: size, letterSpacing: "0.02em", lineHeight: 1, color }}>
       <div style={{ fontStyle: "italic", fontWeight: 500 }}>Embassy</div>
-      <div style={{ fontSize: size * 0.55, letterSpacing: "0.32em", textTransform: "uppercase", color: "var(--color-silver)", marginTop: 2, fontFamily: "var(--font-sans)", fontWeight: 500 }}>
+      <div style={{ fontSize: size * 0.55, letterSpacing: "0.32em", textTransform: "uppercase", color: "var(--color-silver)", marginTop: 2, fontFamily: "var(--eob-sans), 'Inter', sans-serif", fontWeight: 500 }}>
         of Burgers
       </div>
     </div>
@@ -68,17 +68,16 @@ export const SectionEyebrow = ({ children, align = "left" }: { children: React.R
 
 export const SectionTitle = ({ children, accent, align = "left", size = 56 }: { children: React.ReactNode, accent?: string, align?: "left" | "center" | "right", size?: number }) => (
   <h2 style={{
-    fontFamily: "var(--font-serif)",
+    fontFamily: "var(--eob-serif), 'Playfair Display', serif",
     fontWeight: 500,
     color: "var(--color-white, #FFF)",
-    fontSize: size,
+    fontSize: `clamp(32px, 5vw, ${size}px)`,
     lineHeight: 1.05,
     letterSpacing: "-0.01em",
     margin: 0,
     textAlign: align,
   }}>
-    {children}
-    {accent && <span className="eob-gold-word"> {accent}</span>}
+    {children}{" "}{accent && <span className="eob-gold-word">{accent}</span>}
   </h2>
 );
 

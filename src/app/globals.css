@@ -11,9 +11,9 @@
   --color-silver: #D1D5DB;
   --color-muted: #7A7670;
   
-  --font-serif: var(--font-playfair);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-serif: var(--eob-serif);
+  --font-sans: var(--eob-sans);
+  --font-mono: var(--eob-mono);
 }
 
 :root {
@@ -40,12 +40,11 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--eob-sans), "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   
-  --serif: var(--font-playfair);
-  --sans: var(--font-inter);
-  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --eob-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 @layer components {
@@ -65,6 +64,15 @@ body {
   .eob-btn:active {
     transform: scale(0.98);
   }
+
+  .eob-nav-link {
+    @apply px-4 py-2 border border-transparent transition-all duration-300;
+  }
+
+  .eob-nav-link:hover {
+    border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
+  }
   
   .eob-btn--gold {
     @apply bg-gold text-[#1a1408] hover:bg-gold-light;
@@ -75,7 +83,8 @@ body {
   }
   
   .eob-btn--outline {
-    @apply bg-transparent text-gold border border-gold;
+    @apply bg-transparent text-gold;
+    border: 1px solid #D4AF37 !important;
   }
   
   .eob-btn--outline-light {
@@ -106,7 +115,17 @@ body {
   }
 
   .eob-gold-word {
-    @apply text-gold italic;
+    @apply italic;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    padding-right: 0.08em;
+    margin: 0;
+    /* Premium Font Features */
+    font-feature-settings: "salt" 1, "ss01" 1, "swsh" 1;
+    letter-spacing: -0.02em;
+    line-height: 0.98;
   }
 
   .eob-stat {
