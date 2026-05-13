@@ -1,17 +1,19 @@
 "use client";
 import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/navigation";
+import { useTranslations } from "next-intl";
 import branchesData from "@/lib/branches.json";
 import { EobLogo, BurgerIcon, ImagePlaceholder, SectionEyebrow, SectionTitle, StarRating } from "./shared";
 import menuData from "@/lib/data.json";
+import LanguageSwitcher from "./LanguageSwitcher";
 /* Embassy of Burgers — Landing Page (Desktop, 1440 wide) */
 
 export const LandingDesktopNavbar = () => {
+  const t = useTranslations('nav');
   const pathname = usePathname();
   return (
     <div style={{
-      position: "sticky", top: 0, zIndex: 1000,
+      position: "fixed", top: 0, left: 0, width: "100%", zIndex: 1000,
       background: "rgba(13,13,13,0.85)",
       backdropFilter: "blur(12px)",
       borderBottom: "1px solid var(--hairline-soft)"
@@ -26,9 +28,9 @@ export const LandingDesktopNavbar = () => {
         </Link>
         <nav style={{ display: "flex", gap: 36, justifyContent: "center", flexWrap: "nowrap", margin: "0px", padding: "0px 0px 0px 38px" }}>
           {[
-            { name: "MENYU", href: "/menu" },
-            { name: "FILIALLAR", href: "/#branches" },
-            { name: "BIZ HAQIMIZDA", href: "/#about" }
+            { name: t('menu'), href: "/menu" },
+            { name: t('branches'), href: "/#branches" },
+            { name: t('about'), href: "/#about" }
           ].map((item, i) => {
             const isActive = pathname === item.href || (pathname === '/' && item.href === '/#menu');
             return (
@@ -46,12 +48,13 @@ export const LandingDesktopNavbar = () => {
           })}
         </nav>
         <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 20, flexWrap: "nowrap" }}>
+          <LanguageSwitcher />
           <a href="tel:+998781130773" style={{
             fontFamily: "var(--eob-mono)", fontSize: 13, color: "var(--silver)",
             textDecoration: "none", letterSpacing: "0.05em", whiteSpace: "nowrap"
           }}>+998 78 113 07 73</a>
           <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "12px 22px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", whiteSpace: "nowrap", textDecoration: "none" }}>
-            Buyurtma qilish
+            {t('order')}
           </a>
         </div>
       </div>
@@ -60,7 +63,9 @@ export const LandingDesktopNavbar = () => {
 };
 
 
-const LandingDesktopHero = () =>
+const LandingDesktopHero = () => {
+  const t = useTranslations('hero');
+  return (
 <section style={{
   position: "relative", overflow: "hidden",
   background: "var(--bg)",
@@ -96,7 +101,7 @@ const LandingDesktopHero = () =>
     display: "flex", alignItems: "center", gap: 10
   }}>
       <span style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--gold)", animation: "eobPulse 2s ease-in-out infinite" }} />
-      Live · № 001 · Toshkent
+      {t('live_tag')}
     </div>
     <style>{`@keyframes eobPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }`}</style>
 
@@ -108,25 +113,25 @@ const LandingDesktopHero = () =>
       <div style={{ maxWidth: 640 }}>
         <div className="eob-label" style={{ marginBottom: 28, display: "flex", alignItems: "center", gap: 14 }}>
           <span style={{ width: 32, height: 1, background: "var(--gold)" }} />
-          <span>EST. 2019 · Toshkent · 12 Filial</span>
+          <span>{t('est')}</span>
         </div>
         <h1 style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontWeight: 500, fontSize: "clamp(56px, 10vw, 108px)", lineHeight: 0.98, letterSpacing: "-0.02em", color: "var(--white)", margin: 0 }}>
-          Dunyoni<br />
-          <span className="eob-gold-word">Tatib</span> Ko'r
+          {t('title_part1')}<br />
+          <span className="eob-gold-word">{t('title_accent')}</span> {t('title_part2')}
         </h1>
         <p style={{ fontFamily: "var(--eob-sans), 'Inter', sans-serif", fontSize: 18, lineHeight: 1.6, color: "var(--silver)", marginTop: 28, maxWidth: 460 }}>
-          Har bir burger — alohida mamlakatning ta'mi. Embassy of Burgers — bu oshxona elchixonasi, har bir buyurtma diplomatik missiya.
+          {t('subtitle')}
         </p>
         <div style={{ display: "flex", gap: 14, marginTop: 40 }}>
           <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
-            BUYURTMA QILISH <span style={{ fontSize: 14 }}>→</span>
+            {t('cta_order')} <span style={{ fontSize: 14 }}>→</span>
           </a>
           <Link href="/menu" className="eob-btn eob-btn--outline" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", border: "1px solid #D4AF37" }}>
-            MENYUNI KO'R
+            {t('cta_menu')}
           </Link>
         </div>
         <div style={{ display: "flex", gap: 36, marginTop: 48, paddingTop: 28, borderTop: "1px solid var(--hairline-soft)" }}>
-          {[{ k: "Yetkazib berish", v: "30–45 daqiqa" }, { k: "Ish vaqti", v: "24/7" }, { k: "Reyting", v: "4.7 / 5" }].map((i) =>
+          {[{ k: t('delivery'), v: t('delivery_time') }, { k: t('hours'), v: t('hours_val') }, { k: t('rating'), v: t('rating_val') }].map((i) =>
         <div key={i.k}>
               <div style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--muted)" }}>{i.k}</div>
               <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: 22, color: "var(--white)", marginTop: 6 }}>{i.v}</div>
@@ -134,136 +139,26 @@ const LandingDesktopHero = () =>
         )}
         </div>
       </div>
-
-    {/* legacy column wrapper kept for stable downstream layout but unused */}
-    <div style={{ display: "none" }}>
-      <div>
-        <div className="eob-label" style={{ marginBottom: 28, display: "flex", alignItems: "center", gap: 14 }}>
-          <span style={{ width: 32, height: 1, background: "var(--gold)" }} />
-          <span>EST. 2019 · Toshkent · 12 Filial</span>
-        </div>
-        <h1 style={{
-          fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontWeight: 500,
-          fontSize: 108, lineHeight: 0.98, letterSpacing: "-0.02em",
-          color: "var(--white)", margin: 0
-        }}>
-          Dunyoni<br />
-          <span style={{ fontStyle: "italic", color: "var(--gold)" }}>Tatib</span> Ko'r
-        </h1>
-        <p style={{
-          fontFamily: "var(--eob-sans), 'Inter', sans-serif", fontSize: 18, lineHeight: 1.6,
-          color: "var(--silver)", marginTop: 32, maxWidth: 460
-        }}>
-          Har bir burger — alohida mamlakatning ta'mi. Embassy of Burgers — bu oshxona elchixonasi, bu yerda har bir buyurtma diplomatik missiya.
-        </p>
-        <div style={{ display: "flex", gap: 14, marginTop: 44 }}>
-          <button className="eob-btn eob-btn--gold" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-            Buyurtma qilish
-            <span style={{ fontSize: 14 }}>→</span>
-          </button>
-          <button className="eob-btn eob-btn--outline" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-            Menyuni ko'r
-          </button>
-        </div>
-        {/* meta row */}
-        <div style={{ display: "flex", gap: 36, marginTop: 56, paddingTop: 28, borderTop: "1px solid var(--hairline-soft)" }}>
-          {[
-          { k: "Yetkazib berish", v: "30–45 daqiqa" },
-          { k: "Ish vaqti", v: "24/7" },
-          { k: "Reyting", v: "4.7 / 5" }].
-          map((i) =>
-          <div key={i.k}>
-              <div style={{ fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--muted)" }}>{i.k}</div>
-              <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: 22, color: "var(--white)", marginTop: 6 }}>{i.v}</div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* hidden legacy visual (replaced by full-bleed video above) */}
-      <div style={{ display: "none" }}>
-        <div style={{
-          position: "absolute", width: 540, height: 540, borderRadius: "50%",
-          border: "1px solid var(--hairline)"
-        }} />
-        <div style={{
-          position: "absolute", width: 460, height: 460, borderRadius: "50%",
-          border: "1px dashed var(--hairline-soft)",
-          animation: "none"
-        }} />
-        <div style={{
-          width: 380, height: 380, borderRadius: "50%",
-          background: "#14110c",
-          border: "1px solid var(--hairline)",
-          overflow: "hidden",
-          boxShadow: "0 30px 80px rgba(0,0,0,0.6), inset 0 0 60px rgba(212,175,55,0.06)",
-          position: "relative"
-        }}>
-          <video
-            src="/assets/burger-hero.mp4"
-            autoPlay loop muted playsInline
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-          
-          {/* gold rim tint */}
-          <div style={{
-            position: "absolute", inset: 0, borderRadius: "50%",
-            boxShadow: "inset 0 0 60px rgba(212,175,55,0.18), inset 0 0 0 1px rgba(212,175,55,0.25)",
-            pointerEvents: "none"
-          }} />
-          {/* bottom vignette for caption */}
-          <div style={{
-            position: "absolute", left: 0, right: 0, bottom: 0, height: 90,
-            background: "linear-gradient(180deg, transparent 0%, rgba(13,13,13,0.85) 100%)",
-            pointerEvents: "none"
-          }} />
-          <div style={{
-            position: "absolute", bottom: 18, left: 0, right: 0, textAlign: "center",
-            fontFamily: "var(--eob-mono)", fontSize: 9, letterSpacing: "0.3em",
-            color: "rgba(212,175,55,0.7)", textTransform: "uppercase"
-          }}>
-            № 001 · Live
-          </div>
-        </div>
-        {/* corner stamps */}
-        <div style={{
-          position: "absolute", top: 20, right: 20,
-          width: 90, height: 90, borderRadius: "50%",
-          border: "1px solid var(--gold)", color: "var(--gold)",
-          fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontStyle: "italic", fontSize: 14,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          textAlign: "center", lineHeight: 1.1, transform: "rotate(8deg)"
-        }}>
-          Embassy<br />Seal
-        </div>
-        <div style={{
-          position: "absolute", bottom: 30, left: 0,
-          fontFamily: "var(--eob-mono)", fontSize: 10, color: "var(--muted)",
-          letterSpacing: "0.2em", textTransform: "uppercase"
-        }}>
-          № 001 · Toshkent
-        </div>
-      </div>
     </div>
-    </div>
-  </section>;
+  </section>
+);
+};
 
 
-const LandingDesktopStats = () =>
-<section style={{ background: "var(--bg)", borderTop: "1px solid var(--hairline-soft)", borderBottom: "1px solid var(--hairline-soft)" }}>
-    <div style={{
-    maxWidth: 1280, margin: "0 auto",
-    padding: "44px 64px",
-    display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40
-  }}>
+const LandingDesktopStats = () => {
+  const t = useTranslations('stats');
+  return (
+<section style={{ padding: "100px 0", background: "var(--bg)", borderBottom: "1px solid var(--hairline-soft)" }}>
+    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
       {[
-    { n: "12", l: "Filial Toshkent bo'ylab" },
-    { n: "24/7", l: "Yetkazib berish" },
-    { n: "50K+", l: "Doimiy mijoz" },
-    { n: "4.7", l: "O'rtacha reyting" }].
+    { n: "12", l: t('branches') },
+    { n: t('min_val'), l: t('delivery'), s: t('min') },
+    { n: "24/7", l: t('support') },
+    { n: "4.7", l: t('rating') }].
     map((s) =>
     <div key={s.n} className="eob-stat">
           <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: 44, color: "var(--white)", lineHeight: 1, fontWeight: 500 }}>
-            {s.n}
+            {s.n} {s.s && <span style={{ fontSize: 16, color: "var(--gold)", verticalAlign: "top", marginLeft: 4 }}>{s.s}</span>}
           </div>
           <div style={{ marginTop: 8, fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--muted)" }}>
             {s.l}
@@ -271,11 +166,14 @@ const LandingDesktopStats = () =>
         </div>
     )}
     </div>
-  </section>;
+  </section>
+);
+};
 
 
 const TopBurgerCard = ({ b, featured = false }: { b: any, featured?: boolean }) => {
-  const priceFormatted = new Intl.NumberFormat("ru-RU").format(parseFloat(b.price || "0")).replace(",", " ");
+  const tc = useTranslations('common');
+  const priceFormatted = Math.floor(b.price).toLocaleString("ru-RU").replace(/,/g, " ");
   const [imgError, setImgError] = React.useState(false);
   
   return (
@@ -297,13 +195,13 @@ const TopBurgerCard = ({ b, featured = false }: { b: any, featured?: boolean }) 
         </div>
         <div style={{ marginTop: 22, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
-            <div style={{ fontSize: 10, letterSpacing: "0.15em", color: "var(--muted)", textTransform: "uppercase", marginBottom: 4 }}>NARXI</div>
+            <div style={{ fontSize: 10, letterSpacing: "0.15em", color: "var(--muted)", textTransform: "uppercase", marginBottom: 4 }}>{tc('price')}</div>
             <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: 24, color: "var(--gold)", lineHeight: 1 }}>
-              {priceFormatted} <span style={{ fontSize: 12, color: "var(--muted)", letterSpacing: "0.05em", fontWeight: 400 }}>so'm</span>
+              {priceFormatted} <span style={{ fontSize: 12, color: "var(--muted)", letterSpacing: "0.05em", fontWeight: 400 }}>{tc('currency')}</span>
             </div>
           </div>
           <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--red hover:opacity-90" style={{ padding: "10px 16px", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none" }}>
-            BUYURTMA
+            {tc('order_short')}
           </a>
         </div>
       </div>
@@ -313,85 +211,86 @@ const TopBurgerCard = ({ b, featured = false }: { b: any, featured?: boolean }) 
 
 
 const LandingDesktopTopBurgers = () => {
-  const topItems = menuData.flatMap(cat => cat.products).slice(0, 4);
-  const totalItems = menuData.flatMap(cat => cat.products).length;
-
+  const t = useTranslations('sections');
+  const tc = useTranslations('common');
   return (
-    <section id="menu" style={{ background: "var(--bg)", padding: "120px 0" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
-          <div>
-            <SectionEyebrow>Selection · 2026</SectionEyebrow>
-            <SectionTitle accent="Burgerlar">Eng Sevimli</SectionTitle>
-          </div>
-          <div style={{ maxWidth: 360, fontSize: 14, color: "var(--silver)", lineHeight: 1.6 }}>
-            Elchixona menyusidan eng mashhur takliflar. Mijozlarimiz tomonidan eng ko'p tanlanadiganlar.
-          </div>
+<section id="menu" style={{ background: "var(--bg)", padding: "120px 0" }}>
+    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
+      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
+        <div>
+          <SectionEyebrow>{t('menu_eyebrow')}</SectionEyebrow>
+          <SectionTitle accent={t('menu_accent')}>{t('menu_title')}</SectionTitle>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
-          {topItems.map((b) => <TopBurgerCard key={b.id || b.name} b={b} />)}
-        </div>
-        <div style={{ marginTop: 56, textAlign: "center" }}>
-          <Link href="/menu" className="eob-btn eob-btn--outline" style={{ padding: "16px 36px", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
-            BARCHASINI KO'R · {totalItems} TA MAHSULOT →
-          </Link>
-        </div>
+        <Link href="/menu" className="eob-btn eob-btn--outline" style={{ padding: "16px 36px", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
+          {t('menu_cta')} →
+        </Link>
       </div>
-    </section>
-  );
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+        {menuData.flatMap(cat => cat.products).slice(0, 4).map((b) => <TopBurgerCard key={b.id || b.name} b={b} />)}
+      </div>
+    </div>
+  </section>
+);
 };
 
 
-const FeatureBlock = ({ num, title, desc, icon }) =>
-<div className="eob-card" style={{ padding: "36px 32px", position: "relative" }}>
-    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 24 }}>
+const FeatureBlock = ({ num, title, desc, icon }: { num: string, title: string, desc: string, icon: React.ReactNode }) =>
+<div className="eob-card" style={{ padding: "36px 32px", position: "relative", display: "flex", flexDirection: "column", height: "100%" }}>
+    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 28 }}>
       <div style={{
-      width: 56, height: 56, borderRadius: "50%",
+      width: 52, height: 52, borderRadius: "50%",
       border: "1px solid var(--gold)", color: "var(--gold)",
       display: "flex", alignItems: "center", justifyContent: "center",
-      background: "rgba(212,175,55,0.04)"
+      background: "rgba(212,175,55,0.06)",
+      transition: "all 300ms ease"
     }}>
         {icon}
       </div>
-      <div style={{ fontFamily: "var(--eob-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: "0.15em" }}>
+      <div style={{ fontFamily: "var(--eob-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.2em" }}>
         {num}
       </div>
     </div>
-    <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: 22, color: "var(--white)", fontWeight: 500, lineHeight: 1.2 }}>
+    <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: 22, color: "var(--white)", fontWeight: 500, lineHeight: 1.2, marginBottom: 16 }}>
       {title}
     </div>
-    <div style={{ marginTop: 14, fontSize: 13, lineHeight: 1.6, color: "var(--silver)" }}>
+    <div style={{ fontSize: 14, lineHeight: 1.6, color: "var(--silver)", flex: 1 }}>
       {desc}
     </div>
   </div>;
 
 
-const LandingDesktopWhy = () =>
+const LandingDesktopWhy = () => {
+  const t = useTranslations('sections');
+  return (
 <section style={{ background: "linear-gradient(180deg, #0D0D0D 0%, #100E0A 100%)", padding: "120px 0" }}>
     <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
       <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
-        <SectionEyebrow align="center">Bizning Standart</SectionEyebrow>
-        <SectionTitle accent="Embassy?" align="center">Nima uchun</SectionTitle>
+        <SectionEyebrow align="center">{t('why_eyebrow')}</SectionEyebrow>
+        <SectionTitle accent={t('why_accent')} align="center">{t('why_title')}</SectionTitle>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
-        <FeatureBlock num="01" title="Toza ingredientlar" desc="Mahalliy fermerlar bilan to'g'ridan-to'g'ri shartnoma. Konservantlar yo'q."
+        <FeatureBlock num="01" title={t('why_feat1_title')} desc={t('why_feat1_desc')}
       icon={<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z" /><path d="M9 12 L11 14 L15 10" /></svg>} />
       
-        <FeatureBlock num="02" title="Tezkor yetkazib berish" desc="O'rtacha 30–45 daqiqa. 12 filial — har bir tumandan yaqin."
+        <FeatureBlock num="02" title={t('why_feat2_title')} desc={t('why_feat2_desc')}
       icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="12" r="9" /><path d="M12 7 V12 L15 14" /></svg>} />
       
-        <FeatureBlock num="03" title="Kuni bilan tayyor non" desc="Brioche bulochkalari har kuni saharda o'z pekarlikimizda pishiriladi."
+        <FeatureBlock num="03" title={t('why_feat3_title')} desc={t('why_feat3_desc')}
       icon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M4 14 C4 9 8 6 12 6 C16 6 20 9 20 14 Z" /><path d="M4 14 H20 V18 H4 Z" /><path d="M8 10 L9 12 M12 9 L13 11 M16 10 L17 12" /></svg>} />
       
-        <FeatureBlock num="04" title="12 qulay manzil" desc="Toshkentning har bir tumanida konsulligimiz bor. Sizga eng yaqinini toping."
-      icon={<svg width="20" height="24" viewBox="0 0 20 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M10 22 C10 22 2 14 2 9 A8 8 0 0 1 18 9 C18 14 10 22 10 22 Z" /><circle cx="10" cy="9" r="2.5" /></svg>} />
+        <FeatureBlock num="04" title={t('why_feat4_title')} desc={t('why_feat4_desc')}
+      icon={<svg width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M10 22 C10 22 2 14 2 9 A8 8 0 0 1 18 9 C18 14 10 22 10 22 Z" /><circle cx="10" cy="9" r="2.5" /></svg>} />
       
       </div>
     </div>
-  </section>;
-
+  </section>
+);
+};
+ 
 
 const LandingDesktopBranches = () => {
+  const t = useTranslations('sections');
+  const tc = useTranslations('common');
   const getBranchStatus = (b: any) => {
     if (b.hours === "24/7") return true;
     const now = new Date();
@@ -418,29 +317,10 @@ const LandingDesktopBranches = () => {
         const x = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a)) * Math.cos(toRad(c)) * Math.sin(dLng / 2) ** 2;
         return 2 * R * Math.asin(Math.sqrt(x));
       };
-      const isBranchOpen = (branch: any) => {
-        if (branch.hours === "24/7") return true;
-        
-        const now = new Date();
-        const hour = now.getHours();
-        
-        // Parse "10:00 - 02:00"
-        const parts = branch.hours.split("-").map((s: string) => s.trim());
-        if (parts.length !== 2) return true;
-        
-        const startHour = parseInt(parts[0].split(":")[0]);
-        const endHour = parseInt(parts[1].split(":")[0]);
-        
-        if (endHour < startHour) {
-          // Crosses midnight
-          return hour >= startHour || hour < endHour;
-        }
-        return hour >= startHour && hour < endHour;
-      };
 
       const withDistance = branchesData.map(branch => {
         const d = dist(lat, lng, parseFloat(branch.latitude as unknown as string), parseFloat(branch.longitude as unknown as string));
-        return { ...branch, km: d, is_actually_open: isBranchOpen(branch) };
+        return { ...branch, km: d, is_actually_open: getBranchStatus(branch) };
       });
       
       withDistance.sort((a, b) => a.km - b.km);
@@ -451,7 +331,7 @@ const LandingDesktopBranches = () => {
 
     if (!navigator.geolocation) {
       setStatus("error");
-      setErrorMsg("Geolokatsiya qo'llab-quvvatlanmaydi");
+      setErrorMsg(t('geo_not_supported'));
       return;
     }
 
@@ -459,7 +339,7 @@ const LandingDesktopBranches = () => {
       (pos) => processLocation(pos.coords.latitude, pos.coords.longitude),
       (err) => {
         setStatus("error");
-        setErrorMsg(err.code === 1 ? "Ruxsat berilmadi" : "Manzilni aniqlab bo'lmadi");
+        setErrorMsg(err.code === 1 ? t('geo_denied') : t('geo_error'));
       },
       { enableHighAccuracy: true, timeout: 5000 }
     );
@@ -470,8 +350,8 @@ const LandingDesktopBranches = () => {
     <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "flex-end", marginBottom: 56, gap: 40 }}>
         <div>
-          <SectionEyebrow>{branchesData.length} ta filial · Toshkent</SectionEyebrow>
-          <SectionTitle accent="Filial">Sizga Eng Yaqin</SectionTitle>
+          <SectionEyebrow>{branchesData.length} {t('branches_eyebrow')}</SectionEyebrow>
+          <SectionTitle accent={t('branches_accent')}>{t('branches_title')}</SectionTitle>
         </div>
         <div style={{ display: "flex", gap: 12, alignItems: "center", position: "relative" }}>
           {status === "error" &&
@@ -484,10 +364,10 @@ const LandingDesktopBranches = () => {
               style={{ padding: "13px 20px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", opacity: status === "locating" ? 0.6 : 1, cursor: status === "locating" ? "wait" : "pointer" }}>
               
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 22 C12 22 4 14 4 9 A8 8 0 0 1 20 9 C20 14 12 22 12 22 Z" /><circle cx="12" cy="9" r="2.5" /></svg>
-            {status === "locating" ? "Aniqlanmoqda…" : "Eng yaqin filialni top"}
+            {status === "locating" ? t('branches_locating') : t('branches_find')}
           </button>
           <a href="https://yandex.uz/maps/" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--outline-light hover:opacity-80" style={{ padding: "13px 18px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", border: "1px solid rgba(255,255,255,0.2)" }}>
-            Xaritada
+            {t('branches_map')}
           </a>
         </div>
       </div>
@@ -496,7 +376,7 @@ const LandingDesktopBranches = () => {
         overflow: "hidden", 
         maxHeight: showAll ? 4000 : 760, 
         transition: "max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1)",
-        margin: "0 -8px", padding: "0 8px" // X tomondan qirqilmasligi uchun (masalan shadow)
+        margin: "0 -8px", padding: "0 8px"
       }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, paddingTop: 16, paddingBottom: showAll ? 0 : 40 }}>
           {(showAll ? branches : branches.slice(0, 6)).map((b, i) => {
@@ -515,13 +395,13 @@ const LandingDesktopBranches = () => {
               }}>
             {b.km !== undefined && i < 3 &&
                 <div style={{ position: "absolute", top: -10, left: 24, background: isNearest ? "var(--gold)" : "var(--card)", color: isNearest ? "#1a1408" : "var(--gold)", border: isNearest ? "none" : "1px solid rgba(212,175,55,0.4)", fontSize: 9, letterSpacing: "0.22em", textTransform: "uppercase", padding: "4px 10px", fontWeight: 600 }}>
-                {i === 0 ? "Eng yaqin" : `${i + 1}-yaqin`} · {b.km.toFixed(1)} km
+                {i === 0 ? t('nearest') : `${i + 1}-${t('near')}`} · {b.km.toFixed(1)} km
               </div>
                 }
             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 20 }}>
               <div>
                 <div style={{ fontFamily: "var(--eob-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.2em" }}>
-                  {b.km !== undefined ? `${b.km.toFixed(1)} KM UZOQLIKDA` : `№ ${String(i + 1).padStart(2, "0")}`}
+                  {b.km !== undefined ? tc('distance', { km: b.km.toFixed(1) }) : `№ ${String(i + 1).padStart(2, "0")}`}
                 </div>
                 <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: 26, color: "var(--white)", marginTop: 6, fontWeight: 500, lineHeight: 1.15 }}>
                   {b.name_uz}
@@ -534,7 +414,7 @@ const LandingDesktopBranches = () => {
                     padding: "4px 8px",
                     alignSelf: "flex-start"
                   }}>
-                {isOpen ? "OCHIQ" : "YOPIQ"}
+                {isOpen ? t('open') : t('closed')}
               </span>
             </div>
             <div style={{ borderTop: "1px solid var(--hairline-soft)", paddingTop: 16, fontSize: 13, color: "var(--silver)", lineHeight: 1.7 }}>
@@ -543,7 +423,7 @@ const LandingDesktopBranches = () => {
             </div>
             <div style={{ marginTop: 18, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <a href={`https://yandex.uz/maps/?pt=${b.longitude},${b.latitude}&z=16`} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity" style={{ fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--gold)", textDecoration: "none" }}>
-                Xaritada ko'r →
+                {t('see_on_map')} →
               </a>
               <a href="https://t.me/burgerembassy_helpbot" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" style={{ fontSize: 11, color: "var(--muted)", textDecoration: "none" }}>Telegram</a>
             </div>
@@ -570,7 +450,7 @@ const LandingDesktopBranches = () => {
                 background: "#0D0D0D", boxShadow: "0 -10px 40px rgba(13,13,13,0.9)",
                 border: "1px solid var(--gold)"
               }}>
-              Barcha {branchesData.length} ta filialni ko'r ↓
+              {t('show_all')} {branchesData.length} {t('branches_label')} ↓
             </button>
           </div>
         )}
@@ -586,12 +466,15 @@ const REVIEWS = [
 { name: "Madina T.", initials: "MT", date: "2 hafta oldin", rating: 4, text: "Le Parisien-ni sinab ko'rdim — truffle aromasi ajoyib. Filial Yunusobodda juda zamonaviy va tinch muhit." }];
 
 
-const LandingDesktopReviews = () =>
+const LandingDesktopReviews = () => {
+  const t = useTranslations('sections');
+  const tc = useTranslations('common');
+  return (
 <section style={{ background: "linear-gradient(180deg, #100E0A 0%, #0D0D0D 100%)", padding: "120px 0" }}>
     <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
       <div style={{ textAlign: "center", marginBottom: 64 }}>
-        <SectionEyebrow align="center">Mijozlardan</SectionEyebrow>
-        <SectionTitle accent="Fikri" align="center">Mijozlar</SectionTitle>
+        <SectionEyebrow align="center">{t('reviews_eyebrow')}</SectionEyebrow>
+        <SectionTitle accent={t('reviews_accent')} align="center">{t('reviews_title')}</SectionTitle>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
         {REVIEWS.map((r, i) =>
@@ -622,11 +505,11 @@ const LandingDesktopReviews = () =>
             </div>
             <div style={{ marginTop: "auto", paddingTop: 16, borderTop: "1px solid var(--hairline-soft)", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                <span style={{ fontSize: 8, color: "var(--muted)", letterSpacing: "0.1em", textTransform: "uppercase" }}>TELEGRAM</span>
+                <span style={{ fontSize: 8, color: "var(--muted)", letterSpacing: "0.1em", textTransform: "uppercase" }}>{tc('telegram').toUpperCase()}</span>
                 <span style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", letterSpacing: "0.02em" }}>@burgerembassy_uzbot</span>
               </div>
               <span style={{ fontSize: 9, color: "var(--gold)", letterSpacing: "0.1em", textTransform: "uppercase", fontWeight: 600 }}>
-                Tasdiqlangan
+                {tc('confirmed')}
               </span>
             </div>
           </div>
@@ -634,26 +517,29 @@ const LandingDesktopReviews = () =>
       </div>
       <div style={{ textAlign: "center", marginTop: 48 }}>
         <a href="https://t.me/burgerembassy_helpbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--outline hover:text-gold" style={{ padding: "14px 30px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", border: "1px solid var(--gold)" }}>
-          Izoh qoldirish · Telegram
+          {t('reviews_all')}
         </a>
       </div>
     </div>
-  </section>;
+  </section>);
+};
 
 
-const LandingDesktopAbout = () =>
+const LandingDesktopAbout = () => {
+  const t = useTranslations('sections');
+  return (
 <section id="about" style={{ background: "var(--bg)", padding: "120px 0" }}>
     <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px",
     display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
       <div>
-        <SectionEyebrow>Manifest · 2019</SectionEyebrow>
-        <SectionTitle accent="Haqimizda">Biz</SectionTitle>
+        <SectionEyebrow>{t('about_eyebrow')}</SectionEyebrow>
+        <SectionTitle accent={t('about_accent')}>{t('about_title')}</SectionTitle>
         <div style={{ marginTop: 32, fontSize: 16, lineHeight: 1.75, color: "var(--silver)" }}>
           <p style={{ margin: "0 0 18px" }}>
-            Embassy of Burgers 2019 yilda bitta oddiy g'oyadan tug'ilgan: <em style={{ color: "var(--gold)" }}>burger — bu shunchaki ovqat emas, bu madaniy elchi</em>. Har bir burger Toshkentga boshqa mamlakatdan keladi va sizga o'z hikoyasini olib keladi.
+            {t('about_p1')}
           </p>
           <p style={{ margin: 0 }}>
-            Bugun biz 12 ta filial, 24 xil burger va 50 mingdan ortiq doimiy mehmonlarga egamiz. Lekin missiya o'zgarmagan: dunyoning eng yaxshi ta'mlarini sizning shahringizga olib kelish.
+            {t('about_p2')}
           </p>
         </div>
         <div style={{ display: "flex", gap: 32, marginTop: 40 }}>
@@ -668,7 +554,7 @@ const LandingDesktopAbout = () =>
         </div>
       </div>
       <div style={{ position: "relative", height: 540 }}>
-        <ImagePlaceholder height={540} caption="EMBASSY ATMOSPHERE · 4:5" iconSize={120} />
+        <ImagePlaceholder height={540} caption={t('about_caption')} iconSize={120} />
         <div style={{
         position: "absolute", top: 30, right: 30,
         width: 130, height: 130, borderRadius: "50%",
@@ -679,16 +565,19 @@ const LandingDesktopAbout = () =>
         textAlign: "center", lineHeight: 1.2, transform: "rotate(-6deg)",
         backdropFilter: "blur(4px)"
       }}>
-          <div style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--silver)" }}>Established</div>
+          <div style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--silver)" }}>{t('about_badge_top')}</div>
           <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: 28, color: "var(--gold)", margin: "4px 0" }}>2019</div>
-          <div style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--silver)" }}>Toshkent · UZ</div>
+          <div style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--silver)" }}>{t('about_badge_bottom')}</div>
         </div>
       </div>
     </div>
-  </section>;
+  </section>);
+};
 
 
-const LandingDesktopFinalCTA = () =>
+const LandingDesktopFinalCTA = () => {
+  const t = useTranslations('sections');
+  return (
 <section style={{
   position: "relative", overflow: "hidden",
   background: "var(--bg)",
@@ -705,67 +594,87 @@ const LandingDesktopFinalCTA = () =>
     position: "relative", maxWidth: 1000, margin: "0 auto",
     padding: "140px 64px", textAlign: "center"
   }}>
-      <SectionEyebrow align="center">24/7 · Yetkazib berish · 30–45 daq</SectionEyebrow>
+      <SectionEyebrow align="center">{t('cta_eyebrow')}</SectionEyebrow>
       <h2 style={{
       fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontWeight: 500,
       fontSize: 96, lineHeight: 1, color: "var(--white)", margin: "10px 0 24px",
       letterSpacing: "-0.02em"
     }}>
-        Hoziroq <span style={{ fontStyle: "italic", color: "var(--gold)" }}>Buyurtma</span><br />Qiling
+        {t('cta_title_part1')} <span style={{ fontStyle: "italic", color: "var(--gold)" }}>{t('cta_title_accent')}</span><br />{t('cta_title_part2')}
       </h2>
       <p style={{ fontSize: 17, color: "var(--silver)", maxWidth: 540, margin: "0 auto 44px", lineHeight: 1.6 }}>
-        Yetkazib berish 30–45 daqiqa ichida. Bizning Telegram bot orqali tezkor buyurtma yoki bevosita qo'ng'iroq qiling.
+        {t('cta_subtitle')}
       </p>
       <div style={{ display: "inline-flex", gap: 14 }}>
         <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M21 4 L2 11 L9 14 L12 22 L21 4 Z" /></svg>
-          Telegram bot
+          {t('cta_bot')}
         </a>
         <a href="tel:+998781130773" className="eob-btn eob-btn--outline hover:bg-white/5" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.1em", textDecoration: "none", border: "1px solid var(--gold)" }}>
           +998 78 113 07 73
         </a>
       </div>
     </div>
-  </section>;
+  </section>
+);
+};
 
 
-export const LandingDesktopFooter = () =>
-<footer style={{ background: "#080604", padding: "64px 0 36px", borderTop: "1px solid var(--hairline-soft)" }}>
+const LandingDesktopFooter = () => {
+  const t = useTranslations('footer');
+  const tc = useTranslations('common');
+  return (
+<footer style={{ padding: "80px 0 40px", background: "#0D0D0D", borderTop: "1px solid var(--hairline-soft)" }}>
     <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr 1fr", gap: 48, marginBottom: 56 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 60 }}>
         <div>
-          <Link href="/" style={{ textDecoration: "none" }} className="hover:opacity-80 transition-opacity block w-fit">
-            <EobLogo size={20} />
-          </Link>
-          <div style={{ marginTop: 22, fontSize: 13, color: "var(--muted)", lineHeight: 1.7, maxWidth: 280 }}>
-            Embassy of Burgers — Toshkentdagi 12 filial bilan dunyoni tatib ko'rishingiz uchun oshxona elchixonasi.
+          <EobLogo size={24} />
+          <div style={{ marginTop: 24, fontSize: 14, color: "var(--muted)", maxWidth: 300, lineHeight: 1.6 }}>
+            {t('mission_desc')}
           </div>
         </div>
-        {[
-      { t: "Sayt", l: [{ name: "Bosh sahifa", href: "/" }, { name: "Menyu", href: "/menu" }, { name: "Filiallar", href: "/#branches" }, { name: "Biz haqimizda", href: "/#about" }] },
-      { t: "Aloqa", l: [{ name: "+998 78 113 07 73", href: "tel:+998781130773" }, { name: "hello@embassy.uz", href: "mailto:hello@embassy.uz" }, { name: "Toshkent · UZ", href: null }, { name: "24/7 yetkazib berish", href: null }] },
-      { t: "Ijtimoiy", l: [{ name: "Instagram", href: "https://www.instagram.com/burgerembassyuz/" }, { name: "Telegram bot", href: "https://t.me/burgerembassy_uzbot" }, { name: "Yandex xaritalar", href: "https://yandex.uz/maps/" }, { name: "Support", href: "https://t.me/burgerembassy_helpbot" }] }].
-      map((c) =>
-      <div key={c.t}>
-            <div className="eob-label" style={{ marginBottom: 18 }}>{c.t}</div>
-            <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-              {c.l.map((i, idx) => <li key={idx} style={{ fontSize: 13, color: "var(--silver)", transition: "color 160ms" }}>
-                {i.href ? <a href={i.href} style={{ color: "inherit", textDecoration: "none" }} className="hover:text-gold">{i.name}</a> : i.name}
-              </li>)}
-            </ul>
+        <div style={{ display: "flex", gap: 80 }}>
+          <div>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('navigation').toUpperCase()}</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <Link href="/" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('home_short')}</Link>
+              <Link href="/menu" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('menu_short')}</Link>
+              <Link href="/#branches" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('branches_short')}</Link>
+              <Link href="/#about" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('about_short')}</Link>
+            </div>
           </div>
-      )}
+          <div>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('contact').toUpperCase()}</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <a href="tel:+998712000000" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>+998 71 200 00 00</a>
+              <a href="mailto:hello@embassy.uz" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>hello@embassy.uz</a>
+              <div style={{ color: "var(--silver)", fontSize: 13 }}>Tashkent · UZ</div>
+              <div style={{ color: "var(--silver)", fontSize: 13 }}>24/7 {t('mission')}</div>
+            </div>
+          </div>
+          <div>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('social').toUpperCase()}</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <a href="https://instagram.com/burgerembassy" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>Instagram</a>
+              <a href="https://t.me/burgerembassy_uzbot" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>Telegram bot</a>
+              <a href="#" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>TikTok</a>
+              <a href="#" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>YouTube</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div style={{ borderTop: "1px solid var(--hairline-soft)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 40, borderTop: "1px solid var(--hairline-soft)" }}>
         <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.1em" }}>
-          © 2026 Embassy of Burgers · All rights reserved
+          {t('rights')}
         </div>
         <div style={{ fontFamily: "var(--eob-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.18em", textTransform: "uppercase" }}>
-          Mission № 001 · Toshkent · UZ
+          {t('mission')}
         </div>
       </div>
     </div>
-  </footer>;
+  </footer>
+);
+};
 
 
 const LandingDesktop = () =>
