@@ -213,7 +213,7 @@ const LandingDesktopTopBurgers = () => {
   const t = useTranslations('sections');
   const tc = useTranslations('common');
   return (
-<section id="menu" style={{ background: "var(--bg)", padding: "120px 0" }}>
+<section id="menu" className="eob-section-padding" style={{ background: "var(--bg)", padding: "120px 0" }}>
     <div className="eob-container">
       <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
         <div>
@@ -261,7 +261,7 @@ const FeatureBlock = ({ num, title, desc, icon }: { num: string, title: string, 
 const LandingDesktopWhy = () => {
   const t = useTranslations('sections');
   return (
-<section style={{ background: "linear-gradient(180deg, #0D0D0D 0%, #100E0A 100%)", padding: "120px 0" }}>
+<section className="eob-section-padding" style={{ background: "linear-gradient(180deg, #0D0D0D 0%, #100E0A 100%)", padding: "120px 0" }}>
     <div className="eob-container">
       <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
         <SectionEyebrow align="center">{t('why_eyebrow')}</SectionEyebrow>
@@ -346,14 +346,14 @@ const LandingDesktopBranches = () => {
   };
 
   return (
-    <section id="branches" style={{ background: "var(--bg)", padding: "120px 0" }}>
+    <section id="branches" className="eob-section-padding" style={{ background: "var(--bg)", padding: "120px 0" }}>
     <div className="eob-container">
-      <div style={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "flex-end", marginBottom: 56, gap: 40 }}>
+      <div className="eob-branches-header" style={{ marginBottom: 56 }}>
         <div>
           <SectionEyebrow>{branchesData.length} {t('branches_eyebrow')}</SectionEyebrow>
           <SectionTitle accent={t('branches_accent')}>{t('branches_title')}</SectionTitle>
         </div>
-        <div style={{ display: "flex", gap: 12, alignItems: "center", position: "relative" }}>
+        <div className="eob-branches-tools" style={{ display: "flex", gap: 12, alignItems: "center", position: "relative" }}>
           {status === "error" &&
             <div style={{ position: "absolute", top: "100%", right: 0, marginTop: 14, fontSize: 10, color: "var(--red)", letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "right", whiteSpace: "nowrap" }}>{errorMsg}</div>
             }
@@ -470,7 +470,7 @@ const LandingDesktopReviews = () => {
   const t = useTranslations('sections');
   const tc = useTranslations('common');
   return (
-<section style={{ background: "linear-gradient(180deg, #100E0A 0%, #0D0D0D 100%)", padding: "120px 0" }}>
+<section className="eob-section-padding" style={{ background: "linear-gradient(180deg, #100E0A 0%, #0D0D0D 100%)", padding: "120px 0" }}>
     <div className="eob-container">
       <div style={{ textAlign: "center", marginBottom: 64 }}>
         <SectionEyebrow align="center">{t('reviews_eyebrow')}</SectionEyebrow>
@@ -528,9 +528,8 @@ const LandingDesktopReviews = () => {
 const LandingDesktopAbout = () => {
   const t = useTranslations('sections');
   return (
-<section id="about" style={{ background: "var(--bg)", padding: "120px 0" }}>
-    <div className="eob-container" style={{
-    display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+<section id="about" className="eob-section-padding" style={{ background: "var(--bg)", padding: "120px 0" }}>
+    <div className="eob-container eob-about-inner">
       <div>
         <SectionEyebrow>{t('about_eyebrow')}</SectionEyebrow>
         <SectionTitle accent={t('about_accent')}>{t('about_title')}</SectionTitle>
@@ -593,9 +592,9 @@ const LandingDesktopFinalCTA = () => {
     <div style={{
     position: "relative", maxWidth: 1000, margin: "0 auto",
     padding: "140px 64px", textAlign: "center"
-  }}>
+  }} className="eob-section-padding">
       <SectionEyebrow align="center">{t('cta_eyebrow')}</SectionEyebrow>
-      <h2 style={{
+      <h2 className="eob-cta-title" style={{
       fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontWeight: 500,
       fontSize: 96, lineHeight: 1, color: "var(--white)", margin: "10px 0 24px",
       letterSpacing: "-0.02em"
@@ -626,14 +625,14 @@ export const LandingDesktopFooter = () => {
   return (
 <footer style={{ padding: "80px 0 40px", background: "#0D0D0D", borderTop: "1px solid var(--hairline-soft)" }}>
     <div className="eob-container">
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 60 }}>
+      <div className="eob-footer-content" style={{ marginBottom: 60 }}>
         <div>
           <EobLogo size={24} />
           <div style={{ marginTop: 24, fontSize: 14, color: "var(--muted)", maxWidth: 300, lineHeight: 1.6 }}>
             {t('mission_desc')}
           </div>
         </div>
-        <div style={{ flex: 1, display: "flex", justifyContent: "space-evenly" }}>
+        <div className="eob-footer-links" style={{ flex: 1 }}>
           <div>
             <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('navigation')}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>

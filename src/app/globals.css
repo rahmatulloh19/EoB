@@ -196,6 +196,31 @@ body {
     }
   }
 
+  .eob-branches-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: flex-end;
+    gap: 40px;
+  }
+
+  .eob-about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .eob-footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .eob-footer-links {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   @media (max-width: 1200px) {
     .eob-nav-inner {
       gap: 20px !important;
@@ -219,6 +244,148 @@ body {
       display: none;
     }
   }
+
+  @media (max-width: 850px) {
+    .eob-grid-burgers {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .eob-grid-burgers > *:nth-child(4) {
+      display: flex !important;
+    }
+    .eob-grid-whyus {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .eob-grid-3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .eob-nav-links {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .eob-cta-title {
+      font-size: clamp(48px, 12vw, 72px) !important;
+    }
+    .eob-section-padding {
+      padding: 80px 0 !important;
+    }
+    .eob-footer-content {
+      flex-direction: column !important;
+      gap: 48px !important;
+    }
+    .eob-footer-links {
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      gap: 32px !important;
+    }
+    .eob-branches-header {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+      align-items: flex-start !important;
+    }
+    .eob-branches-tools {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      width: 100% !important;
+    }
+    .eob-branches-tools > * {
+      width: 100% !important;
+    }
+    .eob-about-inner {
+      grid-template-columns: 1fr !important;
+      gap: 48px !important;
+    }
+  }
+}
+
+/* Custom UI Components & Responsive Fixes */
+.eob-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 64px;
+  width: 100%;
+}
+
+.eob-grid-4, .eob-grid-burgers, .eob-grid-whyus {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.eob-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.eob-branches-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.eob-about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.eob-footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.eob-footer-links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 1200px) {
+  .eob-container { padding: 0 40px; }
+  .eob-grid-4, .eob-grid-3 { gap: 16px; }
+  .eob-nav-inner { gap: 20px !important; }
+  .eob-nav-tools { gap: 12px !important; }
+  .eob-nav-links { gap: 20px !important; padding-left: 20px !important; }
+}
+
+@media (max-width: 1114px) {
+  .eob-grid-burgers { grid-template-columns: repeat(3, 1fr); }
+  .eob-grid-burgers > *:nth-child(4) { display: none !important; }
+  .eob-grid-whyus { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 1050px) {
+  .eob-nav-inner {
+    grid-template-columns: auto 1fr auto !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+  }
+  .eob-nav-tools a[href^="tel:"] { display: none; }
+}
+
+@media (max-width: 1024px) {
+  .eob-container { padding: 0 24px; }
+}
+
+@media (max-width: 850px) {
+  .eob-grid-burgers { grid-template-columns: repeat(2, 1fr); }
+  .eob-grid-burgers > *:nth-child(4) { display: flex !important; }
+  .eob-grid-whyus { grid-template-columns: repeat(2, 1fr); }
+  .eob-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .eob-nav-links { display: none !important; }
+}
+
+@media (max-width: 768px) {
+  .eob-cta-title { font-size: clamp(48px, 12vw, 72px) !important; }
+  .eob-section-padding { padding: 80px 0 !important; }
+  .eob-footer-content { flex-direction: column !important; gap: 48px !important; }
+  .eob-footer-links { flex-direction: column !important; justify-content: flex-start !important; gap: 32px !important; }
+  .eob-branches-header { grid-template-columns: 1fr !important; gap: 24px !important; align-items: flex-start !important; }
+  .eob-about-inner { grid-template-columns: 1fr !important; gap: 48px !important; }
 }
 
 /* Base link hovers */
