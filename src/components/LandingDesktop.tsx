@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Link, usePathname } from "@/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import branchesData from "@/lib/branches.json";
 import { EobLogo, BurgerIcon, ImagePlaceholder, SectionEyebrow, SectionTitle, StarRating } from "./shared";
 import menuData from "@/lib/data.json";
@@ -291,6 +291,7 @@ const LandingDesktopWhy = () => {
 const LandingDesktopBranches = () => {
   const t = useTranslations('sections');
   const tc = useTranslations('common');
+  const locale = useLocale();
   const getBranchStatus = (b: any) => {
     if (b.hours === "24/7") return true;
     const now = new Date();
@@ -404,7 +405,7 @@ const LandingDesktopBranches = () => {
                   {b.km !== undefined ? tc('distance', { km: b.km.toFixed(1) }) : `№ ${String(i + 1).padStart(2, "0")}`}
                 </div>
                 <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: 26, color: "var(--white)", marginTop: 6, fontWeight: 500, lineHeight: 1.15 }}>
-                  {b.name_uz}
+                  {b[`name_${locale}`] || b.name_uz}
                 </div>
               </div>
               <span style={{
@@ -418,7 +419,7 @@ const LandingDesktopBranches = () => {
               </span>
             </div>
             <div style={{ borderTop: "1px solid var(--hairline-soft)", paddingTop: 16, fontSize: 13, color: "var(--silver)", lineHeight: 1.7 }}>
-              <div>{b.address_uz}</div>
+              <div>{b[`address_${locale}`] || b.address_uz}</div>
               <div style={{ color: "var(--muted)" }}>{b.hours} · {b.phone}</div>
             </div>
             <div style={{ marginTop: 18, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -620,7 +621,7 @@ const LandingDesktopFinalCTA = () => {
 };
 
 
-const LandingDesktopFooter = () => {
+export const LandingDesktopFooter = () => {
   const t = useTranslations('footer');
   const tc = useTranslations('common');
   return (
@@ -677,7 +678,7 @@ const LandingDesktopFooter = () => {
 };
 
 
-const LandingDesktop = () =>
+export const LandingDesktop = () =>
 <div style={{ background: "var(--bg)", color: "var(--silver)", fontFamily: "var(--eob-sans), 'Inter', sans-serif" }}>
     <LandingDesktopNavbar />
     <LandingDesktopHero />

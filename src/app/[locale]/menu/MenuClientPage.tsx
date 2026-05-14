@@ -2,11 +2,10 @@
 import React from "react";
 import { EobLogo, ImagePlaceholder, SectionTitle, SectionEyebrow } from "@/components/shared";
 import { LandingDesktopNavbar, LandingDesktopFooter } from "@/components/LandingDesktop";
-import Link from "next/link";
+import { Link } from "@/navigation";
 import menuData from "@/lib/data.json";
 
 const MenuDesktopHeader = () => {
-  // Kelajakda API dan keladigan maxsus taklif obyekti
   const specialOffer = {
     label: "Bugungi maxsus",
     title: "4 за 44 000 EMB",
@@ -118,7 +117,6 @@ const FilterDrawer = ({ isOpen, onClose, onApply, currentFilters }: { isOpen: bo
   const [maxPrice, setMaxPrice] = React.useState(currentFilters.maxPrice || "");
   const [checkedFilters, setCheckedFilters] = React.useState<string[]>(currentFilters.checkedFilters || []);
 
-  // Sync state when drawer opens
   React.useEffect(() => {
     if (isOpen) {
       setMinPrice(currentFilters.minPrice || "");
@@ -231,7 +229,6 @@ const MenuDesktopFilters = ({ activeCategory, onSelect, categories, sortBy, setS
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         
         <div style={{ flex: 1, position: "relative", overflow: "hidden", marginRight: 40 }}>
-          {/* Custom Webkit scrollbar hidden via style, but scrollable */}
           <div ref={scrollRef} style={{ display: "flex", overflowX: "auto", scrollbarWidth: "none", msOverflowStyle: "none", position: "relative", paddingBottom: 2 }}>
             <style>{`.hide-scroll::-webkit-scrollbar { display: none; }`}</style>
             <div className="hide-scroll" style={{ display: "flex", position: "relative", minWidth: "100%" }}>
@@ -252,8 +249,6 @@ const MenuDesktopFilters = ({ activeCategory, onSelect, categories, sortBy, setS
                   <span style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)" }}>{String(cat.products.length).padStart(2,"0")}</span>
                 </button>
               ))}
-              
-              {/* Sliding Border Indicator */}
               <div style={{
                 position: "absolute", bottom: 0, height: 2, background: "var(--gold)",
                 left: indicatorStyle.left, width: indicatorStyle.width,
@@ -285,7 +280,6 @@ const MenuItemCard = ({ b }: { b: any }) => {
     <div className="eob-card" style={{ display: "flex", flexDirection: "column" }}>
       {b.image && !imgError ? (
         <div style={{ height: 220, width: "100%", background: "#111", overflow: "hidden", position: "relative" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={b.image} alt={b.name} onError={() => setImgError(true)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         </div>
       ) : (
@@ -329,7 +323,7 @@ const MenuContent = () => {
     if (clickScrollTimeout.current) clearTimeout(clickScrollTimeout.current);
     clickScrollTimeout.current = setTimeout(() => {
       isClickScrolling.current = false;
-    }, 1000); // Wait for smooth scroll to finish
+    }, 1000);
 
     const element = document.getElementById(`category-${categoryId}`);
     if (element) {
@@ -340,8 +334,7 @@ const MenuContent = () => {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (isClickScrolling.current) return; // Ignore scroll events during smooth scrolling
-
+      if (isClickScrolling.current) return;
       let current = activeCategory;
       for (const cat of activeCategories) {
         const el = document.getElementById(`category-${cat.id}`);
@@ -362,7 +355,6 @@ const MenuContent = () => {
 
   const sortedCategories = React.useMemo(() => {
     return activeCategories.map(cat => {
-      // 1. Filter products first
       let filteredProducts = cat.products.filter(p => {
         const price = parseFloat(p.price || "0");
         if (appliedFilters.minPrice && price < parseFloat(appliedFilters.minPrice)) return false;
@@ -380,7 +372,6 @@ const MenuContent = () => {
         return true;
       });
 
-      // 2. Sort filtered products
       if (sortBy === "Arzonroq") {
         filteredProducts.sort((a, b) => parseFloat(a.price || "0") - parseFloat(b.price || "0"));
       } else if (sortBy === "Qimmatroq") {
@@ -389,7 +380,7 @@ const MenuContent = () => {
         filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
       }
       return { ...cat, products: filteredProducts };
-    }).filter(cat => cat.products.length > 0); // Hide categories that become empty
+    }).filter(cat => cat.products.length > 0);
   }, [activeCategories, sortBy, appliedFilters]);
 
   return (
@@ -424,7 +415,7 @@ const MenuContent = () => {
   );
 };
 
-export default function MenuPage() {
+export default function MenuClientPage() {
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
       <LandingDesktopNavbar />
