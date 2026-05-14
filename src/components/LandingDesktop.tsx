@@ -11,53 +11,121 @@ import LanguageSwitcher from "./LanguageSwitcher";
 export const LandingDesktopNavbar = () => {
   const t = useTranslations('nav');
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const navLinks = [
+    { name: t('menu'), href: "/menu" },
+    { name: t('branches'), href: "/#branches" },
+    { name: t('about'), href: "/#about" }
+  ];
+
   return (
-    <div style={{
-      position: "fixed", top: 0, left: 0, width: "100%", zIndex: 1000,
-      background: "rgba(13,13,13,0.85)",
-      backdropFilter: "blur(12px)",
-      borderBottom: "1px solid var(--hairline-soft)"
-    }}>
-      <div className="eob-container eob-nav-inner" style={{
-        paddingTop: 20, paddingBottom: 20,
-        display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center", gap: 40
+    <>
+      <div style={{
+        position: "fixed", top: 0, left: 0, width: "100%", zIndex: 1100,
+        background: "rgba(13,13,13,0.85)",
+        backdropFilter: "blur(16px)",
+        borderBottom: "1px solid var(--hairline-soft)"
       }}>
-        <Link href="/" style={{ textDecoration: "none" }} className="hover:opacity-80 transition-opacity">
-          <EobLogo size={20} />
-        </Link>
-        <nav className="eob-nav-links" style={{ display: "flex", gap: 36, justifyContent: "center", flexWrap: "nowrap", margin: "0px", padding: "0px 0px 0px 38px" }}>
-          {[
-            { name: t('menu'), href: "/menu" },
-            { name: t('branches'), href: "/#branches" },
-            { name: t('about'), href: "/#about" }
-          ].map((item, i) => {
-            const isActive = pathname === item.href || (pathname === '/' && item.href === '/#menu');
-            return (
-              <Link key={item.name} href={item.href} className="eob-nav-link" style={{
-                fontSize: 12,
-                fontWeight: 500,
-                letterSpacing: "0.14em",
-                color: isActive ? "var(--gold)" : "var(--silver)",
-                textDecoration: "none",
-                whiteSpace: "nowrap"
-              }}>
-                {item.name}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="eob-nav-tools" style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 20, flexWrap: "nowrap" }}>
-          <LanguageSwitcher />
-          <a href="tel:+998781130773" style={{
-            fontFamily: "var(--eob-mono)", fontSize: 13, color: "var(--silver)",
-            textDecoration: "none", letterSpacing: "0.05em", whiteSpace: "nowrap"
-          }}>+998 78 113 07 73</a>
-          <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "12px 22px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", whiteSpace: "nowrap", textDecoration: "none" }}>
-            {t('order')}
-          </a>
+        <div className="eob-container eob-nav-inner" style={{
+          paddingTop: 16, paddingBottom: 16,
+          display: "flex", alignItems: "center", justifyContent: "space-between"
+        }}>
+          <Link href="/" style={{ textDecoration: "none" }} className="hover:opacity-80 transition-opacity">
+            <EobLogo size={18} />
+          </Link>
+          
+          {/* Desktop Nav */}
+          <nav className="eob-nav-links desktop-only" style={{ display: "flex", gap: 36, margin: "0 auto", paddingLeft: 40 }}>
+            {navLinks.map((item) => {
+              const isActive = pathname === item.href || (pathname === '/' && item.href === '/#menu');
+              return (
+                <Link key={item.name} href={item.href} className="eob-nav-link" style={{
+                  fontSize: 12, fontWeight: 500, letterSpacing: "0.14em",
+                  color: isActive ? "var(--gold)" : "var(--silver)",
+                  textDecoration: "none", whiteSpace: "nowrap"
+                }}>
+                  {item.name}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="eob-nav-tools" style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <LanguageSwitcher />
+            
+            <a href="tel:+998781130773" className="desktop-only" style={{
+              fontFamily: "var(--eob-mono)", fontSize: 13, color: "var(--silver)",
+              textDecoration: "none", letterSpacing: "0.05em"
+            }}>+998 78 113 07 73</a>
+            
+            <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "10px 20px", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none" }}>
+              {t('order')}
+            </a>
+
+            {/* Hamburger Toggle */}
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="eob-hamburger-btn"
+              aria-label="Toggle Menu"
+              style={{
+                background: "none", border: "none", cursor: "pointer", 
+                padding: "8px 4px", flexDirection: "column", gap: 5, 
+                zIndex: 1200, position: "relative"
+              }}
+            >
+              <span style={{ width: 22, height: 1.5, background: "var(--gold)", transition: "0.3s", transform: isMenuOpen ? "translateY(6.5px) rotate(45deg)" : "none" }} />
+              <span style={{ width: 14, height: 1.5, background: "var(--gold)", alignSelf: "flex-end", transition: "0.3s", opacity: isMenuOpen ? 0 : 1 }} />
+              <span style={{ width: 22, height: 1.5, background: "var(--gold)", transition: "0.3s", transform: isMenuOpen ? "translateY(-6.5px) rotate(-45deg)" : "none" }} />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Mobile Menu Slide-in Drawer */}
+      <div 
+        onClick={() => setIsMenuOpen(false)}
+        style={{
+          position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", 
+          backdropFilter: "blur(4px)", zIndex: 1050,
+          opacity: isMenuOpen ? 1 : 0, visibility: isMenuOpen ? "visible" : "hidden",
+          transition: "0.4s ease"
+        }} 
+      />
+      
+      <div className="eob-mobile-drawer" style={{
+        position: "fixed", top: 0, right: isMenuOpen ? 0 : "-100%", 
+        width: "80%", maxWidth: 320, height: "100vh",
+        background: "rgba(18,18,18,0.95)", backdropFilter: "blur(24px)",
+        zIndex: 1060, boxShadow: "-10px 0 40px rgba(0,0,0,0.5)",
+        padding: "100px 40px", display: "flex", flexDirection: "column", gap: 32,
+        transition: "right 0.4s cubic-bezier(0.25, 1, 0.5, 1)"
+      }}>
+        <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "var(--muted)", textTransform: "uppercase" }}>Navigation</div>
+        {navLinks.map((item) => (
+          <Link 
+            key={item.name} 
+            href={item.href} 
+            onClick={() => setIsMenuOpen(false)}
+            style={{
+              fontSize: 22, fontFamily: "var(--eob-serif)", color: "var(--white)",
+              textDecoration: "none", letterSpacing: "0.02em"
+            }}
+          >
+            {item.name}
+          </Link>
+        ))}
+        
+        <div style={{ marginTop: "auto", borderTop: "1px solid var(--hairline-soft)", paddingTop: 32 }}>
+          <div style={{ fontSize: 10, letterSpacing: "0.2em", color: "var(--muted)", textTransform: "uppercase", marginBottom: 16 }}>Contact</div>
+          <a href="tel:+998781130773" style={{
+            fontFamily: "var(--eob-mono)", fontSize: 15, color: "var(--silver)",
+            textDecoration: "none", display: "block", marginBottom: 12
+          }}>+998 78 113 07 73</a>
+          <div style={{ fontSize: 12, color: "var(--muted)" }}>Tashkent, Uzbekistan</div>
+        </div>
+      </div>
+    </>
   );
 };
 
@@ -476,7 +544,7 @@ const LandingDesktopReviews = () => {
         <SectionEyebrow align="center">{t('reviews_eyebrow')}</SectionEyebrow>
         <SectionTitle accent={t('reviews_accent')} align="center">{t('reviews_title')}</SectionTitle>
       </div>
-      <div className="eob-grid-3">
+      <div className="eob-grid-3 eob-reviews-carousel">
         {REVIEWS.map((r, i) =>
       <div key={r.name} className="eob-card" style={{ padding: "28px 28px 24px", position: "relative", display: "flex", flexDirection: "column" }}>
             <div style={{
@@ -552,8 +620,8 @@ const LandingDesktopAbout = () => {
           </a>
         </div>
       </div>
-      <div style={{ position: "relative", height: 540 }}>
-        <ImagePlaceholder height={540} caption={t('about_caption')} iconSize={120} />
+      <div className="eob-about-image-container">
+        <ImagePlaceholder caption={t('about_caption')} iconSize={120} style={{ height: "100%", minHeight: "300px" }} />
         <div style={{
         position: "absolute", top: 30, right: 30,
         width: 130, height: 130, borderRadius: "50%",
@@ -626,14 +694,14 @@ export const LandingDesktopFooter = () => {
 <footer style={{ padding: "80px 0 40px", background: "#0D0D0D", borderTop: "1px solid var(--hairline-soft)" }}>
     <div className="eob-container">
       <div className="eob-footer-content" style={{ marginBottom: 60 }}>
-        <div>
-          <EobLogo size={24} />
-          <div style={{ marginTop: 24, fontSize: 14, color: "var(--muted)", maxWidth: 300, lineHeight: 1.6 }}>
+        <div className="eob-footer-info">
+          <EobLogo size={24} className="eob-footer-logo" />
+          <div style={{ marginTop: 24, fontSize: 14, color: "var(--muted)", maxWidth: 300, lineHeight: 1.6 }} className="eob-footer-desc">
             {t('mission_desc')}
           </div>
         </div>
         <div className="eob-footer-links" style={{ flex: 1 }}>
-          <div>
+          <div className="eob-footer-nav">
             <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('navigation')}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               <Link href="/" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('home_short')}</Link>
@@ -642,22 +710,21 @@ export const LandingDesktopFooter = () => {
               <Link href="/#about" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('about_short')}</Link>
             </div>
           </div>
-          <div>
+          <div className="eob-footer-contact">
             <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('contact')}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <a href="tel:+998712000000" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>+998 71 200 00 00</a>
+              <a href="tel:+998781130773" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>+998 78 113 07 73</a>
               <a href="mailto:hello@embassy.uz" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>hello@embassy.uz</a>
               <div style={{ color: "var(--silver)", fontSize: 13 }}>Tashkent · UZ</div>
               <div style={{ color: "var(--silver)", fontSize: 13 }}>24/7 {t('delivery_text')}</div>
             </div>
           </div>
-          <div>
-            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('social')}</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          <div className="eob-footer-social">
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }} className="desktop-only">{tc('social')}</div>
+            <div className="eob-social-list" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               <a href="https://instagram.com/burgerembassy" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>Instagram</a>
-              <a href="https://t.me/burgerembassy_uzbot" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>Telegram bot</a>
-              <a href="#" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>TikTok</a>
-              <a href="#" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>YouTube</a>
+              <a href="https://t.me/burgerembassy_uzbot" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>Telegram</a>
+              <a href="https://youtube.com/@embassyburgers" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>YouTube</a>
             </div>
           </div>
         </div>

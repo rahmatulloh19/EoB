@@ -369,23 +369,84 @@ body {
 
 @media (max-width: 1024px) {
   .eob-container { padding: 0 24px; }
-}
+  
+  /* Navigation */
+  .eob-nav-links { display: none !important; }
+  .eob-nav-inner {
+    grid-template-columns: auto 1fr auto !important;
+    justify-content: space-between !important;
+    gap: 16px !important;
+  }
+  .eob-nav-tools a[href^="tel:"] { display: none; }
 
-@media (max-width: 850px) {
-  .eob-grid-burgers { grid-template-columns: repeat(2, 1fr); }
-  .eob-grid-burgers > *:nth-child(4) { display: flex !important; }
+  /* Grids */
+  .eob-grid-burgers { grid-template-columns: repeat(3, 1fr); }
+  .eob-grid-burgers > *:nth-child(4) { display: none !important; }
+  
+  @media (max-width: 850px) {
+    .eob-grid-burgers { grid-template-columns: repeat(2, 1fr); }
+    .eob-grid-burgers > *:nth-child(4) { display: flex !important; }
+  }
+
   .eob-grid-whyus { grid-template-columns: repeat(2, 1fr); }
   .eob-grid-3 { grid-template-columns: repeat(2, 1fr); }
-  .eob-nav-links { display: none !important; }
-}
 
-@media (max-width: 768px) {
+  /* Layout and Padding */
   .eob-cta-title { font-size: clamp(48px, 12vw, 72px) !important; }
   .eob-section-padding { padding: 80px 0 !important; }
-  .eob-footer-content { flex-direction: column !important; gap: 48px !important; }
-  .eob-footer-links { flex-direction: column !important; justify-content: flex-start !important; gap: 32px !important; }
+  .eob-footer-content { 
+    flex-direction: column !important; 
+    gap: 32px !important; 
+    margin-bottom: 32px !important; 
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .eob-footer-info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .eob-footer-logo { align-items: center !important; width: 100% !important; }
+  .eob-footer-desc { text-align: center !important; }
+  .eob-footer-links { flex-direction: column !important; gap: 0 !important; width: 100%; }
+  .eob-footer-nav, .eob-footer-contact { display: none !important; }
+  .eob-footer-social { width: 100%; display: flex; justify-content: center; }
+  .eob-social-list {
+    flex-direction: row !important;
+    gap: 32px !important;
+    margin-top: 12px;
+    justify-content: center !important;
+  }
+  .eob-social-list a {
+    font-size: 10px !important;
+    letter-spacing: 0.2em !important;
+    text-transform: uppercase !important;
+    color: var(--gold) !important;
+    font-weight: 500;
+  }
+  
   .eob-branches-header { grid-template-columns: 1fr !important; gap: 24px !important; align-items: flex-start !important; }
   .eob-about-inner { grid-template-columns: 1fr !important; gap: 48px !important; }
+  
+  /* Hamburger & Mobile Tools */
+  .eob-hamburger-btn { display: flex !important; }
+  .desktop-only { display: none !important; }
+
+  /* About Section Image Fix */
+  .eob-about-image-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.eob-hamburger-btn {
+  display: none;
+}
+
+.eob-about-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 /* Base link hovers */
@@ -397,4 +458,29 @@ a:hover {
 }
 a:active {
   opacity: 0.6;
+}
+
+/* Reviews Carousel Logic */
+@media (max-width: 1024px) {
+  .eob-reviews-carousel {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 20px !important;
+    padding-bottom: 24px !important;
+    margin: 0 -24px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    scrollbar-width: none; /* Hide scrollbar for clean look */
+    -ms-overflow-style: none;
+  }
+  
+  .eob-reviews-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .eob-reviews-carousel > div {
+    min-width: 85% !important;
+    scroll-snap-align: center !important;
+  }
 }

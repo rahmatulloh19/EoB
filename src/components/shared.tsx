@@ -1,20 +1,18 @@
 import React from 'react';
 
-export const EobLogo = ({ size = 18, color = "var(--color-gold)" }: { size?: number, color?: string }) => (
-  <div style={{ display: "flex", alignItems: "center", gap: 10, color }}>
-    <svg width={size * 1.15} height={size * 1.4} viewBox="0 0 23 28" fill="none" aria-hidden="true">
-      <path d="M1.5 2 H21.5 V16 C21.5 22 16.5 26 11.5 27.5 C6.5 26 1.5 22 1.5 16 Z"
-            stroke={color} strokeWidth="1.2" fill="none" />
-      <path d="M5.5 7 V21 M5.5 7 H13 M5.5 14 H11 M5.5 21 H13"
-            stroke={color} strokeWidth="1.2" />
-      <path d="M14 14 C18 14 18 21 14 21" stroke={color} strokeWidth="1.2" fill="none" />
-    </svg>
-    <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: size, letterSpacing: "0.02em", lineHeight: 1, color }}>
-      <div style={{ fontStyle: "italic", fontWeight: 500 }}>Embassy</div>
-      <div style={{ fontSize: size * 0.55, letterSpacing: "0.32em", textTransform: "uppercase", color: "var(--color-silver)", marginTop: 2, fontFamily: "var(--eob-sans), 'Inter', sans-serif", fontWeight: 500 }}>
-        of Burgers
-      </div>
-    </div>
+export const EobLogo = ({ size = 24, align = "left", className = "" }: { size?: number, align?: "left" | "center", className?: string }) => (
+  <div className={className} style={{ 
+    display: "flex", 
+    flexDirection: "column",
+    alignItems: align === "center" ? "center" : "flex-start",
+    gap: 8,
+    width: align === "center" ? "100%" : "auto"
+  }}>
+    <img 
+      src="/assets/logo.png?v=3" 
+      alt="Embassy of Burgers" 
+      style={{ height: size * 2.5, width: "auto", objectFit: "contain" }} 
+    />
   </div>
 );
 
