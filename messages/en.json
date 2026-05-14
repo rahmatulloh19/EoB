@@ -88,18 +88,19 @@
     "telegram": "Telegram",
     "established": "Established",
     "order_short": "ORDER",
-    "menu_short": "MENU",
-    "branches_short": "BRANCHES",
-    "about_short": "ABOUT US",
+    "menu_short": "Menu",
+    "branches_short": "Branches",
+    "about_short": "About Us",
     "telegram_channel": "TELEGRAM CHANNEL",
     "navigation": "SITE",
     "contact": "CONTACT",
     "social": "SOCIAL",
-    "home_short": "HOME"
+    "home_short": "Home"
   },
   "footer": {
     "rights": "© 2026 Embassy of Burgers · All rights reserved",
     "mission": "Mission № 001 · Tashkent · UZ",
-    "mission_desc": "The embassy of world tastes in Tashkent. Serving you since 2019."
+    "mission_desc": "Embassy of Burgers — a culinary embassy in Tashkent with 12 branches, created for you to taste the world.",
+    "delivery_text": "delivery"
   }
 }

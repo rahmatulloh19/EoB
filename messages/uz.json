@@ -88,18 +88,19 @@
     "telegram": "Telegram",
     "established": "Established",
     "order_short": "BUYURTMA",
-    "menu_short": "MENYU",
-    "branches_short": "FILIALLAR",
-    "about_short": "BIZ HAQIMIZDA",
+    "menu_short": "Menyu",
+    "branches_short": "Filiallar",
+    "about_short": "Biz haqimizda",
     "telegram_channel": "TELEGRAM KANAL",
     "navigation": "SAYT",
     "contact": "ALOQA",
     "social": "IJTIMOIY",
-    "home_short": "BOSH SAHIFA"
+    "home_short": "Bosh sahifa"
   },
   "footer": {
     "rights": "© 2026 Embassy of Burgers · Barcha huquqlar himoyalangan",
     "mission": "Mission № 001 · Toshkent · UZ",
-    "mission_desc": "Dunyo ta'mlarini Toshkentga olib keluvchi elchixona. 2019 yildan buyon xizmatingizdamiz."
+    "mission_desc": "Embassy of Burgers — Toshkentdagi 12 filial bilan dunyoni tatib ko'rishingiz uchun oshxona elchixonasi.",
+    "delivery_text": "yetkazib berish"
   }
 }

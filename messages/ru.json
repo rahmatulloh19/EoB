@@ -88,18 +88,19 @@
     "telegram": "Телеграм",
     "established": "Основано",
     "order_short": "ЗАКАЗАТЬ",
-    "menu_short": "МЕНЮ",
-    "branches_short": "ФИЛИАЛЫ",
-    "about_short": "О НАС",
+    "menu_short": "Меню",
+    "branches_short": "Филиалы",
+    "about_short": "О нас",
     "telegram_channel": "ТЕЛЕГРАМ КАНАЛ",
     "navigation": "САЙТ",
     "contact": "СВЯЗЬ",
     "social": "СОЦСЕТИ",
-    "home_short": "ГЛАВНАЯ"
+    "home_short": "Главная"
   },
   "footer": {
     "rights": "© 2026 Embassy of Burgers · Все права защищены",
     "mission": "Миссия № 001 · Ташкент · UZ",
-    "mission_desc": "Посольство мировых вкусов в Ташкенте. Мы работаем для вас с 2019 года."
+    "mission_desc": "Embassy of Burgers — это кулинарное посольство в Ташкенте с 12 филиалами, созданное для того, чтобы вы могли попробовать мир на вкус.",
+    "delivery_text": "доставка"
   }
 }

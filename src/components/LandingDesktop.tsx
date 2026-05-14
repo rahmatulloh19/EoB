@@ -633,9 +633,9 @@ const LandingDesktopFooter = () => {
             {t('mission_desc')}
           </div>
         </div>
-        <div style={{ display: "flex", gap: 80 }}>
+        <div style={{ flex: 1, display: "flex", justifyContent: "space-evenly" }}>
           <div>
-            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('navigation').toUpperCase()}</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('navigation')}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               <Link href="/" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('home_short')}</Link>
               <Link href="/menu" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('menu_short')}</Link>
@@ -644,16 +644,16 @@ const LandingDesktopFooter = () => {
             </div>
           </div>
           <div>
-            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('contact').toUpperCase()}</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('contact')}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               <a href="tel:+998712000000" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>+998 71 200 00 00</a>
               <a href="mailto:hello@embassy.uz" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>hello@embassy.uz</a>
               <div style={{ color: "var(--silver)", fontSize: 13 }}>Tashkent · UZ</div>
-              <div style={{ color: "var(--silver)", fontSize: 13 }}>24/7 {t('mission')}</div>
+              <div style={{ color: "var(--silver)", fontSize: 13 }}>24/7 {t('delivery_text')}</div>
             </div>
           </div>
           <div>
-            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('social').toUpperCase()}</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('social')}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               <a href="https://instagram.com/burgerembassy" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>Instagram</a>
               <a href="https://t.me/burgerembassy_uzbot" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>Telegram bot</a>
