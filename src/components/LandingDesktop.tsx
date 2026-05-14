@@ -18,15 +18,14 @@ export const LandingDesktopNavbar = () => {
       backdropFilter: "blur(12px)",
       borderBottom: "1px solid var(--hairline-soft)"
     }}>
-      <div style={{
-        maxWidth: 1280, margin: "0 auto",
-        padding: "20px 64px",
+      <div className="eob-container eob-nav-inner" style={{
+        paddingTop: 20, paddingBottom: 20,
         display: "grid", gridTemplateColumns: "auto 1fr auto", alignItems: "center", gap: 40
       }}>
         <Link href="/" style={{ textDecoration: "none" }} className="hover:opacity-80 transition-opacity">
           <EobLogo size={20} />
         </Link>
-        <nav style={{ display: "flex", gap: 36, justifyContent: "center", flexWrap: "nowrap", margin: "0px", padding: "0px 0px 0px 38px" }}>
+        <nav className="eob-nav-links" style={{ display: "flex", gap: 36, justifyContent: "center", flexWrap: "nowrap", margin: "0px", padding: "0px 0px 0px 38px" }}>
           {[
             { name: t('menu'), href: "/menu" },
             { name: t('branches'), href: "/#branches" },
@@ -47,7 +46,7 @@ export const LandingDesktopNavbar = () => {
             );
           })}
         </nav>
-        <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 20, flexWrap: "nowrap" }}>
+        <div className="eob-nav-tools" style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: 20, flexWrap: "nowrap" }}>
           <LanguageSwitcher />
           <a href="tel:+998781130773" style={{
             fontFamily: "var(--eob-mono)", fontSize: 13, color: "var(--silver)",
@@ -149,7 +148,7 @@ const LandingDesktopStats = () => {
   const t = useTranslations('stats');
   return (
 <section style={{ padding: "100px 0", background: "var(--bg)", borderBottom: "1px solid var(--hairline-soft)" }}>
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
+    <div className="eob-container" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
       {[
     { n: "12", l: t('branches') },
     { n: t('min_val'), l: t('delivery'), s: t('min') },
@@ -215,7 +214,7 @@ const LandingDesktopTopBurgers = () => {
   const tc = useTranslations('common');
   return (
 <section id="menu" style={{ background: "var(--bg)", padding: "120px 0" }}>
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
+    <div className="eob-container">
       <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
         <div>
           <SectionEyebrow>{t('menu_eyebrow')}</SectionEyebrow>
@@ -225,7 +224,7 @@ const LandingDesktopTopBurgers = () => {
           {t('menu_cta')} →
         </Link>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+      <div className="eob-grid-burgers">
         {menuData.flatMap(cat => cat.products).slice(0, 4).map((b) => <TopBurgerCard key={b.id || b.name} b={b} />)}
       </div>
     </div>
@@ -263,12 +262,12 @@ const LandingDesktopWhy = () => {
   const t = useTranslations('sections');
   return (
 <section style={{ background: "linear-gradient(180deg, #0D0D0D 0%, #100E0A 100%)", padding: "120px 0" }}>
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
+    <div className="eob-container">
       <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
         <SectionEyebrow align="center">{t('why_eyebrow')}</SectionEyebrow>
         <SectionTitle accent={t('why_accent')} align="center">{t('why_title')}</SectionTitle>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
+      <div className="eob-grid-whyus">
         <FeatureBlock num="01" title={t('why_feat1_title')} desc={t('why_feat1_desc')}
       icon={<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M12 3 L18 7 V13 C18 17 15 20 12 21 C9 20 6 17 6 13 V7 Z" /><path d="M9 12 L11 14 L15 10" /></svg>} />
       
@@ -348,7 +347,7 @@ const LandingDesktopBranches = () => {
 
   return (
     <section id="branches" style={{ background: "var(--bg)", padding: "120px 0" }}>
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
+    <div className="eob-container">
       <div style={{ display: "grid", gridTemplateColumns: "1fr auto", alignItems: "flex-end", marginBottom: 56, gap: 40 }}>
         <div>
           <SectionEyebrow>{branchesData.length} {t('branches_eyebrow')}</SectionEyebrow>
@@ -379,7 +378,7 @@ const LandingDesktopBranches = () => {
         transition: "max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1)",
         margin: "0 -8px", padding: "0 8px"
       }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, paddingTop: 16, paddingBottom: showAll ? 0 : 40 }}>
+        <div className="eob-grid-3" style={{ paddingTop: 16, paddingBottom: showAll ? 0 : 40 }}>
           {(showAll ? branches : branches.slice(0, 6)).map((b, i) => {
             const isNearest = status === "done" && i === 0;
             const isTop3 = status === "done" && i > 0 && i < 3;
@@ -472,12 +471,12 @@ const LandingDesktopReviews = () => {
   const tc = useTranslations('common');
   return (
 <section style={{ background: "linear-gradient(180deg, #100E0A 0%, #0D0D0D 100%)", padding: "120px 0" }}>
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
+    <div className="eob-container">
       <div style={{ textAlign: "center", marginBottom: 64 }}>
         <SectionEyebrow align="center">{t('reviews_eyebrow')}</SectionEyebrow>
         <SectionTitle accent={t('reviews_accent')} align="center">{t('reviews_title')}</SectionTitle>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+      <div className="eob-grid-3">
         {REVIEWS.map((r, i) =>
       <div key={r.name} className="eob-card" style={{ padding: "28px 28px 24px", position: "relative", display: "flex", flexDirection: "column" }}>
             <div style={{
@@ -530,7 +529,7 @@ const LandingDesktopAbout = () => {
   const t = useTranslations('sections');
   return (
 <section id="about" style={{ background: "var(--bg)", padding: "120px 0" }}>
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px",
+    <div className="eob-container" style={{
     display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
       <div>
         <SectionEyebrow>{t('about_eyebrow')}</SectionEyebrow>
@@ -601,7 +600,7 @@ const LandingDesktopFinalCTA = () => {
       fontSize: 96, lineHeight: 1, color: "var(--white)", margin: "10px 0 24px",
       letterSpacing: "-0.02em"
     }}>
-        {t('cta_title_part1')} <span style={{ fontStyle: "italic", color: "var(--gold)" }}>{t('cta_title_accent')}</span><br />{t('cta_title_part2')}
+        {t('cta_title_part1')} <br /> <span style={{ fontStyle: "italic", color: "var(--gold)" }}>{t('cta_title_accent')}</span>
       </h2>
       <p style={{ fontSize: 17, color: "var(--silver)", maxWidth: 540, margin: "0 auto 44px", lineHeight: 1.6 }}>
         {t('cta_subtitle')}
@@ -626,7 +625,7 @@ export const LandingDesktopFooter = () => {
   const tc = useTranslations('common');
   return (
 <footer style={{ padding: "80px 0 40px", background: "#0D0D0D", borderTop: "1px solid var(--hairline-soft)" }}>
-    <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px" }}>
+    <div className="eob-container">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 60 }}>
         <div>
           <EobLogo size={24} />

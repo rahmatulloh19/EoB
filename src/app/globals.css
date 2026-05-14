@@ -35,7 +35,6 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
@@ -44,7 +43,6 @@ body {
   font-family: var(--eob-sans), "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
   
   --eob-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -141,6 +139,85 @@ body {
     @apply border-[var(--hairline)];
     transform: translateY(-4px);
     box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 4px 12px rgba(212,175,55,0.04);
+  }
+
+  .eob-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 64px;
+    width: 100%;
+  }
+
+  @media (max-width: 1200px) {
+    .eob-container {
+      padding: 0 40px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .eob-container {
+      padding: 0 24px;
+    }
+  }
+
+  .eob-grid-4, .eob-grid-burgers, .eob-grid-whyus {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .eob-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 1200px) {
+    .eob-grid-4 {
+      gap: 16px;
+    }
+    .eob-grid-3 {
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 1114px) {
+    /* Burgerlar bo'limi uchun - 3 ta qoladi, 4-chi yashiriladi */
+    .eob-grid-burgers {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .eob-grid-burgers > *:nth-child(4) {
+      display: none !important;
+    }
+
+    /* Why Us bo'limi uchun - 4 tasi ham qoladi (2x2) */
+    .eob-grid-whyus {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .eob-nav-inner {
+      gap: 20px !important;
+    }
+    .eob-nav-tools {
+      gap: 12px !important;
+    }
+    .eob-nav-links {
+      gap: 20px !important;
+      padding-left: 20px !important;
+    }
+  }
+
+  @media (max-width: 1050px) {
+    .eob-nav-inner {
+      grid-template-columns: auto 1fr auto !important;
+      justify-content: space-between !important;
+      gap: 16px !important;
+    }
+    .eob-nav-tools a[href^="tel:"] {
+      display: none;
+    }
   }
 }
 
