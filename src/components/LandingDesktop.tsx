@@ -133,7 +133,7 @@ export const LandingDesktopNavbar = () => {
 const LandingDesktopHero = () => {
   const t = useTranslations('hero');
   return (
-<section style={{
+<section className="eob-section-padding" style={{
   position: "relative", overflow: "hidden",
   background: "var(--bg)",
   minHeight: 820,
@@ -172,28 +172,28 @@ const LandingDesktopHero = () => {
     </div>
     <style>{`@keyframes eobPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }`}</style>
 
-    <div style={{
+    <div className="eob-hero-inner" style={{
     position: "relative", zIndex: 2, maxWidth: 1280, margin: "0 auto",
-    padding: "140px 64px 100px", width: "100%",
+    width: "100%",
     display: "flex", alignItems: "center"
   }}>
-      <div style={{ maxWidth: 640 }}>
+      <div className="eob-hero-content" style={{ maxWidth: 640 }}>
         <div className="eob-label" style={{ marginBottom: 28, display: "flex", alignItems: "center", gap: 14 }}>
           <span style={{ width: 32, height: 1, background: "var(--gold)" }} />
           <span>{t('est')}</span>
         </div>
-        <h1 style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontWeight: 500, fontSize: "clamp(56px, 10vw, 108px)", lineHeight: 0.98, letterSpacing: "-0.02em", color: "var(--white)", margin: 0 }}>
+        <h1 className="eob-hero-title" style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontWeight: 500, lineHeight: 0.98, letterSpacing: "-0.02em", color: "var(--white)", margin: 0 }}>
           {t('title_part1')}<br />
           <span className="eob-gold-word">{t('title_accent')}</span> {t('title_part2')}
         </h1>
-        <p style={{ fontFamily: "var(--eob-sans), 'Inter', sans-serif", fontSize: 18, lineHeight: 1.6, color: "var(--silver)", marginTop: 28, maxWidth: 460 }}>
+        <p className="eob-hero-subtitle" style={{ fontFamily: "var(--eob-sans), 'Inter', sans-serif", fontSize: 18, lineHeight: 1.6, color: "var(--silver)", marginTop: 28, maxWidth: 460 }}>
           {t('subtitle')}
         </p>
-        <div style={{ display: "flex", gap: 14, marginTop: 40 }}>
-          <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
+        <div className="eob-hero-actions" style={{ display: "flex", gap: 14, marginTop: 40 }}>
+          <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90 eob-hero-btn" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none" }}>
             {t('cta_order')} <span style={{ fontSize: 14 }}>→</span>
           </a>
-          <Link href="/menu" className="eob-btn eob-btn--outline" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", border: "1px solid #D4AF37" }}>
+          <Link href="/menu" className="eob-btn eob-btn--outline eob-hero-btn" style={{ padding: "16px 28px", fontSize: 13, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", border: "1px solid #D4AF37" }}>
             {t('cta_menu')}
           </Link>
         </div>
@@ -216,7 +216,7 @@ const LandingDesktopStats = () => {
   const t = useTranslations('stats');
   return (
 <section style={{ padding: "100px 0", background: "var(--bg)", borderBottom: "1px solid var(--hairline-soft)" }}>
-    <div className="eob-container" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
+    <div className="eob-container eob-stats-grid">
       {[
     { n: "12", l: t('branches') },
     { n: t('min_val'), l: t('delivery'), s: t('min') },
@@ -281,14 +281,14 @@ const LandingDesktopTopBurgers = () => {
   const t = useTranslations('sections');
   const tc = useTranslations('common');
   return (
-<section id="menu" className="eob-section-padding" style={{ background: "var(--bg)", padding: "120px 0" }}>
+<section id="menu" className="eob-section-padding" style={{ background: "var(--bg)" }}>
     <div className="eob-container">
-      <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 56 }}>
+      <div className="eob-burgers-header">
         <div>
           <SectionEyebrow>{t('menu_eyebrow')}</SectionEyebrow>
           <SectionTitle accent={t('menu_accent')}>{t('menu_title')}</SectionTitle>
         </div>
-        <Link href="/menu" className="eob-btn eob-btn--outline" style={{ padding: "16px 36px", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
+        <Link href="/menu" className="eob-btn eob-btn--outline eob-branch-btn">
           {t('menu_cta')} →
         </Link>
       </div>
@@ -329,11 +329,11 @@ const FeatureBlock = ({ num, title, desc, icon }: { num: string, title: string, 
 const LandingDesktopWhy = () => {
   const t = useTranslations('sections');
   return (
-<section className="eob-section-padding" style={{ background: "linear-gradient(180deg, #0D0D0D 0%, #100E0A 100%)", padding: "120px 0" }}>
+<section className="eob-section-padding" style={{ background: "linear-gradient(180deg, #0D0D0D 0%, #100E0A 100%)" }}>
     <div className="eob-container">
-      <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 64px" }}>
-        <SectionEyebrow align="center">{t('why_eyebrow')}</SectionEyebrow>
-        <SectionTitle accent={t('why_accent')} align="center">{t('why_title')}</SectionTitle>
+      <div className="eob-why-header">
+        <SectionEyebrow>{t('why_eyebrow')}</SectionEyebrow>
+        <SectionTitle accent={t('why_accent')}>{t('why_title')}</SectionTitle>
       </div>
       <div className="eob-grid-whyus">
         <FeatureBlock num="01" title={t('why_feat1_title')} desc={t('why_feat1_desc')}
@@ -414,27 +414,27 @@ const LandingDesktopBranches = () => {
   };
 
   return (
-    <section id="branches" className="eob-section-padding" style={{ background: "var(--bg)", padding: "120px 0" }}>
+    <section id="branches" className="eob-section-padding" style={{ background: "var(--bg)" }}>
     <div className="eob-container">
-      <div className="eob-branches-header" style={{ marginBottom: 56 }}>
+      <div className="eob-branches-header">
         <div>
           <SectionEyebrow>{branchesData.length} {t('branches_eyebrow')}</SectionEyebrow>
           <SectionTitle accent={t('branches_accent')}>{t('branches_title')}</SectionTitle>
         </div>
-        <div className="eob-branches-tools" style={{ display: "flex", gap: 12, alignItems: "center", position: "relative" }}>
+        <div className="eob-branches-tools">
           {status === "error" &&
-            <div style={{ position: "absolute", top: "100%", right: 0, marginTop: 14, fontSize: 10, color: "var(--red)", letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "right", whiteSpace: "nowrap" }}>{errorMsg}</div>
+            <div className="eob-branches-error">{errorMsg}</div>
             }
           <button
               onClick={findNearest}
               disabled={status === "locating"}
-              className="eob-btn eob-btn--gold"
-              style={{ padding: "13px 20px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", opacity: status === "locating" ? 0.6 : 1, cursor: status === "locating" ? "wait" : "pointer" }}>
+              className="eob-btn eob-btn--gold eob-branch-btn"
+              style={{ opacity: status === "locating" ? 0.6 : 1, cursor: status === "locating" ? "wait" : "pointer" }}>
               
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 22 C12 22 4 14 4 9 A8 8 0 0 1 20 9 C20 14 12 22 12 22 Z" /><circle cx="12" cy="9" r="2.5" /></svg>
             {status === "locating" ? t('branches_locating') : t('branches_find')}
           </button>
-          <a href="https://yandex.uz/maps/" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--outline-light hover:opacity-80" style={{ padding: "13px 18px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", textDecoration: "none", display: "inline-flex", border: "1px solid rgba(255,255,255,0.2)" }}>
+          <a href="https://yandex.uz/maps/" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--outline-light eob-branch-btn hover:opacity-80">
             {t('branches_map')}
           </a>
         </div>
@@ -502,7 +502,7 @@ const LandingDesktopBranches = () => {
         
         {/* Gradient Overlay for hidden items */}
         {!showAll && branchesData.length > 6 && (
-          <div style={{
+          <div className="eob-branches-overlay" style={{
             position: "absolute", bottom: 0, left: 0, right: 0,
             height: 240,
             background: "linear-gradient(180deg, rgba(13,13,13,0) 0%, rgba(13,13,13,0.85) 40%, rgba(13,13,13,1) 100%)",
@@ -511,7 +511,7 @@ const LandingDesktopBranches = () => {
           }}>
             <button 
               onClick={() => setShowAll(true)}
-              className="eob-btn eob-btn--outline" 
+              className="eob-btn eob-btn--outline eob-show-all-btn" 
               style={{ 
                 padding: "16px 36px", fontSize: 12, letterSpacing: "0.2em", 
                 textTransform: "uppercase", pointerEvents: "auto", 
@@ -538,11 +538,11 @@ const LandingDesktopReviews = () => {
   const t = useTranslations('sections');
   const tc = useTranslations('common');
   return (
-<section className="eob-section-padding" style={{ background: "linear-gradient(180deg, #100E0A 0%, #0D0D0D 100%)", padding: "120px 0" }}>
+<section className="eob-section-padding eob-reviews-section" style={{ background: "linear-gradient(180deg, #100E0A 0%, #0D0D0D 100%)", overflowX: "hidden" }}>
     <div className="eob-container">
-      <div style={{ textAlign: "center", marginBottom: 64 }}>
-        <SectionEyebrow align="center">{t('reviews_eyebrow')}</SectionEyebrow>
-        <SectionTitle accent={t('reviews_accent')} align="center">{t('reviews_title')}</SectionTitle>
+      <div className="eob-reviews-header">
+        <SectionEyebrow>{t('reviews_eyebrow')}</SectionEyebrow>
+        <SectionTitle accent={t('reviews_accent')}>{t('reviews_title')}</SectionTitle>
       </div>
       <div className="eob-grid-3 eob-reviews-carousel">
         {REVIEWS.map((r, i) =>
@@ -596,12 +596,14 @@ const LandingDesktopReviews = () => {
 const LandingDesktopAbout = () => {
   const t = useTranslations('sections');
   return (
-<section id="about" className="eob-section-padding" style={{ background: "var(--bg)", padding: "120px 0" }}>
+<section id="about" className="eob-section-padding" style={{ background: "var(--bg)" }}>
     <div className="eob-container eob-about-inner">
       <div>
-        <SectionEyebrow>{t('about_eyebrow')}</SectionEyebrow>
-        <SectionTitle accent={t('about_accent')}>{t('about_title')}</SectionTitle>
-        <div style={{ marginTop: 32, fontSize: 16, lineHeight: 1.75, color: "var(--silver)" }}>
+        <div className="eob-about-header">
+          <SectionEyebrow>{t('about_eyebrow')}</SectionEyebrow>
+          <SectionTitle accent={t('about_accent')}>{t('about_title')}</SectionTitle>
+        </div>
+        <div className="eob-about-content">
           <p style={{ margin: "0 0 18px" }}>
             {t('about_p1')}
           </p>
@@ -609,33 +611,19 @@ const LandingDesktopAbout = () => {
             {t('about_p2')}
           </p>
         </div>
-        <div style={{ display: "flex", gap: 32, marginTop: 40 }}>
-          <a href="https://www.instagram.com/burgerembassyuz/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "var(--gold)", textDecoration: "none", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>
-            Instagram
+        <div className="eob-about-socials" style={{ marginTop: 32, display: "flex", gap: 32 }}>
+          <a href="https://www.instagram.com/burgerembassyuz/" target="_blank" rel="noopener noreferrer" className="eob-about-social-link" style={{ color: "var(--gold)" }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>
+            <span style={{ fontSize: 11, letterSpacing: "0.15em" }}>INSTAGRAM</span>
           </a>
-          <a href="https://t.me/burgerembassy_helpbot" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" style={{ display: "inline-flex", alignItems: "center", gap: 10, color: "var(--silver)", textDecoration: "none", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase" }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 4 L2 11 L9 14 L12 22 L21 4 Z" /></svg>
-            Telegram
+          <a href="https://t.me/burgerembassy_helpbot" target="_blank" rel="noopener noreferrer" className="eob-about-social-link" style={{ color: "var(--gold)" }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 4 L2 11 L9 14 L12 22 L21 4 Z" /></svg>
+            <span style={{ fontSize: 11, letterSpacing: "0.15em" }}>TELEGRAM</span>
           </a>
         </div>
       </div>
-      <div className="eob-about-image-container">
-        <ImagePlaceholder caption={t('about_caption')} iconSize={120} style={{ height: "100%", minHeight: "300px" }} />
-        <div style={{
-        position: "absolute", top: 30, right: 30,
-        width: 130, height: 130, borderRadius: "50%",
-        border: "1.5px solid var(--gold)", color: "var(--gold)",
-        background: "rgba(13,13,13,0.7)",
-        fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontStyle: "italic", fontSize: 14,
-        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-        textAlign: "center", lineHeight: 1.2, transform: "rotate(-6deg)",
-        backdropFilter: "blur(4px)"
-      }}>
-          <div style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--silver)" }}>{t('about_badge_top')}</div>
-          <div style={{ fontFamily: "var(--eob-serif), 'Playfair Display', serif", fontSize: 28, color: "var(--gold)", margin: "4px 0" }}>2019</div>
-          <div style={{ fontSize: 9, letterSpacing: "0.3em", textTransform: "uppercase", color: "var(--silver)" }}>{t('about_badge_bottom')}</div>
-        </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <ImagePlaceholder caption={t('about_caption')} iconSize={120} style={{ height: "100%", minHeight: "400px", width: "100%" }} />
       </div>
     </div>
   </section>);
@@ -672,7 +660,7 @@ const LandingDesktopFinalCTA = () => {
       <p style={{ fontSize: 17, color: "var(--silver)", maxWidth: 540, margin: "0 auto 44px", lineHeight: 1.6 }}>
         {t('cta_subtitle')}
       </p>
-      <div style={{ display: "inline-flex", gap: 14 }}>
+      <div className="eob-cta-actions" style={{ display: "inline-flex", gap: 14 }}>
         <a href="https://t.me/burgerembassy_uzbot" target="_blank" rel="noopener noreferrer" className="eob-btn eob-btn--gold hover:opacity-90" style={{ padding: "18px 32px", fontSize: 13, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M21 4 L2 11 L9 14 L12 22 L21 4 Z" /></svg>
           {t('cta_bot')}
@@ -702,29 +690,29 @@ export const LandingDesktopFooter = () => {
         </div>
         <div className="eob-footer-links" style={{ flex: 1 }}>
           <div className="eob-footer-nav">
-            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('navigation')}</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--gold)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('navigation')}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <Link href="/" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('home_short')}</Link>
-              <Link href="/menu" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('menu_short')}</Link>
-              <Link href="/#branches" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('branches_short')}</Link>
-              <Link href="/#about" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>{tc('about_short')}</Link>
+              <Link href="/" className="eob-footer-link" style={{ fontSize: 13 }}>{tc('home_short')}</Link>
+              <Link href="/menu" className="eob-footer-link" style={{ fontSize: 13 }}>{tc('menu_short')}</Link>
+              <Link href="/#branches" className="eob-footer-link" style={{ fontSize: 13 }}>{tc('branches_short')}</Link>
+              <Link href="/#about" className="eob-footer-link" style={{ fontSize: 13 }}>{tc('about_short')}</Link>
             </div>
           </div>
           <div className="eob-footer-contact">
-            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('contact')}</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--gold)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }}>{tc('contact')}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <a href="tel:+998781130773" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>+998 78 113 07 73</a>
-              <a href="mailto:hello@embassy.uz" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>hello@embassy.uz</a>
-              <div style={{ color: "var(--silver)", fontSize: 13 }}>Tashkent · UZ</div>
-              <div style={{ color: "var(--silver)", fontSize: 13 }}>24/7 {t('delivery_text')}</div>
+              <a href="tel:+998781130773" className="eob-footer-link" style={{ fontSize: 13 }}>+998 78 113 07 73</a>
+              <a href="mailto:hello@embassy.uz" className="eob-footer-link" style={{ fontSize: 13 }}>hello@embassy.uz</a>
+              <div style={{ color: "var(--white)", fontSize: 13 }}>Tashkent · UZ</div>
+              <div style={{ color: "var(--white)", fontSize: 13 }}>24/7 {t('delivery_text')}</div>
             </div>
           </div>
           <div className="eob-footer-social">
-            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--white)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }} className="desktop-only">{tc('social')}</div>
+            <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--gold)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }} className="desktop-only">{tc('social')}</div>
             <div className="eob-social-list" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <a href="https://instagram.com/burgerembassy" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>Instagram</a>
-              <a href="https://t.me/burgerembassy_uzbot" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>Telegram</a>
-              <a href="https://youtube.com/@embassyburgers" style={{ color: "var(--silver)", fontSize: 13, textDecoration: "none" }}>YouTube</a>
+              <a href="https://instagram.com/burgerembassy" className="eob-footer-link" style={{ fontSize: 13 }}>Instagram</a>
+              <a href="https://t.me/burgerembassy_uzbot" className="eob-footer-link" style={{ fontSize: 13 }}>Telegram</a>
+              <a href="https://youtube.com/@embassyburgers" className="eob-footer-link" style={{ fontSize: 13 }}>YouTube</a>
             </div>
           </div>
         </div>
