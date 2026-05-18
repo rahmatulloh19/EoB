@@ -622,8 +622,22 @@ const LandingDesktopAbout = () => {
           </a>
         </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <ImagePlaceholder caption={t('about_caption')} iconSize={120} style={{ height: "100%", minHeight: "400px", width: "100%" }} />
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+        <div style={{ 
+          width: "100%", 
+          height: "100%", 
+          minHeight: "400px", 
+          position: "relative", 
+          overflow: "hidden", 
+          border: "1px solid var(--hairline-soft)"
+        }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src="/assets/about-restaurant.jpg" 
+            alt="Embassy of Burgers Restaurant" 
+            style={{ width: "100%", height: "100%", minHeight: "400px", objectFit: "cover", display: "block" }} 
+          />
+        </div>
       </div>
     </div>
   </section>);
