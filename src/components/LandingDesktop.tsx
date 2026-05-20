@@ -529,9 +529,9 @@ const LandingDesktopBranches = () => {
 };
 
 const REVIEWS = [
-{ name: "Aziza K.", initials: "AK", date: "3 kun oldin", rating: 5, text: "Wagyu Tokyo — bu sherinkalik. Yetkazib berish 28 daqiqada keldi, hali issiq. Brioche bulochka — paxta kabi yumshoq." },
-{ name: "Sardor M.", initials: "SM", date: "1 hafta oldin", rating: 5, text: "Diplomat eng sevimli burgerim bo'lib qoldi. Karamellangan piyozning balansi mukammal. Bu yerda haqiqiy san'at." },
-{ name: "Madina T.", initials: "MT", date: "2 hafta oldin", rating: 4, text: "Le Parisien-ni sinab ko'rdim — truffle aromasi ajoyib. Filial Yunusobodda juda zamonaviy va tinch muhit." }];
+{ name: "Aziza K.", initials: "AK", date: "3 kun oldin", rating: 5, text: "Spain Jalapeno Burger — bu haqiqiy olovli lazzat! Achchiq jalapeno qalampiri va marinadlangan bodringlar sochnaya kotleta bilan juda zo'r mos tushgan." },
+{ name: "Sardor M.", initials: "SM", date: "1 hafta oldin", rating: 5, text: "Burger Embassy mening eng sevimli burgerim bo'lib qoldi. Yumshoq bulochka va firmenniy sousning ta'mi og'izda eriydi. Haqiqiy premium klassika!" },
+{ name: "Madina T.", initials: "MT", date: "2 hafta oldin", rating: 5, text: "Yangi Uzbekistan Burger-ni tatib ko'rdim, tomle tomlangan barra go'shti juda yumshoq va mazali ekan! Ayniqsa piyoz va sous bilan ajoyib uyg'unlik hosil qilgan." }];
 
 
 const LandingDesktopReviews = () => {

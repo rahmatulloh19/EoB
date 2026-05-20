@@ -498,3 +498,317 @@ a:active { opacity: 0.6; }
     color: var(--gold) !important;
   }
 }
+
+/* Menu Page Styles */
+.eob-menu-header {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.eob-menu-header-glow {
+  position: absolute;
+  top: -30%;
+  right: -15%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.eob-menu-header-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: flex-end;
+}
+
+.eob-menu-header-eyebrow {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.eob-menu-header-eyebrow-line {
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.eob-menu-header-title {
+  font-family: var(--font-serif), 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 88px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin: 0;
+}
+
+.eob-menu-header-title-accent {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.eob-menu-header-description {
+  font-size: 16px;
+  color: var(--silver);
+  max-width: 520px;
+  margin-top: 24px;
+  line-height: 1.6;
+}
+
+.eob-menu-promo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 28px;
+  background: var(--surface);
+  border: 1px solid var(--hairline-soft);
+}
+
+.eob-menu-promo-title {
+  font-family: var(--font-serif), 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--white);
+}
+
+.eob-menu-promo-desc {
+  font-size: 13px;
+  color: var(--silver);
+  line-height: 1.6;
+}
+
+.eob-menu-promo-meta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.eob-menu-promo-price {
+  font-family: var(--font-serif), 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.eob-menu-promo-oldprice {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.eob-menu-promo-tag {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+/* Menu Filters Sticky Bar */
+.eob-menu-filters-bar {
+  position: sticky;
+  top: 73px;
+  z-index: 9;
+  background: rgba(13,13,13,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.eob-menu-filters-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.eob-menu-categories-wrapper {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  margin-right: 40px;
+}
+
+.eob-menu-categories-scroll {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.eob-menu-categories-list {
+  display: flex;
+  position: relative;
+  min-width: 100%;
+}
+
+.eob-menu-category-btn {
+  background: transparent;
+  border: none;
+  padding: 22px 20px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.eob-menu-category-count {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.eob-menu-categories-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
+}
+
+.eob-menu-filters-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.eob-menu-filters-actions-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--hairline-soft);
+}
+
+.eob-menu-filter-btn {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 10px 16px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.24s ease;
+}
+
+.eob-menu-filter-btn:hover {
+  background: var(--gold);
+  color: #000;
+}
+
+/* Menu Content Styles */
+.eob-menu-content-section {
+  padding: 60px 0 100px;
+}
+
+.eob-menu-category-block {
+  scroll-margin-top: 140px;
+}
+
+.eob-menu-category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.eob-menu-category-title {
+  font-family: var(--font-serif), 'Playfair Display', serif;
+  font-size: 38px;
+  color: var(--white);
+  font-weight: 500;
+  margin: 0;
+}
+
+.eob-menu-category-title-count {
+  color: var(--muted);
+  font-size: 18px;
+  font-family: var(--font-mono), monospace;
+  margin-left: 12px;
+}
+
+.eob-menu-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+
+/* ========================================== */
+/* RESPONSIVE DESIGN - 1024PX BREAKPOINT      */
+/* ========================================== */
+@media (max-width: 1024px) {
+  .eob-menu-header {
+    padding: 60px 0 40px;
+  }
+  
+  .eob-menu-header-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: stretch;
+  }
+  
+  .eob-menu-header-title {
+    font-size: 64px;
+  }
+  
+  .eob-menu-header-description {
+    max-width: 100%;
+    margin-top: 18px;
+  }
+  
+  .eob-menu-promo-card {
+    padding: 20px 24px;
+  }
+  
+  .eob-menu-filters-bar {
+    top: 70px; /* Adapts to responsive navbar height if changed */
+  }
+  
+  .eob-menu-filters-inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 0;
+    gap: 12px;
+  }
+  
+  .eob-menu-categories-wrapper {
+    margin-right: 0;
+  }
+  
+  .eob-menu-category-btn {
+    padding: 12px 14px;
+  }
+  
+  .eob-menu-filters-actions {
+    justify-content: space-between;
+    padding-top: 8px;
+    border-top: 1px solid var(--hairline-soft);
+  }
+  
+  .eob-menu-content-section {
+    padding: 40px 0 70px;
+  }
+  
+  .eob-menu-products-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 18px;
+  }
+}

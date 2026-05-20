@@ -16,33 +16,31 @@ const MenuDesktopHeader = () => {
   };
 
   return (
-    <section style={{ position: "relative", overflow: "hidden", padding: "80px 64px 60px", borderBottom: "1px solid var(--hairline-soft)" }}>
-      <div style={{ position: "absolute", top: "-30%", right: "-15%", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 65%)", pointerEvents: "none" }} />
-      <div style={{ position: "relative", maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1.4fr 1fr", gap: 60, alignItems: "flex-end" }}>
+    <section className="eob-menu-header">
+      <div className="eob-menu-header-glow" />
+      <div className="eob-container eob-menu-header-inner">
         <div>
-          <div className="eob-label" style={{ marginBottom: 18, display: "flex", alignItems: "center", gap: 14 }}>
-            <span style={{ width: 32, height: 1, background: "var(--gold)" }} />
+          <div className="eob-menu-header-eyebrow eob-label">
+            <span className="eob-menu-header-eyebrow-line" />
             <span>Menu · 24 davlat · 32 burger</span>
           </div>
-          <h1 style={{ fontFamily: "var(--serif)", fontWeight: 500, fontSize: 88, lineHeight: 1, letterSpacing: "-0.02em", color: "var(--white)", margin: 0 }}>
-            To'liq <span style={{ fontStyle: "italic", color: "var(--gold)" }}>Menyu</span>
+          <h1 className="eob-menu-header-title">
+            To'liq <span className="eob-menu-header-title-accent">Menyu</span>
           </h1>
-          <p style={{ fontSize: 16, color: "var(--silver)", maxWidth: 520, marginTop: 24, lineHeight: 1.6 }}>
+          <p className="eob-menu-header-description">
             Har bir burger boshqa mamlakatdan keladi. Quyidagi tanlangan klassik va mavsumiy retseptlar — sizning diplomatik missiyangiz.
           </p>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 14, padding: "24px 28px", background: "var(--surface)", border: "1px solid var(--hairline-soft)" }}>
+        <div className="eob-menu-promo-card">
           <div className="eob-label">{specialOffer.label}</div>
-          <div style={{ fontFamily: "var(--serif)", fontSize: 26, color: "var(--white)" }}>{specialOffer.title}</div>
-          <div style={{ fontSize: 13, color: "var(--silver)", lineHeight: 1.6 }}>
-            {specialOffer.description}
-          </div>
-          <div style={{ display: "flex", gap: 14, alignItems: "center", marginTop: 4 }}>
-            <span style={{ fontFamily: "var(--serif)", fontSize: 22, color: "var(--gold)" }}>{specialOffer.price}</span>
+          <div className="eob-menu-promo-title">{specialOffer.title}</div>
+          <div className="eob-menu-promo-desc">{specialOffer.description}</div>
+          <div className="eob-menu-promo-meta">
+            <span className="eob-menu-promo-price">{specialOffer.price}</span>
             {specialOffer.oldPrice && (
-              <span style={{ fontSize: 13, color: "var(--muted)", textDecoration: "line-through" }}>{specialOffer.oldPrice}</span>
+              <span className="eob-menu-promo-oldprice">{specialOffer.oldPrice}</span>
             )}
-            <span style={{ fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--red)" }}>{specialOffer.tag}</span>
+            <span className="eob-menu-promo-tag">{specialOffer.tag}</span>
           </div>
         </div>
       </div>
@@ -225,45 +223,42 @@ const MenuDesktopFilters = ({ activeCategory, onSelect, categories, sortBy, setS
   }, [activeCategory]);
 
   return (
-    <div style={{ position: "sticky", top: 73, zIndex: 9, background: "rgba(13,13,13,0.92)", backdropFilter: "blur(12px)", borderBottom: "1px solid var(--hairline-soft)" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 64px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        
-        <div style={{ flex: 1, position: "relative", overflow: "hidden", marginRight: 40 }}>
-          <div ref={scrollRef} style={{ display: "flex", overflowX: "auto", scrollbarWidth: "none", msOverflowStyle: "none", position: "relative", paddingBottom: 2 }}>
+    <div className="eob-menu-filters-bar">
+      <div className="eob-container eob-menu-filters-inner">
+        <div className="eob-menu-categories-wrapper">
+          <div ref={scrollRef} className="eob-menu-categories-scroll">
             <style>{`.hide-scroll::-webkit-scrollbar { display: none; }`}</style>
-            <div className="hide-scroll" style={{ display: "flex", position: "relative", minWidth: "100%" }}>
+            <div className="hide-scroll eob-menu-categories-list">
               {categories.map((cat) => (
                 <button 
                   key={cat.id} 
                   data-cat-id={cat.id}
                   onClick={() => onSelect(cat.id)} 
-                  className="hover:opacity-80" 
+                  className="eob-menu-category-btn hover:opacity-80" 
                   style={{
-                    background: "transparent", border: "none", padding: "22px 20px",
-                    color: activeCategory === cat.id ? "var(--gold)" : "var(--silver)",
-                    fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", fontWeight: 500,
-                    cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 8,
-                    transition: "color 0.3s ease", whiteSpace: "nowrap", flexShrink: 0
-                }}>
+                    color: activeCategory === cat.id ? "var(--gold)" : "var(--silver)"
+                  }}
+                >
                   {cat.name}
-                  <span style={{ fontFamily: "var(--mono)", fontSize: 10, color: "var(--muted)" }}>{String(cat.products.length).padStart(2,"0")}</span>
+                  <span className="eob-menu-category-count">{String(cat.products.length).padStart(2,"0")}</span>
                 </button>
               ))}
-              <div style={{
-                position: "absolute", bottom: 0, height: 2, background: "var(--gold)",
-                left: indicatorStyle.left, width: indicatorStyle.width,
-                transition: "all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1)",
-                pointerEvents: "none"
-              }} />
+              <div 
+                className="eob-menu-categories-indicator" 
+                style={{
+                  left: indicatorStyle.left,
+                  width: indicatorStyle.width
+                }} 
+              />
             </div>
           </div>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 11, color: "var(--muted)", letterSpacing: "0.16em", textTransform: "uppercase", flexShrink: 0 }}>
+        <div className="eob-menu-filters-actions">
           <span>Saralash:</span>
           <SortDropdown selected={sortBy} onSelect={setSortBy} />
-          <span style={{ width: 1, height: 18, background: "var(--hairline-soft)" }} />
-          <button onClick={onOpenFilter} className="hover:bg-gold hover:text-black transition-colors" style={{ background: "transparent", color: "var(--gold)", border: "1px solid var(--gold)", padding: "10px 16px", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", cursor: "pointer" }}>
+          <span className="eob-menu-filters-actions-divider" />
+          <button onClick={onOpenFilter} className="eob-menu-filter-btn">
             Filtr
           </button>
         </div>
@@ -386,19 +381,19 @@ const MenuContent = () => {
   return (
     <>
       <MenuDesktopFilters activeCategory={activeCategory} onSelect={scrollToCategory} categories={sortedCategories} sortBy={sortBy} setSortBy={setSortBy} onOpenFilter={() => setIsFilterOpen(true)} />
-      <section style={{ padding: "60px 64px 100px" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", flexDirection: "column", gap: 80 }}>
+      <section className="eob-menu-content-section">
+        <div className="eob-container" style={{ display: "flex", flexDirection: "column", gap: 80 }}>
           {sortedCategories.map((cat, index) => (
-            <div key={cat.id} id={`category-${cat.id}`} style={{ scrollMarginTop: "140px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 32 }}>
+            <div key={cat.id} id={`category-${cat.id}`} className="eob-menu-category-block">
+              <div className="eob-menu-category-header">
                 <div>
                   <SectionEyebrow>Section · {String(index + 1).padStart(2, '0')}</SectionEyebrow>
-                  <h3 style={{ fontFamily: "var(--serif)", fontSize: 38, color: "var(--white)", fontWeight: 500, margin: 0 }}>
-                    {cat.name} <span style={{ color: "var(--muted)", fontSize: 18, fontFamily: "var(--mono)", marginLeft: 12 }}>· {cat.products.length} ta</span>
+                  <h3 className="eob-menu-category-title">
+                    {cat.name} <span className="eob-menu-category-title-count">· {cat.products.length} ta</span>
                   </h3>
                 </div>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
+              <div className="eob-menu-products-grid">
                 {cat.products.map(b => <MenuItemCard key={b.id} b={b} />)}
               </div>
             </div>
