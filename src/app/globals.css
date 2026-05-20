@@ -281,7 +281,7 @@ a:active { opacity: 0.6; }
 
 /* Tablets (1024px) */
 @media (max-width: 1024px) {
-  .eob-container { padding: 0 32px; }
+  .eob-container { padding: 0 40px; }
   .eob-section-padding { padding: 70px 0; }
   .eob-nav-links { display: none !important; }
   .eob-hamburger-btn { display: flex !important; }
@@ -785,12 +785,16 @@ a:active { opacity: 0.6; }
   .eob-menu-filters-inner {
     flex-direction: column;
     align-items: stretch;
-    padding: 12px 0;
+    padding-top: 16px;
+    padding-bottom: 16px;
     gap: 12px;
   }
   
   .eob-menu-categories-wrapper {
-    margin-right: 0;
+    margin-left: -40px;
+    margin-right: -40px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
   
   .eob-menu-category-btn {
