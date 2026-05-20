@@ -48,6 +48,7 @@ body {
   padding: 0;
   width: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 
 * {
@@ -503,7 +504,7 @@ a:active { opacity: 0.6; }
 .eob-menu-header {
   position: relative;
   overflow: hidden;
-  padding: 80px 0 60px;
+  padding: 124px 0 60px;
   border-bottom: 1px solid var(--hairline-soft);
 }
 
@@ -609,10 +610,23 @@ a:active { opacity: 0.6; }
   color: var(--red);
 }
 
+/* Card image wrapper — height controlled via CSS for responsive override */
+.eob-card-image-wrap {
+  height: 220px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.eob-card-image-wrap .eob-img {
+  height: 100% !important;
+}
+
 /* Menu Filters Sticky Bar */
 .eob-menu-filters-bar {
   position: sticky;
-  top: 73px;
+  top: 78px;
   z-index: 9;
   background: rgba(13,13,13,0.92);
   backdrop-filter: blur(12px);
@@ -696,6 +710,20 @@ a:active { opacity: 0.6; }
   background: var(--hairline-soft);
 }
 
+.eob-menu-sort-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eob-menu-sort-label {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .eob-menu-filter-btn {
   background: transparent;
   color: var(--gold);
@@ -756,7 +784,7 @@ a:active { opacity: 0.6; }
 /* ========================================== */
 @media (max-width: 1024px) {
   .eob-menu-header {
-    padding: 60px 0 40px;
+    padding: 104px 0 40px;
   }
   
   .eob-menu-header-inner {
@@ -779,7 +807,7 @@ a:active { opacity: 0.6; }
   }
   
   .eob-menu-filters-bar {
-    top: 70px; /* Adapts to responsive navbar height if changed */
+    top: 78px;
   }
   
   .eob-menu-filters-inner {
@@ -814,5 +842,166 @@ a:active { opacity: 0.6; }
   .eob-menu-products-grid {
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 18px;
+  }
+}
+
+/* ========================================== */
+/* RESPONSIVE DESIGN - 768PX BREAKPOINT       */
+/* ========================================== */
+@media (max-width: 768px) {
+  .eob-container { padding: 0 24px; }
+
+  /* --- Menu Header --- */
+  .eob-menu-header {
+    padding: 100px 0 36px;
+  }
+
+  .eob-menu-header-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .eob-menu-header-title {
+    font-size: 48px;
+    line-height: 1.05;
+  }
+
+  .eob-menu-header-description {
+    font-size: 14px;
+    margin-top: 14px;
+  }
+
+  .eob-menu-promo-card {
+    padding: 18px 20px;
+  }
+
+  .eob-menu-promo-title {
+    font-size: 22px;
+  }
+
+  /* --- Sticky Filters Bar --- */
+  .eob-menu-filters-bar {
+    top: 78px;
+  }
+
+  .eob-menu-filters-inner {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 10px;
+  }
+
+  .eob-menu-categories-wrapper {
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .eob-menu-category-btn {
+    padding: 10px 10px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  .eob-menu-category-count {
+    font-size: 9px;
+  }
+
+  .eob-menu-filters-actions {
+    padding-top: 8px;
+  }
+
+  /* --- Products Grid: 2 columns --- */
+  .eob-menu-content-section {
+    padding: 32px 0 60px;
+  }
+
+  .eob-menu-products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px;
+  }
+
+  .eob-menu-category-title {
+    font-size: 32px;
+  }
+
+  .eob-menu-category-header {
+    margin-bottom: 20px;
+  }
+}
+
+/* ========================================== */
+/* RESPONSIVE DESIGN - 480PX (Mobile L)       */
+/* ========================================== */
+@media (max-width: 480px) {
+  .eob-container { padding: 0 16px; }
+
+  /* --- Menu Header --- */
+  .eob-menu-header {
+    padding: 96px 0 28px;
+  }
+
+  .eob-menu-header-title {
+    font-size: 40px;
+  }
+
+  .eob-menu-header-description {
+    font-size: 13px;
+  }
+
+  /* --- Card image: shorter on narrow screens --- */
+  .eob-card-image-wrap {
+    height: 170px;
+  }
+
+  /* --- Card content --- */
+  .eob-card > div:last-child {
+    padding: 14px 14px 16px !important;
+  }
+
+  /* Card title */
+  .eob-card > div:last-child > div:first-child {
+    font-size: 15px !important;
+  }
+
+  /* Card description */
+  .eob-card > div:last-child > div:nth-child(2) {
+    font-size: 11.5px !important;
+    margin-top: 6px !important;
+  }
+
+  /* Card price */
+  .eob-card > div:last-child > div:last-child > div:first-child {
+    font-size: 16px !important;
+  }
+
+  /* --- Sticky Filters Bar --- */
+  .eob-menu-categories-wrapper {
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .eob-menu-category-btn {
+    padding: 9px 9px;
+    font-size: 9.5px;
+    letter-spacing: 0.10em;
+    gap: 4px;
+  }
+
+  /* --- Products Grid --- */
+  .eob-menu-products-grid {
+    gap: 10px;
+  }
+
+  .eob-menu-category-title {
+    font-size: 28px;
+  }
+
+  /* --- Sort / Filter bar --- */
+  .eob-menu-sort-label {
+    font-size: 9.5px;
+    letter-spacing: 0.10em;
   }
 }
