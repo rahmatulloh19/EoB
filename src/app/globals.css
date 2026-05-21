@@ -396,7 +396,9 @@ a:active { opacity: 0.6; }
 
 /* Small Tablets & Mobile (600px) */
 @media (max-width: 600px) {
-  .eob-container { padding: 0 16px !important; }
+  .eob-container { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Preserve navbar vertical padding */
+  .eob-nav-container { padding-top: 16px !important; padding-bottom: 16px !important; }
   .eob-section-padding { padding: 48px 0 !important; }
   .eob-nav-order-btn { display: none !important; }
   .eob-nav-tools { gap: 10px !important; }
@@ -696,24 +698,28 @@ a:active { opacity: 0.6; }
 .eob-menu-filters-actions {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 0;
   font-size: 11px;
   color: var(--muted);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   flex-shrink: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .eob-menu-filters-actions-divider {
   width: 1px;
   height: 18px;
   background: var(--hairline-soft);
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .eob-menu-sort-group {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .eob-menu-sort-label {
@@ -815,7 +821,7 @@ a:active { opacity: 0.6; }
     align-items: stretch;
     padding-top: 0;
     padding-bottom: 16px;
-    gap: 12px;
+    gap: 0;
   }
   
   .eob-menu-categories-wrapper {
@@ -890,7 +896,7 @@ a:active { opacity: 0.6; }
   .eob-menu-filters-inner {
     padding-top: 0;
     padding-bottom: 12px;
-    gap: 10px;
+    gap: 0;
   }
 
   .eob-menu-categories-wrapper {
@@ -946,7 +952,7 @@ a:active { opacity: 0.6; }
   }
 
   .eob-menu-filters-bar {
-    top: 45px;
+    top: 77px;
   }
 
   .eob-menu-categories-scroll {
@@ -955,18 +961,30 @@ a:active { opacity: 0.6; }
   }
 
   .eob-menu-category-btn {
-    padding: 9px 12px;
-    font-size: 9.5px;
+    padding: 11px 14px;
+    font-size: 11.5px;
     letter-spacing: 0.10em;
     gap: 6px;
   }
+
+  .eob-menu-products-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .eob-menu-filter-btn {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+
 }
 
 /* ========================================== */
 /* RESPONSIVE DESIGN - 480PX (Mobile L)       */
 /* ========================================== */
 @media (max-width: 480px) {
-  .eob-container { padding: 0 16px; }
+  .eob-container { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Preserve navbar vertical padding */
+  .eob-nav-container { padding-top: 16px !important; padding-bottom: 16px !important; }
 
   /* --- Menu Header --- */
   .eob-menu-header {
@@ -981,30 +999,17 @@ a:active { opacity: 0.6; }
     font-size: 13px;
   }
 
-  /* --- Card image: shorter on narrow screens --- */
+  .eob-menu-promo-card {
+    padding: 16px;
+  }
+
+  .eob-menu-promo-title {
+    font-size: 20px;
+  }
+
+  /* --- Card image: 1-column layout needs proportionate height --- */
   .eob-card-image-wrap {
-    height: 170px;
-  }
-
-  /* --- Card content --- */
-  .eob-card > div:last-child {
-    padding: 14px 14px 16px !important;
-  }
-
-  /* Card title */
-  .eob-card > div:last-child > div:first-child {
-    font-size: 15px !important;
-  }
-
-  /* Card description */
-  .eob-card > div:last-child > div:nth-child(2) {
-    font-size: 11.5px !important;
-    margin-top: 6px !important;
-  }
-
-  /* Card price */
-  .eob-card > div:last-child > div:last-child > div:first-child {
-    font-size: 16px !important;
+    height: 220px;
   }
 
   /* --- Sticky Filters Bar --- */
@@ -1019,8 +1024,8 @@ a:active { opacity: 0.6; }
   }
 
   .eob-menu-category-btn {
-    padding: 9px 9px;
-    font-size: 9.5px;
+    padding: 10px 12px;
+    font-size: 11px;
     letter-spacing: 0.10em;
     gap: 4px;
   }
@@ -1038,5 +1043,17 @@ a:active { opacity: 0.6; }
   .eob-menu-sort-label {
     font-size: 9.5px;
     letter-spacing: 0.10em;
+  }
+
+  /* --- Filter Drawer --- */
+  .eob-filter-drawer-header {
+    padding: 24px 20px !important;
+  }
+  .eob-filter-drawer-body {
+    padding: 24px 20px !important;
+    gap: 24px !important;
+  }
+  .eob-filter-drawer-footer {
+    padding: 20px !important;
   }
 }

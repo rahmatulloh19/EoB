@@ -180,12 +180,12 @@ const FilterDrawer = ({ isOpen, onClose, onApply, currentFilters }: { isOpen: bo
         transition: "transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)",
         display: "flex", flexDirection: "column", boxShadow: "-20px 0 60px rgba(0,0,0,0.8)"
       }}>
-        <div style={{ padding: "32px 40px", borderBottom: "1px solid #222", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div className="eob-filter-drawer-header" style={{ padding: "32px 40px", borderBottom: "1px solid #222", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <h3 style={{ margin: 0, fontFamily: "var(--serif)", fontSize: 28, color: "var(--gold)", fontWeight: 500 }}>{t("filter_title")}</h3>
           <button onClick={onClose} className="hover:text-white transition-colors" style={{ background: "transparent", border: "none", color: "var(--silver)", cursor: "pointer", fontSize: 28, padding: 0, lineHeight: 1 }}>&times;</button>
         </div>
 
-        <div className="hide-scroll" style={{ padding: "40px", flex: 1, overflowY: "auto", overflowX: "hidden", display: "flex", flexDirection: "column", gap: 40, boxSizing: "border-box" }}>
+        <div className="hide-scroll eob-filter-drawer-body" style={{ padding: "40px", flex: 1, overflowY: "auto", overflowX: "hidden", display: "flex", flexDirection: "column", gap: 40, boxSizing: "border-box" }}>
           <div>
             <div style={{ fontSize: 11, letterSpacing: "0.15em", color: "var(--muted)", textTransform: "uppercase", marginBottom: 20 }}>{t("filter_price_label")}</div>
             <div style={{ display: "flex", gap: 16, alignItems: "center", boxSizing: "border-box" }}>
@@ -208,7 +208,7 @@ const FilterDrawer = ({ isOpen, onClose, onApply, currentFilters }: { isOpen: bo
           </div>
         </div>
 
-        <div style={{ padding: "32px 40px", borderTop: "1px solid var(--hairline-soft)", display: "flex", gap: 16 }}>
+        <div className="eob-filter-drawer-footer" style={{ padding: "32px 40px", borderTop: "1px solid var(--hairline-soft)", display: "flex", gap: 16 }}>
           <button onClick={handleClear} className="hover:bg-white/5 transition-colors" style={{ flex: 1, padding: "16px", background: "transparent", border: "1px solid var(--hairline-soft)", color: "var(--silver)", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", cursor: "pointer" }}>
             {t("filter_clear")}
           </button>
@@ -428,7 +428,7 @@ const MenuContent = () => {
   }, [activeCategories, sortBy, appliedFilters, spicyKey, cheeseKey, chickenKey, newKey]);
 
   return (
-    <>
+    <div>
       <MenuDesktopFilters activeCategory={activeCategory} onSelect={scrollToCategory} categories={sortedCategories} sortBy={sortBy} setSortBy={setSortBy} onOpenFilter={() => setIsFilterOpen(true)} />
       <section className="eob-menu-content-section">
         <div className="eob-container" style={{ display: "flex", flexDirection: "column", gap: 80 }}>
@@ -455,7 +455,7 @@ const MenuContent = () => {
         onApply={setAppliedFilters}
         currentFilters={appliedFilters}
       />
-    </>
+    </div>
   );
 };
 

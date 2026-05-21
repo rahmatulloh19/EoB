@@ -27,7 +27,7 @@ export const LandingDesktopNavbar = () => {
         backdropFilter: "blur(16px)",
         borderBottom: "1px solid var(--hairline-soft)"
       }}>
-        <div className="eob-container eob-nav-inner" style={{
+        <div className="eob-container eob-nav-inner eob-nav-container" style={{
           paddingTop: 16, paddingBottom: 16,
           display: "flex", alignItems: "center", justifyContent: "space-between"
         }}>
