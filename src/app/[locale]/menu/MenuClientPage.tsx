@@ -131,11 +131,11 @@ const FilterDrawer = ({ isOpen, onClose, onApply, currentFilters }: { isOpen: bo
       setMinPrice(currentFilters.minPrice || "");
       setMaxPrice(currentFilters.maxPrice || "");
       setCheckedFilters(currentFilters.checkedFilters || []);
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflowY = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflowY = '';
     }
-    return () => { document.body.style.overflow = 'auto'; };
+    return () => { document.body.style.overflowY = ''; };
   }, [isOpen, currentFilters]);
 
   const handleClear = () => {
@@ -235,17 +235,28 @@ const MenuDesktopFilters = ({ activeCategory, onSelect, categories, sortBy, setS
 
   React.useEffect(() => {
     if (!scrollRef.current) return;
+    
+    const updateIndicator = () => {
+      const activeButton = scrollRef.current?.querySelector(`[data-cat-id="${activeCategory}"]`) as HTMLElement;
+      if (activeButton) {
+        setIndicatorStyle({
+          left: activeButton.offsetLeft,
+          width: activeButton.offsetWidth
+        });
+      }
+    };
+
+    updateIndicator();
+
     const activeButton = scrollRef.current.querySelector(`[data-cat-id="${activeCategory}"]`) as HTMLElement;
     if (activeButton) {
-      setIndicatorStyle({
-        left: activeButton.offsetLeft,
-        width: activeButton.offsetWidth
-      });
-
       const container = scrollRef.current;
       const scrollTarget = activeButton.offsetLeft - container.clientWidth / 2 + activeButton.offsetWidth / 2;
       container.scrollTo({ left: scrollTarget, behavior: 'smooth' });
     }
+
+    window.addEventListener('resize', updateIndicator);
+    return () => window.removeEventListener('resize', updateIndicator);
   }, [activeCategory]);
 
   return (
