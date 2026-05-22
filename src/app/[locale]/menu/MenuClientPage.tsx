@@ -388,6 +388,11 @@ const MenuContent = () => {
         setActiveCategory(current);
       }
     };
+
+    // Initialize active category based on current scroll position
+    // This is crucial when language changes and scroll state is preserved
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [activeCategory, activeCategories]);

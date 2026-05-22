@@ -724,7 +724,7 @@ export const LandingDesktopFooter = () => {
           <div className="eob-footer-social">
             <div style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--gold)", fontWeight: 600, marginBottom: 24, textTransform: "uppercase" }} className="desktop-only">{tc('social')}</div>
             <div className="eob-social-list" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <a href="https://instagram.com/burgerembassy" className="eob-footer-link" style={{ fontSize: 13 }}>Instagram</a>
+              <a href="https://www.instagram.com/burgerembassyuz/" className="eob-footer-link" style={{ fontSize: 13 }}>Instagram</a>
               <a href="https://t.me/burgerembassy_uzbot" className="eob-footer-link" style={{ fontSize: 13 }}>Telegram</a>
               <a href="https://youtube.com/@embassyburgers" className="eob-footer-link" style={{ fontSize: 13 }}>YouTube</a>
             </div>
