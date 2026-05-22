@@ -132,5 +132,11 @@
     "section_label": "Bo'lim",
     "items_count": "{count} ta",
     "order_btn": "Buyurtma"
+  },
+  "seo": {
+    "default_title": "Embassy of Burgers | Premium Burgerlar",
+    "default_desc": "Dunyoning turli burchaklaridan premium burgerlar. Toshkent bo'ylab 24/7 yetkazib berish.",
+    "home_title": "Bosh sahifa",
+    "menu_title": "Menyu"
   }
 }

@@ -132,5 +132,11 @@
     "section_label": "Section",
     "items_count": "{count} items",
     "order_btn": "Order"
+  },
+  "seo": {
+    "default_title": "Embassy of Burgers | Premium Burgers",
+    "default_desc": "Premium burgers from around the world. 24/7 delivery in Tashkent.",
+    "home_title": "Home",
+    "menu_title": "Menu"
   }
 }

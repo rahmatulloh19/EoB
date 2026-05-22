@@ -132,5 +132,11 @@
     "section_label": "Раздел",
     "items_count": "{count} шт.",
     "order_btn": "Заказать"
+  },
+  "seo": {
+    "default_title": "Embassy of Burgers | Премиум Бургеры",
+    "default_desc": "Премиум бургеры со всего мира. Круглосуточная доставка 24/7 в Ташкенте.",
+    "home_title": "Главная",
+    "menu_title": "Меню"
   }
 }
