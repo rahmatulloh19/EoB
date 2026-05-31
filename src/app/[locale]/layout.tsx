@@ -69,6 +69,24 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={locale}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Embassy of Burgers",
+              "url": "https://embassyburgers.uz",
+              "creator": {
+                "@type": "Person",
+                "name": "Rahmatulloh",
+                "jobTitle": "Frontend Developer"
+              }
+            })
+          }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${playfair.variable} antialiased`}
       >

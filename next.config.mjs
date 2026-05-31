@@ -5,6 +5,15 @@ const withNextIntl = createNextIntlPlugin(
 );
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '16a9564f-f8ec-42ba-a998-3027aa809e50.selstorage.ru',
+      },
+    ],
+  },
+};
 
 export default withNextIntl(nextConfig);

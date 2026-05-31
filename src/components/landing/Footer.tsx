@@ -46,11 +46,13 @@ export const Footer = async () => {
             </div>
           </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 40, borderTop: "1px solid var(--hairline-soft)" }}>
-          <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: "0.1em" }}>
-            {t('rights')}
+        <div className="eob-footer-bottom">
+          <div className="eob-footer-bottom-text">
+            <span>{t('rights')}</span>
+            <span style={{ margin: "0 8px", opacity: 0.5 }}>·</span>
+            <span style={{ color: "rgba(255, 255, 255, 0.3)" }}>Developed by Rahmatulloh</span>
           </div>
-          <div style={{ fontFamily: "var(--eob-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.18em", textTransform: "uppercase" }}>
+          <div className="eob-footer-bottom-mission">
             {t('mission')}
           </div>
         </div>
