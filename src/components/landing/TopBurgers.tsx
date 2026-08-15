@@ -2,12 +2,13 @@
 import React from 'react';
 import { Link } from '@/navigation';
 import { getTranslations } from 'next-intl/server';
-import menuData from '@/lib/data.json';
+import { getMenuData } from '@/lib/api';
 import { TopBurgerCard } from './TopBurgerCard';
 
 export const TopBurgers = async () => {
   const t = await getTranslations('sections');
-  const topBurgers = menuData.flatMap(cat => cat.products).slice(0, 4);
+  const menuData = await getMenuData();
+  const topBurgers = menuData.flatMap((cat: any) => cat.products).slice(0, 4);
 
   return (
     <section id="menu" className="eob-section-padding" style={{ background: "var(--bg)" }}>

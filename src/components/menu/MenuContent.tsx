@@ -1,15 +1,18 @@
 'use client';
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import menuData from '@/lib/data.json';
 import { SectionEyebrow } from '@/components/ui/SectionHeadings';
 import { MenuFilters } from './MenuFilters';
 import { MenuItemCard } from './MenuItemCard';
 import { FilterDrawer } from './FilterDrawer';
 
-export const MenuContent = () => {
+interface MenuContentProps {
+  initialData: any[];
+}
+
+export const MenuContent = ({ initialData }: MenuContentProps) => {
   const t = useTranslations("menu");
-  const activeCategories = menuData.filter(cat => cat.products.length > 0);
+  const activeCategories = initialData.filter((cat: any) => cat.products.length > 0);
   const firstCategoryId = activeCategories.length > 0 ? activeCategories[0].id : "";
   const [activeCategory, setActiveCategory] = React.useState(firstCategoryId);
   const [sortBy, setSortBy] = React.useState("popular");

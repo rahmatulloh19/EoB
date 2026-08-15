@@ -2,7 +2,6 @@
 import React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { SectionEyebrow, SectionTitle } from '@/components/ui/SectionHeadings';
-import branchesData from '@/lib/branches.json';
 
 const getBranchStatus = (b: any) => {
   if (b.hours === "24/7") return true;
@@ -15,12 +14,16 @@ const getBranchStatus = (b: any) => {
   return endHour < startHour ? (hour >= startHour || hour < endHour) : (hour >= startHour && hour < endHour);
 };
 
-export const Branches = () => {
+interface BranchesProps {
+  initialData: any[];
+}
+
+export const Branches = ({ initialData }: BranchesProps) => {
   const t = useTranslations('sections');
   const tc = useTranslations('common');
   const locale = useLocale();
 
-  const [branches, setBranches] = React.useState<any[]>(branchesData.map(b => ({ ...b, is_actually_open: getBranchStatus(b) })));
+  const [branches, setBranches] = React.useState<any[]>(initialData.map(b => ({ ...b, is_actually_open: getBranchStatus(b) })));
   const [status, setStatus] = React.useState("idle");
   const [errorMsg, setErrorMsg] = React.useState("");
   const [showAll, setShowAll] = React.useState(false);
@@ -35,7 +38,7 @@ export const Branches = () => {
         const x = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a)) * Math.cos(toRad(c)) * Math.sin(dLng / 2) ** 2;
         return 2 * R * Math.asin(Math.sqrt(x));
       };
-      const withDistance = branchesData.map(branch => {
+      const withDistance = initialData.map(branch => {
         const d = dist(lat, lng, parseFloat(branch.latitude as unknown as string), parseFloat(branch.longitude as unknown as string));
         return { ...branch, km: d, is_actually_open: getBranchStatus(branch) };
       });
@@ -64,7 +67,7 @@ export const Branches = () => {
       <div className="eob-container">
         <div className="eob-branches-header">
           <div>
-            <SectionEyebrow>{branchesData.length} {t('branches_eyebrow')}</SectionEyebrow>
+            <SectionEyebrow>{initialData.length} {t('branches_eyebrow')}</SectionEyebrow>
             <SectionTitle accent={t('branches_accent')}>{t('branches_title')}</SectionTitle>
           </div>
           <div className="eob-branches-tools">
@@ -99,14 +102,15 @@ export const Branches = () => {
                   border: isNearest ? "1px solid var(--gold)" : isTop3 ? "1px solid rgba(212,175,55,0.25)" : "1px solid var(--hairline-soft)",
                   padding: "28px 28px 24px", position: "relative",
                   transition: "all 280ms ease",
-                  boxShadow: isNearest ? "0 12px 40px rgba(212,175,55,0.18)" : "none"
+                  boxShadow: isNearest ? "0 12px 40px rgba(212,175,55,0.18)" : "none",
+                  display: "flex", flexDirection: "column"
                 }}>
                   {b.km !== undefined && i < 3 &&
                     <div style={{ position: "absolute", top: -10, left: 24, background: isNearest ? "var(--gold)" : "var(--card)", color: isNearest ? "#1a1408" : "var(--gold)", border: isNearest ? "none" : "1px solid rgba(212,175,55,0.4)", fontSize: 9, letterSpacing: "0.22em", textTransform: "uppercase", padding: "4px 10px", fontWeight: 600 }}>
                       {i === 0 ? t('nearest') : `${i + 1}-${t('near')}`} · {b.km.toFixed(1)} km
                     </div>
                   }
-                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 20 }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 20, flex: 1 }}>
                     <div>
                       <div style={{ fontFamily: "var(--eob-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: "0.2em" }}>
                         {b.km !== undefined ? tc('distance', { km: b.km.toFixed(1) }) : `№ ${String(i + 1).padStart(2, "0")}`}
@@ -138,7 +142,7 @@ export const Branches = () => {
               );
             })}
           </div>
-          {!showAll && branchesData.length > 6 && (
+          {!showAll && initialData.length > 6 && (
             <div className="eob-branches-overlay" style={{
               position: "absolute", bottom: 0, left: 0, right: 0, height: 240,
               background: "linear-gradient(180deg, rgba(13,13,13,0) 0%, rgba(13,13,13,0.85) 40%, rgba(13,13,13,1) 100%)",
@@ -149,7 +153,7 @@ export const Branches = () => {
                 onClick={() => setShowAll(true)}
                 className="eob-btn eob-btn--outline eob-show-all-btn" 
                 style={{ padding: "16px 36px", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", pointerEvents: "auto", background: "#0D0D0D", boxShadow: "0 -10px 40px rgba(13,13,13,0.9)", border: "1px solid var(--gold)" }}>
-                {t('show_all')} {branchesData.length} {t('branches_label')} ↓
+                {t('show_all')} {initialData.length} {t('branches_label')} ↓
               </button>
             </div>
           )}

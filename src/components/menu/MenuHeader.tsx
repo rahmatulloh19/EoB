@@ -1,13 +1,11 @@
 // Server Component
 import React from 'react';
 import { getTranslations } from 'next-intl/server';
-import menuData from '@/lib/data.json';
-
-export const MenuHeader = async () => {
+export const MenuHeader = async ({ initialData }: { initialData: any[] }) => {
   const t = await getTranslations('menu');
 
-  const promoProduct = menuData
-    .find(cat => cat.name === "Акции" || cat.name === "Aksiyalar")
+  const promoProduct = initialData
+    .find((cat: any) => cat.name === "Акции" || cat.name === "Aksiyalar")
     ?.products[0];
 
   const specialOffer = {
